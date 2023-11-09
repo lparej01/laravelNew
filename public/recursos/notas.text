@@ -1,0 +1,310 @@
+Instalacion para auditar el sistema
+
+https://laravel-auditing.com/guide/upgrading.html
+
+composer require owen-it/laravel-auditing
+
+Edit the config/app.php file and add the following line to register the service provider:
+
+php
+'providers' => [
+    // ...
+
+    OwenIt\Auditing\AuditingServiceProvider::class,
+
+    // ...
+],
+
+Después de configurar el marco de su elección, use el siguiente comando para publicar los ajustes de configuración:
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="config"
+
+Publish the audits table migration to the database/ directory with the following command:
+
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
+
+Luego  en cada modelo para que registre todos los datos
+
+use OwenIt\Auditing\Contracts\Auditable;
+
+class User extends Authenticatable implements Auditable
+{
+    use \OwenIt\Auditing\Auditable;
+
+permiso para esa carpeta
+sudo chmod -R 755 /var/www
+
+sudo systemctl start httpd
+
+sudo systemctl stop httpd
+
+sudo systemctl restart httpd
+
+systemctl enable firewalld
+systemctl status firewalld
+
+Ver los puertos    
+netstat -putona
+
+php artisan cache:clear
+php artisan config:clear
+php artisan config:cache
+php artisan view:clear
+php artisan event:cache
+php artisan event:clear
+php artisan route:cache
+php artisan optimize
+php artisan optimize:clear
+
+php artisan migrate:fresh --seed
+
+php artisan route:list
+
+seguridad
+composer require laravel/ui
+
+php artisan ui vue --auth
+
+npm install
+npm run dev
+
+opcional
+npm run build
+
+opcional
+composer require laravel/breeze --dev
+corre el servidor
+npm run dev
+
+ en caso que no funcione
+npm update
+
+ /**
+     * Bootstrap any application services.
+     * app\Providers\AppServiceProvider.php
+     *configuracion de tema personalizado
+     */
+    public function boot(): void
+    {
+        View::share('theme','team');
+    }
+
+
+Modifica tu archivo composer.json para agregar la carga del archivo con la clave files dentro de la sección autoload de la siguiente manera:
+
+  "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "app/Helpers/helpers.php",
+            "app/Helpers/biblioteca.php"
+        ]
+       
+    },
+
+ Por último, ejecuta en la consola:
+
+ composer dump-autoload
+
+ composer dump-autoload -o
+ Cuando no funciona Form
+ composer require laravelcollective/html
+ generar un seder
+ php artisan make:seeder UsersTableSeeder
+
+  php artisan route:list
+
+  en cada modelo
+  use OwenIt\Auditing\Contracts\Auditable;
+
+class User extends Authenticatable implements Auditable
+{
+    use \OwenIt\Auditing\Auditable;
+
+    // Authentication Routes...
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('login', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+C:\xampp\htdocs\proyecto-web\vendor\laravel\ui\auth-backend\RegistersUsers.php
+
+ UsersRol::create([           
+            'rol_id'  => 1,
+            'usuario_id' => 1, 
+            'estado' => true,                             
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+Crea un link simbolico 
+con storage
+php artisan storag:link 
+
+   INFO  The [C:\xampp\htdocs\proyecto-web\public\storage] link has been connected to [C:\xampp\htdocs\proyecto-web\storage\app/public].  
+
+
+ npm i bootstrap-icons
+
+ added 1 package, and audited 57 packages in 45s
+
+8 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+php artisan make:controller SistemaAbastecimiento/ProveedoresController --resource
+
+php artisan make:model Admin/Afiliados
+
+ git was not found in your PATH, skipping source download
+Locate your php.ini configuration file.
+
+For example C:\xampp\php look for the zip extension line and uncomment it (remove the semi-colon) behind it. It looks like extension=zip. That's all
+
+
+#################################################################
+La solución es simplemente borrar el enlace simbólico:
+
+cd public
+rm storage
+Y luego hacer de nuevo el comando de artisan para crearlo:
+
+php artisan storage:link
+
+Migraciones
+
+Migraciones:
+C:\xampp\htdocs\HMOWEB>php artisan make:migration create_tabla_tipo_afiliado --create=tipo_afiliado
+Created Migration: 2020_10_19_162546_create_tabla_tipo_afiliado
+
+C:\xampp\htdocs\HMOWEB>php artisan migrate --path=database\migrations\2020_10_19_162546_create_tabla_tipo_afiliado.php
+Migrating: 2020_10_19_162546_create_tabla_tipo_afiliado
+Migrated:  2020_10_19_162546_create_tabla_tipo_afiliado (294.54ms)}
+
+Controladores
+C:\xampp\htdocs\HMOWEB>php artisan make:controller Planes/PlanesController --resource
+Controller created successfully.
+
+Modelos
+C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/Afiliados
+Model created successfully.
+
+C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/PlanesSalud
+Model created successfully.
+
+C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/Paises
+Model created successfully.
+
+C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/Estados
+Model created successfully.
+
+
+php artisan db:seed
+ 
+php artisan db:seed --class=UserSeeder
+
+
+
+  Primero se migra esta tablas luego se ejecuta el  seeder
+
+  php artisan migrate --path=database\migrations\2019_12_14_000001_create_personal_access_tokens_table.php
+  php artisan migrate --path=database\migrations\2019_08_19_000000_create_failed_jobs_table.php
+  php artisan migrate --path=database\migrations\2014_10_12_100000_create_password_resets_table.php
+  php artisan migrate --path=database\migrations\2014_10_12_100000_create_password_reset_tokens_table.php
+  php artisan migrate --path=database\migrations\2023_04_21_174851_create_audits_table.php
+  php artisan migrate --path=database\migrations\2020_07_06_143923_crear_tabla_permiso.php 
+  php artisan migrate --path=database\migrations\2019_07_06_144012_crear_tabla_rol.php
+  php artisan migrate --path=database\migrations\2014_10_12_000000_create_users_table.php
+  php artisan migrate --path=database\migrations\2019_07_27_020930_crear_tabla_menu.php
+  php artisan migrate --path=database\migrations\2020_07_06_153101_crear_tabla_permiso_rol.php
+  php artisan migrate --path=database\migrations\2020_07_06_150648_crear_tabla_users_rol.php  
+  php artisan migrate --path=database\migrations\2019_07_27_021514_crear_tabla_menu_rol.php 
+  php artisan migrate --path=database\migrations\2023_09_22_092416_create_tabla_tipo_producto.php
+
+
+  php artisan db:seed --class=Database
+  
+ 
+  
+  
+
+
+
+vendor/bin/phpunit
+
+Crear tu host local en Windows
+  C:\Windows\System32\drivers\etc\hosts 
+   editar como administrador
+
+  # Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+127.0.0.1       proyectos.web.dev
+
+Crear el certificado y la clave privada del servidor con OPENSSL
+
+Después de personalizar "cert-template.conf" y guardar los cambios, 
+solo necesitamos ejecutar "make-cert.bat".
+
+protected $connection = 'mysql2'; 
+cuando tienes varios base de datos se coloca en el modelo
+
+$risc_conexion = DB::connection('sqlsrv4');
+
+$his_conexion = DB::connection('sqlsrv5');
+
+$resultados = $risc_conexion
+  ->table('risc_2030.PADRON_NOMINAL')
+  ->join($his_conexion
+  ->table('BDHIS_MINSA.dbo.rpt_plano_cbeta_acum'), 'risc_2030.PADRON_NOMINAL.DNI', '=', 'BDHIS_MINSA.dbo.rpt_plano_cbeta_acum.numero_documento' )
+  ->select('risc_2030.PADRON_NOMINAL.*', 'BDHIS_MINSA.dbo.rpt_plano_cbeta_acum.*')
+  ->first();
+
+dd($resultados);
+
+class Invoice extends Eloquent {
+
+    protected $connection = 'mysql2';
+
+    // ... resto del modelo
+}
+
+Schema::connection('comments')->create('users', function($table)
+{
+   $table->increments('id');
+});
