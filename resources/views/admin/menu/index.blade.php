@@ -28,6 +28,7 @@
                                                 data-placement="left">
                                                 {{ __('Crear Nuevo Menu') }}
                                             </a>
+                                            <br><br>
 
                                             <a href="{{ route('menu.dinamico') }}" class="btn btn-primary float-right"
                                             data-placement="left">
