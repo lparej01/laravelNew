@@ -20,12 +20,12 @@
                           <x-slot:headerActions>
 
                               <div class="float-right"  >
-                                {{--    @if ($actionsBlade->can_create > 0)
-                                      <a href="{{ route('crear.existencia') }}" class="btn btn-primary float-right"
-                                          data-placement="left">
-                                          {{ __('Generar Nueva Existencia por Periodo') }}
+                                    @if ($actionsBlade->can_create > 0)
+                                      <a href="{{ route('crear.movinv') }}" class="btn btn-primary float-right"data-placement="left">
+
+                                          {{ __('Registar  Movimiento de Inventario') }}
                                       </a>
-                                  @endif --}}
+                                  @endif 
 
                                   <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalMovimientoInventario">
                                       <x-slot:modalTitle>
@@ -50,9 +50,9 @@
                                               show: rolActions.can_show,
                                           @endif
 
-                                          @if ($actionsBlade->can_edit > 0)
+                                        /*   @if ($actionsBlade->can_edit > 0)
                                               edit: rolActions.can_edit,
-                                          @endif
+                                          @endif */
 
                                           @if ($actionsBlade->can_disable > 0)
                                               disable: rolActions.can_disable,

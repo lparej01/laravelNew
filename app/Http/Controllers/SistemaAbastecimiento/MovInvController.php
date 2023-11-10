@@ -41,4 +41,58 @@ class MovInvController extends Controller
         return view("abastecimiento.transacciones.movinventario.index",compact('movInv', 'actions'));
 
     }
+
+
+             /**
+     * Display the specified resource.
+     */
+    public function show(string $movinvId) {
+        
+       
+       
+        $movinv = MovInv::getMovInv($movinvId);      
+        
+        return view('abastecimiento.transacciones.movinventario.show',compact('movinv'));
+     }
+ 
+     /**
+      * Show the form for editing the specified resource.
+      */
+     public function edit(string $id)
+     {
+       
+        
+        return view('abastecimiento.transacciones.movinventario.edit');
+ 
+     }
+
+      /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request)
+    {
+       
+
+        $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
+
+        if ($existencia) {
+            return redirect()->route('existencia.list')
+                    ->with('success', 'La Existencia se creo correctamente');
+           } else {
+            return redirect()->route('edit.existencia')
+                ->with('danger', 'Error en la edicion de la existencia');
+           }
+
+
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+ 
 }

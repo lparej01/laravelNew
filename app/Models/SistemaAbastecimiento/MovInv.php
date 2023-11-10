@@ -42,7 +42,9 @@ class MovInv extends Model implements Auditable
      */
     public static function getMovInv($movinvId){
 
-        $movinv = DB::table('movinv')->where('movinv',$movinvId)->first();      
+        
+        
+        $movinv = DB::table('movinv')->where('movinvId',$movinvId)->first();    
       
        
        

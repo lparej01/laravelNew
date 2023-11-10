@@ -21,7 +21,7 @@
                 return tableControlles.setConditions(                 
                     row.movinvId != null 
                     ? [
-                        {
+                       /*  {
                             name: 'edit',
                             iClass: "fa,fa-pencil",
                             aClass: "btn,btn-primary,btn-icon-only",
@@ -29,7 +29,7 @@
                             tooltip: { title: "Editar Movimiento de Inventario", toggle: "tooltip",
                                 placement: "top",
                             },
-                        },
+                        }, */
                         {
                             name: 'show',
                             iClass: "fa,fa-eye",
@@ -102,7 +102,7 @@
                 
             }, 
             
-            {
+           /*  {
                 field: "referencia",
                 title: "Referencia",
                 sortable: true,
@@ -110,7 +110,7 @@
                 searchable: true,
                 
             },            
-            
+             */
             {
                 field: "actions",
                 title: "Acciones",
