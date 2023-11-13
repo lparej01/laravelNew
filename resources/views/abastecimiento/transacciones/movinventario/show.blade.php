@@ -8,7 +8,7 @@
         {{ $movinv->sku}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Tipo de movimiento inventario:</strong>
+        <strong>Tipo de movimiento:</strong>
         {{ $movinv->tipoMovinv}}
     </div>
     <div class="d-flex justify-content-between">

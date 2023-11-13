@@ -58,9 +58,22 @@ class MovInv extends Model implements Auditable
     public static function updateMovInv($movinvId){         
       
        
+     
+       
+    }
+    /**
+     * 
+     * consulta pedido por el sku por el periodo activo
+     * 
+     */
+    public static function movInvxSku($sku){         
+      
+       
        
        
     }
+
+
 
 
 

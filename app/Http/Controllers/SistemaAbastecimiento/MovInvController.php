@@ -9,6 +9,7 @@ use App\Models\Admin\UsersRol;
 use App\Models\Admin\PermisoRol;
 use Illuminate\Support\Facades\DB;
 use App\Models\SistemaAbastecimiento\MovInv;
+use App\Models\SistemaAbastecimiento\Sku;
 
 class MovInvController extends Controller
 {
@@ -93,6 +94,51 @@ class MovInvController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function store(Request $request){
+
+        $messages = [
+           
+            'catId.required' => 'El nombre de la categoria requerida',
+            'marca.required' => 'Seleccione la marca o sku es requerido',
+            'descripcion.required'=> 'El tipo de descripcion es requerida ',
+            'presentacion.required' => 'Tipo de presentación es requerido',
+            'unidadMedida.required'  => 'La unidad de medidada es requerido',
+            'empaque.required' => 'El tipo de empaque es requerido',
+            'costoUnitario.required'=> 'El costo unitario es  es requerido',
+        ];
+
+        $request->validate([
+            'catId'           => ['required'],
+            'marca'           => ['required', 'regex:/^[A-Za-z0-9\s]+$/', 'min:3', 'max:30'],
+            'descripcion'           => ['required'],
+            'presentacion'           => ['required'],
+            'unidadMedida'           => ['required'],
+            'empaque'           => ['required'],          
+            'costoUnitario'           => ['required'],
+          
+          
+        ], $messages);
+
+
+
+    }
+
+
+
+    /**
+     * Creacion de un movimiento de Inventario
+     * 
+     * 
+     */
+    public function create(){
+
+        $movsku = Sku::getSkuAll();
+
+        return view('abastecimiento.transacciones.movinventario.create',compact('movsku'));
+
+
     }
  
 }
