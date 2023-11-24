@@ -152,15 +152,26 @@ class Existencia extends Model implements Auditable
 
         $object->entradas =  $request->entradas;       
         $object->salidas =   $request->salidas;      
-        $object->merma =  $request->merma;        
-        $totalInvFinal = ($request->entradas + $request->invInicial) -($request->salidas + $request->merma);
-        $object->invFinal = $totalInvFinal;      
-        $object->usuario =  $usuario_id;      
-        $object->timestamp =   time() ;  
-        $object->save();       
+        $object->merma =  $request->merma; 
+
+        $sumaSalida = $object->salidas + $object->merma;
+        $sumaEntradas =$object->invInicial+ $object->entradas;
+
+        if ($sumaSalida > $sumaEntradas ) {
+             return false;
+        } else {
+            
+            $totalInvFinal = ($request->entradas + $request->invInicial) -($request->salidas + $request->merma);
+            $object->invFinal = $totalInvFinal;      
+            $object->usuario =  $usuario_id;      
+            $object->timestamp =   time() ;  
+            $object->save();       
+            
+            
+            return $object;
+        }
+               
         
-        
-        return $object;
         
 
 

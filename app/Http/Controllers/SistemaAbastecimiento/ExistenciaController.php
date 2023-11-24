@@ -95,16 +95,22 @@ class ExistenciaController extends Controller
 
         $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
 
-        if ($existencia) {
+        //dd(    $existencia);
+
+        if ($existencia ==false) {
+
             return redirect()->route('existencia.list')
-                    ->with('success', 'La Existencia se creo correctamente');
+            ->with('success', 'Error en los calculos debe revisar la Información ');
+            
            } else {
-            return redirect()->route('edit.existencia')
-                ->with('danger', 'Error en la edicion de la existencia');
+            return redirect()->route('existencia.list')
+            ->with('success', 'La Existencia se creo correctamente');
            }
 
-
-
+        
+        
+        
+       
     }
 
     /**
