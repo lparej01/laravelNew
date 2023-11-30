@@ -6,6 +6,9 @@ namespace App\Models\SistemaAbastecimiento;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use App\Models\SistemaAbastecimiento\Periodo;
+use App\Models\SistemaAbastecimiento\Pedidos;
+use DateTime;
 
 class MovInv extends Model implements Auditable
 {
@@ -34,6 +37,43 @@ class MovInv extends Model implements Auditable
            $movinv=DB::table('movinv')->orderBy('movinv', 'desc')->get();        
        
         return $movinv ;
+    }
+
+    public static function periodoActivo(){
+
+        $periodo =DB::table('periodo')->where('esActual', 1)->first();  
+        
+        
+        return $periodo;
+
+    }
+
+    public static function buscarSkuPedido($sku){
+
+        $periodo=MovInv::periodoActivo();
+
+            
+        /**Obtengo los pedidos en un determinado mes y año */
+       $pedidos= DB::table('pedidos')->where('sku', $sku)
+                                    ->whereYear('fechaPedido', $periodo->anio)
+                                    ->whereMonth('fechaPedido', '>=' , $periodo->mes)
+                                    ->get();
+      
+       return $pedidos;
+    }
+
+    public static function buscarPedidosActivos(){
+
+        $periodo= MovInv::periodoActivo();       
+            
+        /**Obtengo los pedidos en un determinado mes y año */
+        $pedidos= DB::table('pedidos')->join('sku', 'pedidos.sku', '=', 'sku.sku')        
+                                    ->select('pedidos.*', 'sku.descripcion')  
+                                    ->whereYear('fechaPedido', $periodo->anio)
+                                    ->whereMonth('fechaPedido', '>=', $periodo->mes)
+                                    ->get();
+      
+        return $pedidos;
     }
 
      /**

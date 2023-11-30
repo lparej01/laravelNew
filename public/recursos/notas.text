@@ -308,3 +308,6 @@ Schema::connection('comments')->create('users', function($table)
 {
    $table->increments('id');
 });
+
+
+ composer require barryvdh/laravel-debugbar --dev

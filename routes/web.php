@@ -130,59 +130,58 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
 
   ///*MovInv////
   Route::get('movinv', 'MovInvController@index')->name('movinv.list');    
-  Route::get('movinv/edit/{id}', 'MovInvController@edit')->name('edit.movinv');
-  Route::post('movinv/{id}', 'MovInvController@update')->name('update.movinv');
+  Route::get('movinv/edit/{id}', 'MovInvController@edit')->name('edit.movinv'); 
   Route::delete('movinv/{id}/destroy', 'MovInvController@destroy')->name('destroy.movinv');
   Route::get('movinv/show/{id}', 'MovInvController@show')->name('movinv.show'); 
   Route::get('movinv/disable/{id}', 'MovInvController@disable')->name('movinv.disable'); 
-  Route::get('movinv/disable_confirm/{id}', 'MovInvController@disable_confirm')->name('movinv.disable_confirm');
-  Route::get('movinv/create', 'MovInvController@create')->name('crear.movinv');
+  Route::get('movinv/disable_confirm/{id}', 'MovInvController@disable_confirm')->name('movinv.disable_confirm');  
   Route::post('movinv', 'MovInvController@store')->name('save.movinv');
+  Route::get('movinv/create', 'MovInvController@create')->name('obtener_pedidos.movinv');
 
-///*Combos////
-Route::get('combos', 'CombosController@index')->name('combos.list');    
-Route::get('combos/edit/{id}', 'CombosController@edit')->name('edit.combos');
-Route::post('combos/{id}', 'CombosController@update')->name('update.combos');
-Route::delete('combos/{id}/destroy', 'CombosController@destroy')->name('destroy.combos');
-Route::get('combos/show/{id}', 'CombosController@show')->name('combos.show'); 
-Route::get('combos/disable/{id}', 'CombosController@disable')->name('combos.disable'); 
-Route::get('combos/disable_confirm/{id}', 'CombosController@disable_confirm')->name('combos.disable_confirm');
-Route::get('combos/create', 'CombosController@create')->name('crear.combos');
-Route::post('combos', 'CombosController@store')->name('save.combos');
+    ///*Combos////
+    Route::get('combos', 'CombosController@index')->name('combos.list');    
+    Route::get('combos/edit/{id}', 'CombosController@edit')->name('edit.combos');
+    Route::post('combos/{id}', 'CombosController@update')->name('update.combos');
+    Route::delete('combos/{id}/destroy', 'CombosController@destroy')->name('destroy.combos');
+    Route::get('combos/show/{id}', 'CombosController@show')->name('combos.show'); 
+    Route::get('combos/disable/{id}', 'CombosController@disable')->name('combos.disable'); 
+    Route::get('combos/disable_confirm/{id}', 'CombosController@disable_confirm')->name('combos.disable_confirm');
+    Route::get('combos/create', 'CombosController@create')->name('crear.combos');
+    Route::post('combos', 'CombosController@store')->name('save.combos');
 
-///*Categorias////
-Route::get('categorias', 'CategoriasController@index')->name('categorias.list');    
-Route::get('categorias/edit/{id}', 'CategoriasController@edit')->name('edit.categorias');
-Route::post('categorias/{id}', 'CategoriasController@update')->name('update.categorias');
-Route::delete('categorias/{id}/destroy', 'CategoriasController@destroy')->name('destroy.categorias');
-Route::get('categorias/show/{id}', 'CategoriasController@show')->name('categorias.show'); 
-Route::get('categorias/disable/{id}', 'CategoriasController@disable')->name('categorias.disable'); 
-Route::get('categorias/disable_confirm/{id}', 'CategoriasController@disable_confirm')->name('categorias.disable_confirm');
-Route::get('categorias/create', 'CategoriasController@create')->name('crear.categorias');
-Route::post('categorias', 'CategoriasController@store')->name('save.categorias');
+    ///*Categorias////
+    Route::get('categorias', 'CategoriasController@index')->name('categorias.list');    
+    Route::get('categorias/edit/{id}', 'CategoriasController@edit')->name('edit.categorias');
+    Route::post('categorias/{id}', 'CategoriasController@update')->name('update.categorias');
+    Route::delete('categorias/{id}/destroy', 'CategoriasController@destroy')->name('destroy.categorias');
+    Route::get('categorias/show/{id}', 'CategoriasController@show')->name('categorias.show'); 
+    Route::get('categorias/disable/{id}', 'CategoriasController@disable')->name('categorias.disable'); 
+    Route::get('categorias/disable_confirm/{id}', 'CategoriasController@disable_confirm')->name('categorias.disable_confirm');
+    Route::get('categorias/create', 'CategoriasController@create')->name('crear.categorias');
+    Route::post('categorias', 'CategoriasController@store')->name('save.categorias');
 
-///*CombosCategorias////
-Route::get('comboscategorias', 'CombosCategoriasController@index')->name('comboscategorias.list');    
-Route::get('comboscategorias/edit/{id}', 'CombosCategoriasController@edit')->name('edit.comboscategorias');
-Route::post('comboscategorias/{id}', 'CombosCategoriasController@update')->name('update.comboscategorias');
-Route::delete('comboscategorias/{id}/destroy', 'CombosCategoriasController@destroy')->name('destroy.comboscategorias');
-Route::get('comboscategorias/show/{id}', 'CombosCategoriasController@show')->name('comboscategorias.show'); 
-Route::get('comboscategorias/disable/{id}', 'CombosCategoriasController@disable')->name('comboscategorias.disable'); 
-Route::get('comboscategorias/disable_confirm/{id}', 'CombosCategoriasController@disable_confirm')->name('comboscategorias.disable_confirm');
-Route::get('comboscategorias/create', 'CombosCategoriasController@create')->name('crear.comboscategorias');
-Route::post('comboscategorias', 'CombosCategoriasController@store')->name('save.comboscategorias');
+    ///*CombosCategorias////
+    Route::get('comboscategorias', 'CombosCategoriasController@index')->name('comboscategorias.list');    
+    Route::get('comboscategorias/edit/{id}', 'CombosCategoriasController@edit')->name('edit.comboscategorias');
+    Route::post('comboscategorias/{id}', 'CombosCategoriasController@update')->name('update.comboscategorias');
+    Route::delete('comboscategorias/{id}/destroy', 'CombosCategoriasController@destroy')->name('destroy.comboscategorias');
+    Route::get('comboscategorias/show/{id}', 'CombosCategoriasController@show')->name('comboscategorias.show'); 
+    Route::get('comboscategorias/disable/{id}', 'CombosCategoriasController@disable')->name('comboscategorias.disable'); 
+    Route::get('comboscategorias/disable_confirm/{id}', 'CombosCategoriasController@disable_confirm')->name('comboscategorias.disable_confirm');
+    Route::get('comboscategorias/create', 'CombosCategoriasController@create')->name('crear.comboscategorias');
+    Route::post('comboscategorias', 'CombosCategoriasController@store')->name('save.comboscategorias');
 
 
-///*Existencia////
-Route::get('existencia', 'ExistenciaController@index')->name('existencia.list');    
-Route::get('existencia/edit/{id}/{periodo}', 'ExistenciaController@edit')->name('edit.existencia');
-Route::post('existencia/{id}', 'ExistenciaController@update')->name('update.existencia');
-Route::delete('existencia/{id}/destroy', 'ExistenciaController@destroy')->name('destroy.existencia');
-Route::get('existencia/show/{id}/{periodo}', 'ExistenciaController@show')->name('existencia.show'); 
-Route::get('existencia/disable/{id}', 'ExistenciaController@disable')->name('existencia.disable'); 
-Route::get('existencia/disable_confirm/{id}', 'ExistenciaController@disable_confirm')->name('existencia.disable_confirm');
-Route::get('existencia/create', 'ExistenciaController@create')->name('crear.existencia');
-Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
+    ///*Existencia////
+    Route::get('existencia', 'ExistenciaController@index')->name('existencia.list');    
+    Route::get('existencia/edit/{id}/{periodo}', 'ExistenciaController@edit')->name('edit.existencia');
+    Route::post('existencia/{id}', 'ExistenciaController@update')->name('update.existencia');
+    Route::delete('existencia/{id}/destroy', 'ExistenciaController@destroy')->name('destroy.existencia');
+    Route::get('existencia/show/{id}/{periodo}', 'ExistenciaController@show')->name('existencia.show'); 
+    Route::get('existencia/disable/{id}', 'ExistenciaController@disable')->name('existencia.disable'); 
+    Route::get('existencia/disable_confirm/{id}', 'ExistenciaController@disable_confirm')->name('existencia.disable_confirm');
+    Route::get('existencia/create', 'ExistenciaController@create')->name('crear.existencia');
+    Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
 
 
   

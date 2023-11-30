@@ -95,7 +95,7 @@ class ExistenciaController extends Controller
 
         $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
 
-        //dd(    $existencia);
+       
 
         if ($existencia ==false) {
 

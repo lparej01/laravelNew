@@ -10,6 +10,8 @@ use App\Models\Admin\PermisoRol;
 use Illuminate\Support\Facades\DB;
 use App\Models\SistemaAbastecimiento\MovInv;
 use App\Models\SistemaAbastecimiento\Sku;
+use App\Models\SistemaAbastecimiento\Existencia;
+use App\Models\SistemaAbastecimiento\Pedidos;
 
 class MovInvController extends Controller
 {
@@ -67,26 +69,7 @@ class MovInvController extends Controller
  
      }
 
-      /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-       
-
-        $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
-
-        if ($existencia) {
-            return redirect()->route('existencia.list')
-                    ->with('success', 'La Existencia se creo correctamente');
-           } else {
-            return redirect()->route('edit.existencia')
-                ->with('danger', 'Error en la edicion de la existencia');
-           }
-
-
-
-    }
+     
 
     /**
      * Remove the specified resource from storage.
@@ -98,7 +81,7 @@ class MovInvController extends Controller
 
     public function store(Request $request){
 
-        $messages = [
+       /*  $messages = [
            
             'catId.required' => 'El nombre de la categoria requerida',
             'marca.required' => 'Seleccione la marca o sku es requerido',
@@ -119,11 +102,19 @@ class MovInvController extends Controller
             'costoUnitario'           => ['required'],
           
           
-        ], $messages);
+        ], $messages); */
+
+
+      //  dd($request->sku);
+
+
+       // $sku= MovInv::buscarSkuPedido($request->sku); 
 
 
 
     }
+
+    
 
 
 
@@ -132,11 +123,34 @@ class MovInvController extends Controller
      * 
      * 
      */
-    public function create(){
+    public function create(Request $reques){
 
-        $movsku = Sku::getSkuAll();
+        $mov = MovInv::buscarPedidosActivos(); 
+        $movInv = serializeJson($mov);         
+        $usuario_id= user()->id; 
+        $user = UsersRol::getUserRolId($usuario_id);
+        $permisorol=PermisoRol::getPermisoRolId($user->rol_id);
 
-        return view('abastecimiento.transacciones.movinventario.create',compact('movsku'));
+        $permiso_status = DB::table('permiso_rol')
+            ->join('permiso', 'permiso_rol.permiso_id', '=', 'permiso.id')            
+            ->select('permiso.nombre', 'permiso_rol.*')
+            ->where('permiso_rol.rol_id',$user->rol_id)
+            ->get();         
+
+        $array = array("can_create" => $permiso_status[0]->status, 
+                        "can_edit" => $permiso_status[2]->status, 
+                        "can_show" => $permiso_status[5]->status,
+                        "can_disable" => $permiso_status[4]->status,
+                        "can_delete" => $permiso_status[1]->status);  
+
+        $actions = serializeJson($array);       
+       
+       
+       
+        
+      
+
+        return view('abastecimiento.transacciones.movinventario.create',compact('movInv','actions'));
 
 
     }

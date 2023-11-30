@@ -14,8 +14,7 @@ class Existencia extends Model implements Auditable
     
     protected $table="existencia";
 
-    protected $guarded = ['sku'];    
-
+   
     public $timestamps = false;  
 
     const UPDATED_AT = null;
@@ -24,7 +23,11 @@ class Existencia extends Model implements Auditable
     /***definicion de la clave primaria cuando no es id */
     protected $primaryKey = "sku";
 
-    protected $fillable = ['periodo','invInicial','entradas','salidas','merma','costoUnitario','invFinal','timestamp','usuario'];
+    protected $guarded = ['sku']; 
+    protected $fillable = ['periodo','invInicial','entradas','salidas','merma','costoUnitario','invFinal','usuario'];   
+
+
+   
 
     /**
      * Obtener todas la existencia de todos los periodos
@@ -136,35 +139,33 @@ class Existencia extends Model implements Auditable
     public static function actualizarExistenciaSkuPeriodo($request){
 
 
-        // $obtener = Existencia::getExistenciaSkuPeriodo($request);
+      
 
-         $usuario_id= user()->username; 
-        // dd( $request ->all());
+        $usuario= user()->username;      
+        $object = new Existencia;  
+        $object = Existencia::find($request->sku);      
 
-        $object = new Existencia;            
-        $obj = Existencia::where('sku',$request->sku)->where('periodo',$request->periodo)->first();  
-        $object=$obj;
+        $sumaSalida = $request->salidas + $request->merma;
+        $sumaEntradas =$request->invInicial+ $request->entradas;
+        $totalInvFinal = $sumaEntradas - $sumaSalida ;
+        
 
-        $object->sku = $request->sku;
-        $object->periodo = $request->periodo;
-        $object->invInicial = $request->invInicial;
-
-
-        $object->entradas =  $request->entradas;       
-        $object->salidas =   $request->salidas;      
-        $object->merma =  $request->merma; 
-
-        $sumaSalida = $object->salidas + $object->merma;
-        $sumaEntradas =$object->invInicial+ $object->entradas;
+        
 
         if ($sumaSalida > $sumaEntradas ) {
              return false;
-        } else {
+        } else {           
             
-            $totalInvFinal = ($request->entradas + $request->invInicial) -($request->salidas + $request->merma);
-            $object->invFinal = $totalInvFinal;      
-            $object->usuario =  $usuario_id;      
-            $object->timestamp =   time() ;  
+            
+           
+            $object->invInicial = $request->invInicial;
+            $object->entradas =  $request->entradas;       
+            $object->salidas =   $request->salidas;      
+            $object->merma =  $request->merma;       
+            $object->costoUnitario =  $request->costoUnitario; 
+            $object->invFinal = $totalInvFinal; 
+            $object->timestamp = time();       
+            $object->usuario =  $usuario;            
             $object->save();       
             
             
