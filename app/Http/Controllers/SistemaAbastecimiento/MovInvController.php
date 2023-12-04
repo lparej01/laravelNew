@@ -46,6 +46,7 @@ class MovInvController extends Controller
     }
 
 
+
              /**
      * Display the specified resource.
      */
@@ -57,24 +58,15 @@ class MovInvController extends Controller
         
         return view('abastecimiento.transacciones.movinventario.show',compact('movinv'));
      }
- 
-     /**
-      * Show the form for editing the specified resource.
-      */
-     public function edit(string $id)
-     {
-       
-        
-        return view('abastecimiento.transacciones.movinventario.edit');
- 
-     }
 
+ 
      
-
-    /**
+   
+     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+   
+     public function destroy(string $id)
     {
         //
     }
@@ -114,7 +106,38 @@ class MovInvController extends Controller
 
     }
 
-    
+    /**
+    * 
+    * Buscar en tabla pedidos
+    * por pedidoId
+    *
+    *
+    */
+    public function edit(String $pedidoId){
+
+        $movinv = MovInv::buscarPedidoId($pedidoId); 
+
+        
+          
+        return view('abastecimiento.transacciones.movinventario.edit',compact('movinv'));
+
+    }
+
+    /*****
+     * Se revisa el pedido si hay movimiento ,si se agrego al movinv
+     * se revisa si ya existe en movinventario
+     * Luego se agrega a la existencia
+     * table pedidos 
+     * table movinventario
+     * table existencia  
+     */
+    public function update(Request $request){
+          
+        // Pedidos en periodo activo
+         dd($request->all());
+
+
+    }
 
 
 

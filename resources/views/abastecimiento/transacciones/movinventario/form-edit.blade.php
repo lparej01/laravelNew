@@ -2,40 +2,43 @@
     <div class="box-body">
           
             <div class="col-lg-6">
-                {{ Form::label('Catálogo o Sku') }}
-                {{ Form::text('sku', $movinv->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''),  "id" => "sku","name" => "sku",'readonly']) }}
-                {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
-            </div> 
-            <div class="col-lg-6">
-                {{ Form::label('Tipo de movimiento') }}
-                {{ Form::number('tipoMovinv', $movinv->tipoMovinv, ['class' => 'form-control' . ($errors->has('tipoMovinv') ? ' is-invalid' : ''),  "id" => "tipoMovinv","name" => "tipoMovinv","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
+                {{ Form::label('Tipo de Movimiento de inventario') }}
+                <select name="tipoMovinv" id="tipoMovinv" class="form-select @error('tipoMovinv') is-invalid @enderror" >
+                    <option value="0">Seleccione el tipo de movimiento</option>
+                     <option value="Recepcion">Recepcion</option> 
+                     <option value="Despacho">Despacho</option> 
+                     <option value="Devolucion">Devolucion</option> 
+                     <option value="Retorno">Retorno</option> 
+                
+                </select>
                 {!! $errors->first('tipoMovinv', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Inv Inicial') }}
-                {{ Form::number('invInicial', $movinv->invInicial, ['class' => 'form-control' . ($errors->has('invInicial') ? ' is-invalid' : ''), "id" => "invInicial","name" => "invInicial", "onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
-                {!! $errors->first('invInicial', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('Numero de Pedido') }}
+                {{ Form::number('pedidoId', $movinv->pedidoId, ['class' => 'form-control' . ($errors->has('pedidoId') ? ' is-invalid' : ''),  "id" => "pedidoId","name" => "pedidoId","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
+                {!! $errors->first('pedidoId', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Entrada') }}
-                {{ Form::number('entradas', $movinv->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), "id" => "entradas","name" => "entradas","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
-                {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('Sku') }}
+                {{ Form::number('sku', $movinv->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''), "id" => "sku","name" => "sku", "onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
+                {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Salida') }}
-                {{ Form::number('salidas', $movinv->salidas, ['class' => 'form-control' . ($errors->has('salidas') ? ' is-invalid' : ''), "id" => "salidas","name" => "salidas","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
-                {!! $errors->first('salidas', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('Fecha del Pedido') }}
+                {{ Form::text('fechaPedido', $movinv->fechaPedido, ['class' => 'form-control' . ($errors->has('fechaPedido') ? ' is-invalid' : ''), "id" => "fechaPedido","name" => "fechaPedido",'readonly']) }}
+                {!! $errors->first('fechaPedido', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Merma') }}
-                {{ Form::number('merma', $movinv->merma, ['class' => 'form-control' . ($errors->has('merma') ? ' is-invalid' : ''), "id" => "merma","name" => "merma","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
-                {!! $errors->first('merma', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('Cantidad') }}
+                {{ Form::number('cant', $movinv->cant, ['class' => 'form-control' . ($errors->has('cant') ? ' is-invalid' : ''), "id" => "cant","name" => "cant","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                {!! $errors->first('cant', '<div class="invalid-feedback">:message</div>') !!}
+            </div> 
+            <div class="col-lg-6">
+                {{ Form::label('Cantidad Pendiente') }}
+                {{ Form::number('cantPendiente', $movinv->cantPendiente, ['class' => 'form-control' . ($errors->has('cantPendiente') ? ' is-invalid' : ''), "id" => "cantPendiente","name" => "cantPendiente",'readonly']) }}
+                {!! $errors->first('cantPendiente', '<div class="invalid-feedback">:message</div>') !!}
             </div>
-            <div class="col-lg-6">
-                {{ Form::label('Inventario Final') }}
-                {{ Form::number('invFinal', $movinv->invFinal, ['class' => 'form-control' . ($errors->has('invFinal') ? ' is-invalid' : ''), "id" => "invFinal","name" => "invFinal","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
-                {!! $errors->first('invFinal', '<div class="invalid-feedback">:message</div>') !!}
-            </div>  
+          
             
            
              

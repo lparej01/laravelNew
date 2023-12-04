@@ -137,6 +137,7 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
   Route::get('movinv/disable_confirm/{id}', 'MovInvController@disable_confirm')->name('movinv.disable_confirm');  
   Route::post('movinv', 'MovInvController@store')->name('save.movinv');
   Route::get('movinv/create', 'MovInvController@create')->name('obtener_pedidos.movinv');
+  Route::post('movinv/{id}', 'MovInvController@update')->name('update.movinv');
 
     ///*Combos////
     Route::get('combos', 'CombosController@index')->name('combos.list');    

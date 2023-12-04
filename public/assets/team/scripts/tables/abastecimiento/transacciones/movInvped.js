@@ -25,7 +25,7 @@
                           name: 'edit',
                           iClass: "fa,fa-pencil",
                           aClass: "btn,btn-primary,btn-icon-only",
-                          href: `movinv/edit/${row.pedidoId}`,
+                          href: `edit/${row.pedidoId}`,
                           tooltip: { title: "Incluir pedido  al movimiento de Inventario", toggle: "tooltip",
                               placement: "top",
                           },

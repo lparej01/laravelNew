@@ -76,6 +76,14 @@ class MovInv extends Model implements Auditable
         return $pedidos;
     }
 
+    public static function buscarPedidoId($pedidoId){
+
+        $pedidos= DB::table('pedidos')->where('pedidoId',$pedidoId)->first();
+
+         return $pedidos;
+
+    }
+
      /**
      * obtener un movimiento de inventario por movinvId
      * 
