@@ -133,6 +133,7 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
   Route::get('movinv/edit/{id}', 'MovInvController@edit')->name('edit.movinv'); 
   Route::delete('movinv/{id}/destroy', 'MovInvController@destroy')->name('destroy.movinv');
   Route::get('movinv/show/{id}', 'MovInvController@show')->name('movinv.show'); 
+  Route::get('movinv/show/pedido/{id}', 'MovInvController@showPedido')->name('movinv.show_pedido'); 
   Route::get('movinv/disable/{id}', 'MovInvController@disable')->name('movinv.disable'); 
   Route::get('movinv/disable_confirm/{id}', 'MovInvController@disable_confirm')->name('movinv.disable_confirm');  
   Route::post('movinv', 'MovInvController@store')->name('save.movinv');

@@ -34,11 +34,11 @@
                           name: 'show',
                           iClass: "fa,fa-eye",
                           aClass: "roleAssignament,btn,btn-primary,btn-icon-only",                            
-                          tooltip: {title:"Ver detalle Movimiento de Inventario", toggle: "tooltip",placement:"top"},
+                          tooltip: {title:"Ver detalle Pedido Activos por periodo", toggle: "tooltip",placement:"top"},
                           modal: {
                               target: "#modalMovimientoInventarioPed",
                               toggle: "modal",
-                              url: `movinv/show/${row.pedidoId}`,
+                              url: `show/pedido/${row.pedidoId}`,
 
                           },
                           

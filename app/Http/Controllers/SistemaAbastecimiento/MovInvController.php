@@ -59,6 +59,18 @@ class MovInvController extends Controller
         return view('abastecimiento.transacciones.movinventario.show',compact('movinv'));
      }
 
+            /**
+     * Display the specified resource.
+     */
+    public function showPedido(string $pedidoId) {
+        
+       
+       
+        $movinv = $movinv = MovInv::buscarPedidoId($pedidoId);      
+        
+        return view('abastecimiento.transacciones.movinventario.show_pedido_activo',compact('movinv'));
+     }
+
  
      
    
