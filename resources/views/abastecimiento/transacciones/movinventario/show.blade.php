@@ -4,8 +4,12 @@
    
 
     <div class="d-flex justify-content-between">
-        <strong>Sku o Catálogo:</strong>
+        <strong>Codigo Sku:</strong>
         {{ $movinv->sku}}
+    </div>
+    <div class="d-flex justify-content-between">
+        <strong>Sku:</strong>
+        {{ $movinv->descripcion}}
     </div>
     <div class="d-flex justify-content-between">
         <strong>Tipo de movimiento:</strong>

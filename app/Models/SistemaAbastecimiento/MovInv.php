@@ -34,7 +34,10 @@ class MovInv extends Model implements Auditable
      */
     public static function getMovInvAll()    {
                                     
-           $movinv=DB::table('movinv')->orderBy('movinv', 'desc')->get();        
+           $movinv=DB::table('movinv')
+                                    ->join('sku', 'movinv.sku', '=', 'sku.sku')        
+                                    ->select('movinv.*', 'sku.descripcion')  
+                                    ->orderBy('fechaMovinv', 'desc')->get();        
        
         return $movinv ;
     }
@@ -83,6 +86,13 @@ class MovInv extends Model implements Auditable
          return $pedidos;
 
     }
+    public static function buscarPedidoMovint($pedidoId){
+
+        $movinv = DB::table('movinv')->where('pedidoId',$pedidoId)->first();
+
+        return $movinv;
+
+    }
 
      /**
      * obtener un movimiento de inventario por movinvId
@@ -92,7 +102,10 @@ class MovInv extends Model implements Auditable
 
         
         
-        $movinv = DB::table('movinv')->where('movinvId',$movinvId)->first();    
+        $movinv = DB::table('movinv')
+                    ->join('sku', 'movinv.sku', '=', 'sku.sku')        
+                     ->select('movinv.*', 'sku.descripcion')  
+                    ->where('movinvId',$movinvId)->first();    
       
        
        

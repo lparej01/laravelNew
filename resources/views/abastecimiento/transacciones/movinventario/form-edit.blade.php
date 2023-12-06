@@ -4,7 +4,7 @@
             <div class="col-lg-6">
                 {{ Form::label('Tipo de Movimiento de inventario') }}
                 <select name="tipoMovinv" id="tipoMovinv" class="form-select @error('tipoMovinv') is-invalid @enderror" >
-                    <option value="0">Seleccione el tipo de movimiento</option>
+                    <option value="">Seleccione el tipo de movimiento</option>
                      <option value="Recepcion">Recepcion</option> 
                      <option value="Despacho">Despacho</option> 
                      <option value="Devolucion">Devolucion</option> 

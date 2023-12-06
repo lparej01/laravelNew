@@ -58,24 +58,10 @@
         [
             {
                 field: "movinvId",
-                title: "Identificador",
+                title: "Inventario Nro",
                 align: "center",
                 valign: "middle",
                 sortable: true,
-            },
-            {
-                field: "sku",
-                title: "Catálogo",
-                sortable: true,
-                align: "center",
-                searchable: true,
-            },
-            {
-                field: "tipoMovinv",
-                title: "Tipo",
-                sortable: true,
-                align: "center",
-                searchable: true                
             },
             {
                 field: "fechaMovinv",
@@ -84,7 +70,31 @@
                 align: "center",
                 searchable: true                
             }, 
+            {
+                field: "tipoMovinv",
+                title: "Tipo",
+                sortable: true,
+                align: "center",
+                searchable: true                
+            },
+            {
+                field: "descripcion",
+                title: "Sku",
+                sortable: true,
+                align: "center",
+                searchable: true,
+            },       
+           
 
+            
+             {
+                field: "pedidoId",
+                title: "Pedido",
+                sortable: true,
+                align: "center",
+                searchable: true,
+                
+            }, 
             {
                 field: "cant",
                 title: "Cantidad",
@@ -93,14 +103,6 @@
                 searchable: true,
                 
             },
-             {
-                field: "pedidoId",
-                title: "Numero de Pedido",
-                sortable: true,
-                align: "center",
-                searchable: true,
-                
-            }, 
             
            /*  {
                 field: "referencia",

@@ -145,8 +145,39 @@ class MovInvController extends Controller
      */
     public function update(Request $request){
           
-        // Pedidos en periodo activo
-         dd($request->all());
+        $messages = [
+           
+            'tipoMovinv.required' => 'El tipo de movimiento es requerido',
+            'cant.required' => 'La Cantidad no puede estar vacia ',
+            
+        ];
+
+        $request->validate([
+            'tipoMovinv'           => ['required'],
+            'cant'           => ['required'],
+                     
+          
+        ], $messages);
+        
+        
+        
+             dd($request->all());
+        
+        
+         
+           if ($request->tipoMovin =="Recepcion") {
+
+                   // Pedidos en periodo activo en movimiento de inventario
+                   $buscarPedido = MovInv::buscarPedidoMovint($request->pedidoId);
+
+            
+           } 
+           if ($request->tipoMovin =="Despacho") {
+            
+           }
+           
+
+            //dd($buscarPedido);
 
 
     }
