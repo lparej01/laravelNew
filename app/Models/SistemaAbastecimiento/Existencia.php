@@ -13,8 +13,9 @@ class Existencia extends Model implements Auditable
    
     
     protected $table="existencia";
-
-   
+    
+    protected $connection = 'sqlite';
+    
     public $timestamps = false;  
 
     const UPDATED_AT = null;
@@ -34,7 +35,7 @@ class Existencia extends Model implements Auditable
      */
     public static function getExistenciaAll()
     {
-        $existencia=DB::table('existencia') ->orderBy('periodo', 'desc')->get();        
+        $existencia=DB::connection('sqlite')->table('existencia') ->orderBy('periodo', 'desc')->get();        
        
         return $existencia ;
     }
@@ -45,7 +46,7 @@ class Existencia extends Model implements Auditable
      */
     public static function getExistenciaSkuPeriodo($sku,$periodo){
 
-        $existencia = DB::table('existencia')->where('sku',$sku)->where('periodo',$periodo)->first();        
+        $existencia = DB::connection('sqlite')->table('existencia')->where('sku',$sku)->where('periodo',$periodo)->first();        
       
        
        

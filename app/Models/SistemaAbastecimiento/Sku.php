@@ -17,7 +17,8 @@ class Sku extends Model implements Auditable
     /**metodo para auditar los modelos */
     use \OwenIt\Auditing\Auditable;
  
-    
+    protected $connection = 'sqlite';
+
     protected $table="sku";
 
     protected $guarded = ['sku'];
@@ -50,7 +51,7 @@ class Sku extends Model implements Auditable
      */
     public static function getSkuAll()
     {
-        $sku =DB::table('sku')
+        $sku =DB::connection('sqlite')->table('sku')
         ->select('sku.sku',
                     'sku.marca',
                     'sku.catId',
@@ -73,7 +74,7 @@ class Sku extends Model implements Auditable
      */
     public static function getSkuAllDistn()
     {
-        $sku =DB::table('sku')
+        $sku =DB::connection('sqlite')->table('sku')
         ->select('sku.sku',
                     'sku.marca',
                     'sku.catId',
@@ -101,7 +102,7 @@ class Sku extends Model implements Auditable
     {
        
        
-        return DB::table('sku')
+        return DB::connection('sqlite')->table('sku')
         ->select('sku.sku',
                     'sku.marca',
                     'sku.catId',
@@ -122,7 +123,7 @@ class Sku extends Model implements Auditable
      */
     public static function getSkuId($sku)
     {
-        $skuId = DB::table('sku')
+        $skuId = DB::connection('sqlite')->table('sku')
         ->join('categorias', 'sku.catId', '=', 'categorias.catId')        
         ->select('categorias.categoria', 'sku.*')        
         ->where('sku',$sku)->first();        
@@ -228,7 +229,7 @@ class Sku extends Model implements Auditable
 
     public static function getSkuAllExcep($sku){
 
-       return  DB::table('sku') 
+       return  DB::connection('sqlite')->table('sku') 
             ->join('categorias', 'sku.catId', '=', 'categorias.catId')        
             ->select('categorias.categoria', 'sku.*')             
              ->where('sku', '<>', $sku)

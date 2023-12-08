@@ -235,7 +235,7 @@ php artisan db:seed --class=UserSeeder
   php artisan migrate --path=database\migrations\2020_07_06_153101_crear_tabla_permiso_rol.php
   php artisan migrate --path=database\migrations\2020_07_06_150648_crear_tabla_users_rol.php  
   php artisan migrate --path=database\migrations\2019_07_27_021514_crear_tabla_menu_rol.php 
-  php artisan migrate --path=database\migrations\2023_09_22_092416_create_tabla_tipo_producto.php
+  
 
 
   php artisan db:seed --class=Database

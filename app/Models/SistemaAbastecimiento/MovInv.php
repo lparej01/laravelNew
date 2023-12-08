@@ -14,7 +14,8 @@ class MovInv extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
    
-    
+    protected $connection = 'sqlite';
+
     protected $table="movinv";
    
     public $timestamps = false;  
@@ -34,7 +35,7 @@ class MovInv extends Model implements Auditable
      */
     public static function getMovInvAll()    {
                                     
-           $movinv=DB::table('movinv')
+           $movinv=DB::connection('sqlite')->table('movinv')
                                     ->join('sku', 'movinv.sku', '=', 'sku.sku')        
                                     ->select('movinv.*', 'sku.descripcion')  
                                     ->orderBy('fechaMovinv', 'desc')->get();        
@@ -44,7 +45,7 @@ class MovInv extends Model implements Auditable
 
     public static function periodoActivo(){
 
-        $periodo =DB::table('periodo')->where('esActual', 1)->first();  
+        $periodo =DB::connection('sqlite')->table('periodo')->where('esActual', 1)->first();  
         
         
         return $periodo;
@@ -57,7 +58,7 @@ class MovInv extends Model implements Auditable
 
             
         /**Obtengo los pedidos en un determinado mes y año */
-       $pedidos= DB::table('pedidos')->where('sku', $sku)
+       $pedidos= DB::connection('sqlite')->table('pedidos')->where('sku', $sku)
                                     ->whereYear('fechaPedido', $periodo->anio)
                                     ->whereMonth('fechaPedido', '>=' , $periodo->mes)
                                     ->get();
@@ -70,7 +71,7 @@ class MovInv extends Model implements Auditable
         $periodo= MovInv::periodoActivo();       
             
         /**Obtengo los pedidos en un determinado mes y año */
-        $pedidos= DB::table('pedidos')->join('sku', 'pedidos.sku', '=', 'sku.sku')        
+        $pedidos= DB::connection('sqlite')->table('pedidos')->join('sku', 'pedidos.sku', '=', 'sku.sku')        
                                     ->select('pedidos.*', 'sku.descripcion')  
                                     ->whereYear('fechaPedido', $periodo->anio)
                                     ->whereMonth('fechaPedido', '>=', $periodo->mes)
@@ -81,14 +82,14 @@ class MovInv extends Model implements Auditable
 
     public static function buscarPedidoId($pedidoId){
 
-        $pedidos= DB::table('pedidos')->where('pedidoId',$pedidoId)->first();
+        $pedidos= DB::connection('sqlite')->table('pedidos')->where('pedidoId',$pedidoId)->first();
 
          return $pedidos;
 
     }
     public static function buscarPedidoMovint($pedidoId){
 
-        $movinv = DB::table('movinv')->where('pedidoId',$pedidoId)->first();
+        $movinv = DB::connection('sqlite')->table('movinv')->where('pedidoId',$pedidoId)->first();
 
         return $movinv;
 

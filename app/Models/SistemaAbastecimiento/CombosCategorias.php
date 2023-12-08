@@ -10,7 +10,8 @@ class CombosCategorias extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
    
-    
+    protected $connection = 'sqlite';
+
     protected $table="comboscategorias";
 
     protected $guarded = ['id'];

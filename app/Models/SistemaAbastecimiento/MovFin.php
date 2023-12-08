@@ -10,7 +10,7 @@ class MovFin extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
    
-    
+    protected $connection = 'sqlite';
      
     protected $table="movfin";
 

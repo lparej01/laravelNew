@@ -11,7 +11,7 @@ class Categorias extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
+    protected $connection = 'sqlite';
     
     protected $table="categorias";
 
@@ -38,7 +38,7 @@ class Categorias extends Model implements Auditable
      */
     public static function  getAllCategorias(){
 
-        $cat= DB::table('categorias')
+        $cat= DB::connection('sqlite')->table('categorias')
         ->select('categorias.catId',
                     'categorias.categoria',
                     'categorias.costoUnitario',
@@ -61,7 +61,7 @@ class Categorias extends Model implements Auditable
      */
     public static function  getAllCateg(){
 
-        $cat= DB::table('categorias')
+        $cat= DB::connection('sqlite')->table('categorias')
         ->select('categorias.catId',
                     'categorias.categoria',
                     'categorias.costoUnitario',
@@ -84,7 +84,7 @@ class Categorias extends Model implements Auditable
     public static function  getIdCategorias($catId){
 
 
-        $cat = DB::table('categorias')->where('catId',$catId)->first();        
+        $cat = DB::connection('sqlite')->table('categorias')->where('catId',$catId)->first();        
        
         return $cat ;
 

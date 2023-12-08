@@ -19,7 +19,7 @@ class User extends Authenticatable implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, Notifiable;
     
-    
+    protected $connection = 'sqlite_1';
 
     /**
      * The attributes that are mass assignable.

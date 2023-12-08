@@ -11,7 +11,7 @@ class Proveedores extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     
-   
+    protected $connection = 'sqlite';
     
     protected $table="proveedores";
 
@@ -38,7 +38,7 @@ class Proveedores extends Model implements Auditable
      */
     public static function getProveeodresAll()
     {
-        $proveedores=DB::table('proveedores')->where('activo',1)->get();        
+        $proveedores=DB::connection('sqlite')->table('proveedores')->where('activo',1)->get();        
        
         return $proveedores ;
     }
@@ -49,7 +49,7 @@ class Proveedores extends Model implements Auditable
      */
     public static function getProveedorId($provId){
 
-        $proveedores=DB::table('proveedores')->where('provId',$provId)->first();        
+        $proveedores=DB::connection('sqlite')->table('proveedores')->where('provId',$provId)->first();        
 
         return $proveedores;
     }

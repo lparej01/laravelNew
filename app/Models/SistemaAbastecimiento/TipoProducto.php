@@ -11,7 +11,7 @@ class TipoProducto extends Model
 {
     use \OwenIt\Auditing\Auditable;
     
-   
+    protected $connection = 'sqlite';
     
     protected $table="tipo_producto";
 

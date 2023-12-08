@@ -13,6 +13,7 @@ class Pedidos extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
    
+    protected $connection = 'sqlite';
     
     protected $table="pedidos";
 
@@ -46,7 +47,7 @@ class Pedidos extends Model implements Auditable
     public static function getAllPedidos(){
        
 
-       $pedidos = DB::table('pedidos')      
+       $pedidos = DB::connection('sqlite')->table('pedidos')      
       ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
       ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
       ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
@@ -81,7 +82,7 @@ class Pedidos extends Model implements Auditable
     public static function getPedidoId($pedidoId){
 
 
-        $pedidos= DB::table('pedidos')
+        $pedidos= DB::connection('sqlite')->table('pedidos')
         ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
         ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
         ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')

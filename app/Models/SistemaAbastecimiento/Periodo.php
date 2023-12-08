@@ -16,7 +16,8 @@ class Periodo extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     
-
+    protected $connection = 'sqlite';
+    
     protected $table="periodo";
 
     protected $guarded = ['periodo'];
@@ -40,7 +41,7 @@ class Periodo extends Model implements Auditable
     public static function getAllPeriodos()   {
        
        
-        return DB::table('periodo')
+        return DB::connection('sqlite')->table('periodo')
         ->select('periodo.periodo',
         'periodo.anio',
         'periodo.mes',
@@ -58,7 +59,7 @@ class Periodo extends Model implements Auditable
     public static function getPeriodoId($periodo) {
        
        
-        return DB::table('periodo')
+        return DB::connection('sqlite')->table('periodo')
         ->select('periodo.periodo',
         'periodo.anio',
         'periodo.mes',
@@ -76,7 +77,7 @@ class Periodo extends Model implements Auditable
     public static function getAnio($anio) {
        
        
-        return DB::table('periodo')
+        return DB::connection('sqlite')->table('periodo')
         ->select('periodo.periodo',
         'periodo.anio',
         'periodo.mes',
