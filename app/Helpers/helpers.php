@@ -126,7 +126,7 @@ if (function_exists('user')) {
             $rutas = "Editar menu";
             break; 
         case "menu_rol.list":
-            $rutas = "Ver menu-Rol";
+            $rutas = "Ver Menu Rol";
             break; 
         case "proveedores.list":
             $rutas = "Ver Proveedores";
@@ -165,12 +165,76 @@ if (function_exists('user')) {
         case "edit.categorias":
                     $rutas = "Editar Categorias";
                     break; 
-         case "crear.categorias":
+        case "crear.categorias":
                 $rutas = "Crear Categorias";
                 break; 
+        case "pedidos.list":
+                $rutas = "Lista de Pedidos";
+                 break;     
+
+        case "edit.pedidos":
+            $rutas = "Editar un Pedido";
+             break;
+
+        case "crear.pedidos":
+            $rutas = "Crear un Pedido";
+            break;
+
+        case "catalogos.list":
+                $rutas = "Lista de Catalogos";
+                 break;     
+
+        case "edit.catalogos":
+            $rutas = "Editar un Catalogo";
+             break;
+
+        case "crear.catalogos":
+            $rutas = "Crear un Catalogo";
+            break;
+
+
+        case "productos.list":
+                $rutas = "Lista de Productos";
+                 break;     
+
+        case "edit.productos":
+            $rutas = "Editar un Producto";
+             break;
+        case "crear.productos":
+             $rutas = "Crear un Producto";
+             break;
+
+
+        case "existencia.list":
+            $rutas = "Lista de Existencia de Alimentos";
+            break;
+
+        case "edit.existencia":
+             $rutas = "Editar existencia";
+            break;
+
+        case "crear.existencia":
+              $rutas = "Crear existencia";
+              break;
+        case "movinv.list":
+                $rutas = "Movimiento de inventario";
+                break;
+    
+        case "edit.movinv'":
+                 $rutas = "Editar existencia";
+                break;
+    
+       
+
+
 
                     
-        default:
+        
+        
+        
+        
+        
+                default:
         $rutas=Route::current()->action['as'];
       }
    
@@ -203,10 +267,8 @@ if (function_exists('user')) {
        
         return in_array(["rol_id" => 1], $user->toArray());
     }
-   
-
+ 
 }
-
 
 if (!function_exists('should_queue')) {
     /**

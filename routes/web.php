@@ -103,6 +103,8 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
  Route::get('planes/create', 'PlanesController@create')->name('crear.planes');
  Route::post('planes', 'PlanesController@store')->name('save.planes');
 
+
+
  ///*Periodo////
  Route::get('periodo', 'PeriodoController@index')->name('periodo.list');    
  Route::get('periodo/edit/{id}', 'PeriodoController@edit')->name('edit.periodo');
@@ -185,6 +187,8 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
     Route::get('existencia/create', 'ExistenciaController@create')->name('crear.existencia');
     Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
 
+
+    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');    
 
   
 });
