@@ -1,7 +1,10 @@
 
 
 <div class="d-flex flex-column gap-4  p-3 m-3">   
-
+    <div class="d-flex justify-content-between">
+        <strong>Moviento de Inventario Nro:</strong>
+        {{ $movinv->movinvId}}
+    </div>
     <div class="d-flex justify-content-between">
         <strong>Codigo Sku:</strong>
         {{ $movinv->sku}}

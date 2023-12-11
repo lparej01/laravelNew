@@ -70,7 +70,7 @@ class Pedidos extends Model implements Auditable
     public static function getSku(){
 
       
-        return  Sku::select('sku', 'marca')->get();        
+        return  Sku::select('sku', 'marca','descripcion')->get();        
           
 
 

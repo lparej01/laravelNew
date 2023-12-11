@@ -272,7 +272,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 
       Route::get('menu-dinamico', 'MenuController@menu_dinamico')->name('menu.dinamico');
 
       /*RUTAS MENU_ROL*/
-    Route::get('menu-rol', 'MenuRolController@index')->name('menu_rol.list');
-    Route::post('menu-rol', 'MenuRolController@store')->name('guardar_menu_rol');
+      Route::get('menu-rol', 'MenuRolController@index')->name('menu_rol.list');
+      Route::post('menu-rol', 'MenuRolController@store')->name('guardar_menu_rol');
       
   });

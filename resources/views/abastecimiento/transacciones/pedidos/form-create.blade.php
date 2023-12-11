@@ -25,12 +25,12 @@
                 {!! $errors->first('provId', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Catalogo (*)') }}
+                {{ Form::label('Catalogo  o SKU (*)') }}
                 <select name="sku" id="sku" class="form-select @error('sku') is-invalid @enderror" >
                     <option value="">Seleccione  el Catálogo</option>                 
                     
                     @foreach ($sku as $sk)
-                    <option value="{{ $sk->sku }}">{{ $sk->marca }}</option>
+                    <option value="{{ $sk->sku }}">{{ $sk->descripcion }}</option>
                     @endforeach
                 
                 </select>

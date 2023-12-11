@@ -103,12 +103,12 @@ class MovInv extends Model implements Auditable
 
         
         
-        $movinv = DB::table('movinv')
+        $movinv = DB::connection('sqlite')->table('movinv')
                     ->join('sku', 'movinv.sku', '=', 'sku.sku')        
                      ->select('movinv.*', 'sku.descripcion')  
                     ->where('movinvId',$movinvId)->first();    
       
-       
+     
        
         return $movinv;
     }

@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             PermisoTableSeeder::class,
             PermisoRolTableSeeder::class,
             MenuTableSeeder::class,
-           
+            TipoProductoSeeder::class
 
         ]);
        

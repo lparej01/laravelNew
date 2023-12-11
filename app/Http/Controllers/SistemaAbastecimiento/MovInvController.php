@@ -52,9 +52,11 @@ class MovInvController extends Controller
      */
     public function show(string $movinvId) {
         
+       // dd($movinvId );
        
+        $movinv = MovInv::getMovInv($movinvId);    
+        
        
-        $movinv = MovInv::getMovInv($movinvId);      
         
         return view('abastecimiento.transacciones.movinventario.show',compact('movinv'));
      }
@@ -161,7 +163,7 @@ class MovInvController extends Controller
         
         
         
-             dd($request->all());
+            
         
         
          
