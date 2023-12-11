@@ -38,24 +38,23 @@
 
 <x-loadingscreen></x-loadingscreen>
 
-   @include("theme/$theme/aside")
-  
+ @include("theme/$theme/aside")
 
 
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
     
-    @include("theme/$theme/navbar")    
+        @include("theme/$theme/navbar")    
         <main class="py-4">
        
          @yield('content', View::make('theme.team.container'))  
          @include("theme/$theme/footer") 
        
-        </main>
+         </main>
 
 
 
-   </div>
-	<!--container-->
+    </div>
+	   <!--container-->
 
 
     <script src="{{asset("assets/team/js/core/popper.min.js")}}"></script>
@@ -70,8 +69,7 @@
     <script src="{{asset("assets/team/js/plugins/animate.min.js") }}"></script>    
     <script src="{{asset("assets/team/js/plugins/bootstrap-notify.js") }}"></script>
     <script src="{{asset("assets/team/js/plugins/axios.js") }}"></script>
-    <script src="{{asset("assets/team/js/plugins/axios.min.js") }}"></script>
-   
+    <script src="{{asset("assets/team/js/plugins/axios.min.js") }}"></script>  
     
 
     <script>
@@ -84,7 +82,7 @@
     }
   </script>
 
-    <x-notify.status-notify></x-notify.status-notify>
+  <x-notify.status-notify></x-notify.status-notify>
 
    
 
