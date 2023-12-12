@@ -18,8 +18,12 @@ class User extends Authenticatable implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasApiTokens, Notifiable;
+
+   
     
     protected $connection = 'sqlite_1';
+    protected $table="users";
+
 
     /**
      * The attributes that are mass assignable.
@@ -84,14 +88,14 @@ class User extends Authenticatable implements Auditable
         public static function getEmail($email)       {
            
             
-            return  DB::table('users')->where('email', $email)->first();
+            return  DB::connection('sqlite_1')->table('users')->where('email', $email)->first();
         }
 
 
         public static function getAllUsers(){
            
             
-            $users = DB::table('users')                 
+            $users = DB::connection('sqlite_1')->table('users')                 
             ->select('users.id',
             'users.username',
             'users.names', 
@@ -111,7 +115,7 @@ class User extends Authenticatable implements Auditable
         public static function getUserId($id)       {
            
             
-            return  DB::table('users')->where('id',$id)->first();       
+            return  DB::connection('sqlite_1')->table('users')->where('id',$id)->first();       
        
         }
 

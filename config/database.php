@@ -38,7 +38,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',           
-            'database' => env('DB_DATABASE', '/xampp/htdocs/proyecto-web/database/db/seasc.db')         
+            'database' => env('DB_DATABASE01', '/xampp/htdocs/proyecto-web/database/db/seasc.db')         
             
         ],
         'sqlite_1' => [

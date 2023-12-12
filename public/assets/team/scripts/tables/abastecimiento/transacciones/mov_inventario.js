@@ -81,7 +81,7 @@
                 field: "descripcion",
                 title: "Sku",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true,
             },       
            

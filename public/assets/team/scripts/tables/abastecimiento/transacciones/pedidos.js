@@ -63,7 +63,7 @@
                 valign: "middle",
                 sortable: true,
             },
-            {
+          /*   {
                 field: "fechaPedido",
                 title: "Fecha Pedidos",
                 sortable: true,
@@ -76,7 +76,7 @@
                 sortable: true,
                 align: "center",
                 searchable: true                
-            },
+            }, */
            /*  {
                 field: "provId",
                 title: "Proveedor",

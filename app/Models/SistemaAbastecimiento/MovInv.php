@@ -71,10 +71,13 @@ class MovInv extends Model implements Auditable
         $periodo= MovInv::periodoActivo();       
             
         /**Obtengo los pedidos en un determinado mes y año */
-        $pedidos= DB::connection('sqlite')->table('pedidos')->join('sku', 'pedidos.sku', '=', 'sku.sku')        
-                                    ->select('pedidos.*', 'sku.descripcion')  
+        $pedidos= DB::connection('sqlite')->table('pedidos')
+                                    ->join('sku', 'pedidos.sku', '=', 'sku.sku')        
+                                    ->select('pedidos.*', 'sku.descripcion')
+                                    ->where('cantPendiente' ,'>', 0)  
                                     ->whereYear('fechaPedido', $periodo->anio)
                                     ->whereMonth('fechaPedido', '>=', $periodo->mes)
+                                    
                                     ->get();
       
         return $pedidos;

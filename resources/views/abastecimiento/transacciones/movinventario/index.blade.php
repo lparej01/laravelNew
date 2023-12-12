@@ -11,7 +11,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-12" >                     
-       <x-tables.bo-table :data="$movInv" title="Lista de Movimiento de Inventario" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+       <x-tables.bo-table :data="$movInv" title="LISTA DE MOVIMEINTO DE INVENTARIO " data-id="dtHorizontalExample" data-toolbar="#toolbar"
                           data-toggle="table" data-show-refresh="false" data-show-toggle="false"
                           data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                           data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -23,7 +23,7 @@
                                     @if ($actionsBlade->can_create > 0)
                                       <a href="{{ route('obtener_pedidos.movinv') }}" class="btn btn-primary float-right"data-placement="left">
 
-                                          {{ __('Registar  Movimiento de Inventario') }}
+                                          {{ __('Agregar  movimiento') }}
                                       </a>
                                   @endif 
 

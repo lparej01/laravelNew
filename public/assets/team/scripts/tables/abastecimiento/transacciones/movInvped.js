@@ -63,7 +63,7 @@
               valign: "middle",
               sortable: true,
           },
-          {
+         /*  {
               field: "fechaPedido",
               title: "Fecha del Pedido",
               sortable: true,
@@ -76,12 +76,12 @@
               sortable: true,
               align: "center",
               searchable: true                
-          },
+          }, */
           {
             field: "descripcion",
             title: "nombre del sku",
             sortable: true,
-            align: "center",
+            align: "left",
             searchable: true                
         },
           {

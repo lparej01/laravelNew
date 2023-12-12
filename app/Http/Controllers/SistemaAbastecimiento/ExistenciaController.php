@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SistemaAbastecimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SistemaAbastecimiento\Existencia;
+use App\Models\SistemaAbastecimiento\Periodo;
 use App\Models\Admin\Rol;
 use App\Models\Admin\UsersRol;
 use App\Models\Admin\PermisoRol;
@@ -79,10 +80,23 @@ class ExistenciaController extends Controller
     {
        $sku = $id;
        $periodo = $per;
+
+        $periodoActual=  Periodo::buscarPeriodoActual();
+
        
-       $existencia = Existencia::getExistenciaSkuPeriodo($sku,$periodo); 
+
+        if ($periodoActual->periodo != $periodo) {
+
+            return redirect()->route('existencia.list')
+            ->with('success', 'Error el periodo no es el Actual no se puede modificar');
+        } else {
+
+            $existencia = Existencia::getExistenciaSkuPeriodo($sku,$periodo);        
+            return view('abastecimiento.transacciones.existencia.edit',compact('existencia'));
+        }
+        
        
-       return view('abastecimiento.transacciones.existencia.edit',compact('existencia'));
+      
 
     }
 

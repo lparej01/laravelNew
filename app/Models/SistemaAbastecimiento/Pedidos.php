@@ -6,16 +6,16 @@ namespace App\Models\SistemaAbastecimiento;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
-use App\Models\SistemaAbastecimiento\Pedidos;
+
 use App\Models\SistemaAbastecimiento\Sku;
 
 class Pedidos extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-   
     protected $connection = 'sqlite';
     
-    protected $table="pedidos";
+    
+
 
     protected $guarded = ['pedidoId'];
 
@@ -48,11 +48,11 @@ class Pedidos extends Model implements Auditable
        
 
        $pedidos = DB::connection('sqlite')->table('pedidos')      
-      ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
-      ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
-      ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
-      ->orderByDesc('pedidos.pedidoId')      
-      ->get();   
+                ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
+                ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
+                ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
+                ->orderByDesc('pedidos.pedidoId')      
+                ->get();   
 
 
         return  $pedidos;
