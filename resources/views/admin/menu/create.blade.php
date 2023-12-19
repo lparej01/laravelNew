@@ -6,18 +6,19 @@
 
 @section('content')
 
-<section class="content container-fluid">
-            <div class="row">
+<section class="content container-fluid">   
+    <div class="row">
+                
                 <div class="col-md-12">
                     @includeif('partials.errors')
                     <x-forms.template-form form-redirect-back="{{ route('menu.list') }}" form-route="{{ route('save_menu') }}"
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de menu</span>
+                            <span class="align-self-center">IR A LISTA DE MENÚ</span>
                         </x-slot:formHeader>
                          
-                           
+                          
                        
                         <x-slot:formBody>
                         

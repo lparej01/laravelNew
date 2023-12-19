@@ -83,7 +83,7 @@
             },
             {
                 field: "nombre",
-                title: "Nombre del Menu",
+                title: "Menú",
                 sortable: true,
                 align: "center",
                 searchable: true,
@@ -98,7 +98,7 @@
             },
             {
                 field: "tipo",
-                title: "Tipo de Menu",
+                title: "Tipo",
                 sortable: true,
                 align: "center",
                 searchable: true,

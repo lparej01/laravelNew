@@ -73,11 +73,11 @@ class MovInv extends Model implements Auditable
         /**Obtengo los pedidos en un determinado mes y año */
         $pedidos= DB::connection('sqlite')->table('pedidos')
                                     ->join('sku', 'pedidos.sku', '=', 'sku.sku')        
-                                    ->select('pedidos.*', 'sku.descripcion')
+                                    ->select('pedidos.*', 'sku.descripcion','sku.marca')
                                     ->where('cantPendiente' ,'>', 0)  
                                     ->whereYear('fechaPedido', $periodo->anio)
                                     ->whereMonth('fechaPedido', '>=', $periodo->mes)
-                                    
+                                    ->orderBy('sku.descripcion', 'asc')                                    
                                     ->get();
       
         return $pedidos;

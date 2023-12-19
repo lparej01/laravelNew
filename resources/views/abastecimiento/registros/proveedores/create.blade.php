@@ -13,7 +13,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de Proveedores</span>
+                            <span class="align-self-center">IR A LA LISTA DE PROVEEDORES</span>
                         </x-slot:formHeader>
                          
                            

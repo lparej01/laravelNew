@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-sm-12 mb-4">
 
-                            <x-tables.bo-table :data="$rols" title="Listados de Roles" data-id="table" data-toolbar="#toolbar"
+                            <x-tables.bo-table :data="$rols" title="LISTADOS DE ROLES" data-id="table" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="false"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

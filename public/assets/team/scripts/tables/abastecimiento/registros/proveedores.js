@@ -80,16 +80,16 @@
             },
             {
                 field: "nombre",
-                title: "Nombre del Proveedor",
+                title: "Nombre  Proveedor",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true,
             },
             {
                 field: "contacto",
                 title: "Contacto",
                 sortable: true,
-                align: "center",
+                align: "right",
                 searchable: true                
             },
 

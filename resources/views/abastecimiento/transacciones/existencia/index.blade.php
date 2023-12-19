@@ -10,7 +10,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-12" >                     
-       <x-tables.bo-table :data="$existencia" title="Listado de Existencia de Alimentos" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+       <x-tables.bo-table :data="$existencia" title="LISTADO DE EXISTENCIA DE ALIMENTOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                           data-toggle="table" data-show-refresh="false" data-show-toggle="false"
                           data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                           data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

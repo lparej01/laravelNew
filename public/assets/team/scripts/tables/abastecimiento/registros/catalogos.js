@@ -105,7 +105,7 @@
                 field: "marca",
                 title: "Marca",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true                
             },
 
@@ -113,7 +113,7 @@
                 field: "descripcion",
                 title: "Descripcion",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true,
                 
             },

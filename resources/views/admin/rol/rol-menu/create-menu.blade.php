@@ -14,7 +14,7 @@
                     form-method="POST">
 
                     <x-slot:formHeader>
-                        <span class="card-title">Asignación Rol Menu</span>
+                        <span class="card-title">ASIGNACIÓN ROL MENU</span>
                     </x-slot:formHeader>
                     <x-slot:formBody>
                         @include('auth.rol.rol-menu.form-menu')

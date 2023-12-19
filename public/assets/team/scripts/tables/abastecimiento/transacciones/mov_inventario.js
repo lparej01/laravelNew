@@ -58,7 +58,7 @@
         [
             {
                 field: "movinvId",
-                title: "Inventario Nro",
+                title: "Movimiento",
                 align: "center",
                 valign: "middle",
                 sortable: true,

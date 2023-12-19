@@ -14,7 +14,7 @@
             <x-forms.template-form form-redirect-back="{{ route('menu.list') }}" form-route="#" form-method="POST">
                 @csrf
                 <x-slot:formHeader>
-                    <span class="align-self-center">Ir a lista de menu</span>
+                    <span class="align-self-center">IR A LISTA DE MENU</span>
                 </x-slot:formHeader>          
                 <x-slot:formBody>      
                        

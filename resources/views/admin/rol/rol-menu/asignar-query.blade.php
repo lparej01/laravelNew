@@ -15,7 +15,7 @@
 
                             <x-forms.template-form form-redirect-back="{{ route('rol.menu') }}" form-route="/" form-method="POST">
                                 <x-slot:formHeader>
-                                    <span class="align-self-center">Opciones de permisos</span>
+                                    <span class="align-self-center">OPCIONES DE PERMISOS</span>
                                 </x-slot:formHeader>
                                 <x-slot:formBody>
                                     <table class="table table-bordered table-condensed table-hover table-striped text-center">

@@ -13,7 +13,7 @@
                     form-route="{{ route('guardar.permiso.rol') }}" form-method="POST">
                     @csrf
                     <x-slot:formHeader>
-                        <span class="align-self-center">Crear nuevo permiso</span>
+                        <span class="align-self-center">CREAR NUEVO PERMISO</span>
                     </x-slot:formHeader>
                     <x-slot:formBody>
 

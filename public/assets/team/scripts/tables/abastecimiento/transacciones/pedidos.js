@@ -58,19 +58,19 @@
         [
             {
                 field: "pedidoId",
-                title: "Identificador",
+                title: "Pedido",
                 align: "center",
                 valign: "middle",
                 sortable: true,
             },
-          /*   {
+            {
                 field: "fechaPedido",
                 title: "Fecha Pedidos",
                 sortable: true,
                 align: "center",
                 searchable: true,
             },
-            {
+             /*{
                 field: "sku",
                 title: "Catálogo",
                 sortable: true,

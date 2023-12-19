@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-sm-12 mb-4">
 
-                            <x-tables.bo-table :data="$permisos" title="Lista de Permisos" data-id="table" data-toolbar="#toolbar"
+                            <x-tables.bo-table :data="$permisos" title="LISTA DE PERMISOS" data-id="table" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="false"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

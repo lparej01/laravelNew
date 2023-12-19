@@ -22,9 +22,10 @@ class Existencia extends Model implements Auditable
     const CREATED_AT = null;
 
     /***definicion de la clave primaria cuando no es id */
-    protected $primaryKey = "sku";
+    protected $primaryKey = 'sku';
 
     protected $guarded = ['sku']; 
+    
     protected $fillable = ['periodo','invInicial','entradas','salidas','merma','costoUnitario','invFinal','usuario'];   
 
 

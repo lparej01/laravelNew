@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de categorias</span>
+                            <span class="align-self-center">IR A LISTA DE CATEGORIAS</span>
                         </x-slot:formHeader>                       
                            
                        

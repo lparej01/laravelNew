@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de existencia</span>
+                            <span class="align-self-center">IR A LISTADE EXISTENCIA</span>
                         </x-slot:formHeader>                       
                            
                        

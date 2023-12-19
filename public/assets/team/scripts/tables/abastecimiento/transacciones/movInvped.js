@@ -58,28 +58,28 @@
       [
           {
               field: "pedidoId",
-              title: "Numero de Pedido",
+              title: "Pedido",
               align: "center",
               valign: "middle",
               sortable: true,
           },
-         /*  {
+          {
               field: "fechaPedido",
               title: "Fecha del Pedido",
               sortable: true,
               align: "center",
               searchable: true,
           },
-          {
+         /*  {
               field: "sku",
               title: "Sku",
               sortable: true,
               align: "center",
               searchable: true                
-          }, */
+          },  */
           {
             field: "descripcion",
-            title: "nombre del sku",
+            title: "Sku",
             sortable: true,
             align: "left",
             searchable: true                

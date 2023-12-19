@@ -1,8 +1,9 @@
 <div class="box box-info padding-1">
     <div class="box-body">
+        <h4>Editar pedido</h4>
           
             <div class="col-lg-6">
-                {{ Form::label('Nombre del pedido') }}
+                {{ Form::label('Pedido Nro.') }}
                 {{ Form::text('Nombre del Pedido', $pedidos->pedidoId, ['class' => 'form-control' . ($errors->has('pedidoId') ? ' is-invalid' : ''),  "id" => "pedidoId","name" => "pedidoId",'readonly']) }}
                 {!! $errors->first('pedidoId', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -18,7 +19,7 @@
             </div> 
             <div class="col-lg-6">
                 {{ Form::label('Catalogo') }}
-                {{ Form::text('marca', $pedidos->marca, ['class' => 'form-control' . ($errors->has('marca') ? ' is-invalid' : ''), "id" => "marca","name" => "marca"]) }}
+                {{ Form::text('marca', $pedidos->marca, ['class' => 'form-control' . ($errors->has('marca') ? ' is-invalid' : ''), "id" => "marca","name" => "marca",'readonly']) }}
                 {!! $errors->first('marca', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
