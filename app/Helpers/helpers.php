@@ -69,17 +69,17 @@ if (function_exists('user')) {
             $rutas = "Inicio del Sistema";
             break;
         case "rol.list":
-           $rutas = "Ver Roles ";
-           break;
+            $rutas = "Ver Roles ";
+            break;
         case "create_rol":
-           $rutas = "Crear un Rol ";
-           break;
+            $rutas = "Crear un Rol ";
+            break;
         case "edit_rol":
-           $rutas = "Editar Rol ";
-           break;
+            $rutas = "Editar Rol ";
+            break;
         case "audits":
             $rutas = "Auditoria ";
-           break;           
+            break;           
         case "permiso.list":
             $rutas = "Ver  Permisos ";
             break;  
@@ -138,104 +138,82 @@ if (function_exists('user')) {
             $rutas = "Editar Proveedores";
             break; 
         case "catalogos.list":
-                $rutas = "Ver Catalogos";
-                break; 
-         case "edit.catalogos":
-                $rutas = "Editar Catalogo";
-                break;
-         case "crear.catalogos":
-                $rutas = "Crear Catalogos";
-                break; 
-
-         case "periodo.list":
-                    $rutas = "Ver Periodos";
-                    break; 
-         case "edit.periodo":
-                    $rutas = "Editar Periodo";
-                    break;
+            $rutas = "Ver Catalogos";
+            break; 
+        case "edit.catalogos":
+            $rutas = "Editar Catalogo";
+            break;
+        case "crear.catalogos":
+            $rutas = "Crear Catalogos";
+            break;
+        case "periodo.list":
+            $rutas = "Ver Periodos";
+            break; 
+        case "edit.periodo":
+            $rutas = "Editar Periodo";
+            break;
         case "crear.periodo":
-                    $rutas = "Crear Periodos";
-                    break; 
-         case "generar.periodo":
-                $rutas = "Generar Periodos";
-                break; 
-         case "categorias.list":
-                    $rutas = "Ver Categorias";
-                    break;
+            $rutas = "Crear Periodos";
+            break; 
+        case "generar.periodo":
+            $rutas = "Generar Periodos";
+            break; 
+        case "categorias.list":
+            $rutas = "Ver Categorias";
+            break;
         case "edit.categorias":
-                    $rutas = "Editar Categorias";
-                    break; 
+            $rutas = "Editar Categorias";
+            break; 
         case "crear.categorias":
-                $rutas = "Crear Categorias";
-                break; 
+            $rutas = "Crear Categorias";
+            break; 
         case "pedidos.list":
-                $rutas = "Lista de Pedidos";
-                 break;     
-
+            $rutas = "Lista de Pedidos";
+            break;
         case "edit.pedidos":
             $rutas = "Editar un Pedido";
-             break;
-
+            break;
         case "crear.pedidos":
             $rutas = "Crear un Pedido";
             break;
-
         case "catalogos.list":
-                $rutas = "Lista de Catalogos";
-                 break;     
-
+            $rutas = "Lista de Catalogos";
+            break;
         case "edit.catalogos":
             $rutas = "Editar un Catalogo";
-             break;
-
+            break;
         case "crear.catalogos":
             $rutas = "Crear un Catalogo";
             break;
-
-
         case "productos.list":
-                $rutas = "Lista de Productos";
-                 break;     
-
+            $rutas = "Lista de Productos";
+            break;
         case "edit.productos":
             $rutas = "Editar un Producto";
-             break;
+            break;
         case "crear.productos":
              $rutas = "Crear un Producto";
              break;
-
-
         case "existencia.list":
             $rutas = "Lista de Existencia de Alimentos";
             break;
-
         case "edit.existencia":
-             $rutas = "Editar existencia";
+            $rutas = "Editar existencia";
             break;
-
         case "crear.existencia":
-              $rutas = "Crear existencia";
-              break;
+            $rutas = "Crear existencia";
+            break;
         case "movinv.list":
-                $rutas = "Movimiento de inventario";
-                break;
-    
-        case "edit.movinv'":
-                 $rutas = "Editar existencia";
-                break;
-    
-       
-
-
-
-                    
-        
-        
-        
-        
-        
-                default:
-        $rutas=Route::current()->action['as'];
+            $rutas = "Movimiento de inventario";
+            break;    
+        case "edit.movinv":
+            $rutas = "Editar movimiento de inventario";
+            break;
+        case "obtener_pedidos.movinv":
+            $rutas = "Listado de pedido del periodo activo";
+            break;       
+            default:
+            $rutas=Route::current()->action['as'];
       }
    
         return $rutas;

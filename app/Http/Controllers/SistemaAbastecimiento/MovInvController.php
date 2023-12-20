@@ -190,12 +190,6 @@ class MovInvController extends Controller
                            
                         ]);   
 
-
-
-
-
-                      
-
                         //tabla de pedidos
                         $object = new Pedidos;            
                         $object = Pedidos::find($request->pedidoId);

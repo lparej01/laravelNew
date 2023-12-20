@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   Crear un item del menu
+   Crear un item del menú
 @endsection
 
 @section('content')

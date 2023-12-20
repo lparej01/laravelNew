@@ -11,7 +11,7 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="col-xl-12 col-sm-12 mb-4">
-                        <x-tables.bo-table :data="$audits" title="GESTION DE AUDITORIA DE TODO EL SISTEMA" data-id="table" data-toolbar="#toolbar"
+                        <x-tables.bo-table :data="$audits" title="GESTIÓN DE AUDITORÍA DE TODO EL SISTEMA" data-id="table" data-toolbar="#toolbar"
                             data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                             data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                             data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

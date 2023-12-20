@@ -13,9 +13,8 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de roles</span>
-                        </x-slot:formHeader>
-                         
+                            <span class="align-self-center">IR A LISTA DE ROLES</span>
+                        </x-slot:formHeader>                       
                            
                        
                         <x-slot:formBody>
