@@ -14,7 +14,7 @@
                                      
                                                
          <x-tables.bo-table :data="$movInv" title="LISTA DE PEDIDOS DEL PERIODO ACTIVO" data-id="dtHorizontalExample" data-toolbar="#toolbar"
-                            data-toggle="table" data-show-refresh="false" data-show-toggle="false"
+                            data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                             data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                             data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
                             data-search-align="left" data-search-highlight="true" data-search-on-enter-key="false"
@@ -24,7 +24,7 @@
                                 <div class="float-right"  >  
                                     <a href="{{ route('movinv.list') }}" class="btn btn-primary float-right"
                                     data-placement="left">
-                                    {{ __('Ir al Listado Movimiento de Inventario') }}
+                                    {{ __('IR AL LISTADO MOVIMIENTO DE INVENTARIO') }}
                                 </a>                                 
   
                                     <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalMovimientoInventarioPed">

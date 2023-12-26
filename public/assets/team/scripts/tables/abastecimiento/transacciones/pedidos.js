@@ -70,20 +70,27 @@
                 align: "center",
                 searchable: true,
             },
-             /*{
+            /*  {
                 field: "sku",
                 title: "Catálogo",
                 sortable: true,
                 align: "center",
                 searchable: true                
-            }, */
-           /*  {
+            },  */
+             {
+                field: "descripcion",
+                title: "Catálogo",
+                sortable: true,
+                align: "center",
+                searchable: true                
+            }, 
+             {
                 field: "provId",
                 title: "Proveedor",
                 sortable: true,
                 align: "center",
                 searchable: true                
-            }, */
+            }, 
 
             {
                 field: "cant",
@@ -93,16 +100,15 @@
                 searchable: true,
                 
             },
-           /*  {
+            /*  {
                 field: "costoUnitario",
                 title: "Costo Unitario",
                 sortable: true,
                 align: "center",
                 searchable: true,
                 
-            }, 
-            
-            {
+            },  */
+           {
                 field: "costoTotal",
                 title: "Costo Total",
                 sortable: true,
@@ -110,7 +116,8 @@
                 searchable: true,
                 
             },  
-            {
+             
+          /*  {
                 field: "flete",
                 title: "Flete",
                 sortable: true,

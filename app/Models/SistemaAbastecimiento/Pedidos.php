@@ -134,7 +134,7 @@ class Pedidos extends Model implements Auditable
 
          $usuario_id= user()->username; 
 
-         $object = new Proveedores;            
+         $object = new Pedidos;            
          $object = Pedidos::find($request->pedidoId);  
          $object->cant = $request->cant;
          $object->flete =  $request->flete;

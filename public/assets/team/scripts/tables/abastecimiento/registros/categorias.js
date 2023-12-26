@@ -82,7 +82,7 @@
                 field: "categoria",
                 title: "Nombre de las Categorias",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true,
             },
             {

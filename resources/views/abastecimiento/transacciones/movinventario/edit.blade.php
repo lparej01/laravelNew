@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de moviento de Inventario</span>
+                            <span class="align-self-center">IR A LA LISTA DE MOVIMIENTO DE INVENTARIO</span>
                         </x-slot:formHeader>                       
                            
                        

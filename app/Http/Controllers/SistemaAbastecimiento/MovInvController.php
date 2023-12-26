@@ -149,18 +149,18 @@ class MovInvController extends Controller
                      
           
         ], $messages); 
+
+        //Obtengo el pedido y la cantididad de ese pedido
+        $getPedido =  Pedidos::find($request->pedidoId);
+        $getPedido->cant;      
        
-        
 
          $cantidadPendiente =$request->cantPendiente;
          $cantidad =$request->cant;
          $usuario_id= user()->username; 
 
-        
-        // dd($existencia);
-
-        //dd($request->tipoMovinv);
-        
+     
+       
          
            if ($request->tipoMovinv =="Recepcion") {
 
@@ -171,7 +171,7 @@ class MovInvController extends Controller
 
                        
                         # genero un registro en el movimiento de inventario
-                        # se modifica la cantidad pendiente se rebaja del pedido campo cantPendiente
+                        # se modifica la cantidad pendiente. se rebaja del pedido campo cantPendiente
                         # Actualizo la tabla de existencia al sku correspondiente en el periodo correspondiente
                         # el campo de entrada y el inventario final
                         #tabla pedidos
@@ -179,7 +179,7 @@ class MovInvController extends Controller
                         #tabla existencia
 
                         //tabla de movimiento de inventario
-                        $movInv = MovInv::create([
+                         $movInv = MovInv::create([
                             'sku'  => $request->sku,
                             'tipoMovinv'  => $request->tipoMovinv,
                             'fechaMovinv' => date('Y-m-d'), // 2016-10-12,
@@ -188,11 +188,13 @@ class MovInvController extends Controller
                             'usuario'  => $usuario_id                        
                                    
                            
-                        ]);   
+                        ]);    
 
                         //tabla de pedidos
                         $object = new Pedidos;            
                         $object = Pedidos::find($request->pedidoId);
+
+                       
 
                         //cantidad pendiente de la tabla pedidos
                         $pendiente = $object->cantPendiente;
@@ -225,28 +227,48 @@ class MovInvController extends Controller
                         return redirect()->route('obtener_pedidos.movinv')
                             ->with('success', 'Agregado el pedido al movimiento de existencia');
 
-                    }else
-                        {
-
-                          return redirect()->route('obtener_pedidos.movinv')
-                            ->with('success', 'Error el monto debe ser menor o igual que Cantidad Pendiente');
-                        }
+                    }
+                    if ($cantidad >= $getPedido->cant) {
+                        return redirect()->route('obtener_pedidos.movinv')
+                        ->with('info', 'Error no puede ser mayor a la cantidad registrada del Pedido Vigente');
+                    }
+                    
+                    
 
                    // Pedidos en periodo activo en movimiento de inventario
                   // $buscarPedido = MovInv::buscarPedidoMovint($request->pedidoId);
 
             
            } 
-           if ($request->tipoMovin =="Despacho") {
+           if ($request->tipoMovinv =="Despacho") {
 
+                    
+     
 
+                # buscar en existencia por sku y por el periodo activo ver si tiene disponible
+                # buscar en movimiento de inventario si este pedido existe por despacho
                 # tiene que existir una solicitud de despacho previamente registrado para el Sku seleccionado
                 # se genera un movimiento de inventario por despacho
                 # esto genera una salida en la tabla de existencia modificando el campo salida y el inventario final
                 # de esa tabla
+
+                $periodo=date('Ym',$request->periodo);
+
+                $buscarExistPeriodo = Existencia::getExistenciaSkuPeriodo($request->sku,$periodo-1);
+
+
+
+               
+
+               
+
+
+              /*   return redirect()->route('obtener_pedidos.movinv')
+                ->with('info', 'Registro de solicitud de despacho'); */
+
+
             
            }
-
 
 
            
