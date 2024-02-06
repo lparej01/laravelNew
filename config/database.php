@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite_1'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,14 +36,10 @@ return [
     'connections' => [
 
 
+       
         'sqlite' => [
             'driver' => 'sqlite',           
-            'database' => env('DB_DATABASE01', '/xampp/htdocs/proyecto-web/database/db/seasc.db')         
-            
-        ],
-        'sqlite_1' => [
-            'driver' => 'sqlite',           
-            'database' => env('DB_DATABASE', '/xampp/htdocs/proyecto-web/database/db/admin.db')         
+            'database' => env('DB_DATABASE', '/xampp/htdocs/gestion-soporte/database/db/admin.db')         
             
         ]  
 

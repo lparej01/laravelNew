@@ -21,7 +21,7 @@ class ResetPasswordController extends Controller
     |
     */
 
-   // use ResetsPasswords;
+     //// use ResetsPasswords;
 
     /**
      * Where to redirect users after resetting their password.
@@ -31,18 +31,18 @@ class ResetPasswordController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
 
-     public function resetPassword()
+    /*  public function resetPassword()
     {
       
         return view('auth.passwords.reset');
     } 
-
-    public function sendemail()   {
+ */
+    /* public function sendemail()   {
        
 
         return view('auth.passwords.email');
     }
-
+ */
     public function reset(Request $request){
        
       

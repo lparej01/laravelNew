@@ -6,6 +6,9 @@ use App\Models\Users\UserHasRolModel;
 use App\Models\Rols\RolesAndPermissionsSpatie;
 use App\Models\Admin\UsersRol;
 use Illuminate\Support\Facades\DB;
+use App\Models\Servicios\SoporteTecnico\SoporteTecnico;
+use App\Models\Servicios\SoporteTecnico\Departamentos;
+use App\Models\Servicios\SoporteTecnico\Incidencias;
 
 
 if (!function_exists('user')) {
@@ -18,10 +21,62 @@ if (!function_exists('user')) {
     {
         $user = auth()->user();
 
-      //  dd( $user->name );
-        return $user;
+      
+        return $user;  
     }
+    function getSoporte()
+    {
+        $obtenerUsuarios = SoporteTecnico::soporteUsuarios();
+        
+       
+      
+        return $obtenerUsuarios;  
+    }
+    function getDepartamentos()
+    {
+       $obtenerdepartamentos = Departamentos::getDepartamentosCount();
+      
+        return $obtenerdepartamentos;  
+    }
+    function getIncidencias()
+    {
+        $obtenerIncidencias = Incidencias::getIncidenciasCount();
+
+
+      
+        return  $obtenerIncidencias;  
+    }
+
+    function getIncidenciaUsuario(){
+
+        return SoporteTecnico::getInicUsuarios();
+
+
+
+    }
+
+    function getIncidenciaCant(){
+            
+        return SoporteTecnico::getInic();
+            
+    }
+
+    function getGrafico(){
+            
+        return SoporteTecnico::getIncCantidad();
+            
+    }
+
+    function getGraficoNombre(){
+            
+        return SoporteTecnico::getIncDepartNombre();
+            
+    }
+
+
     
+
+   
 }
 
 
@@ -209,18 +264,58 @@ if (function_exists('user')) {
         case "edit.movinv":
             $rutas = "Editar movimiento de inventario";
             break;
+        case "soporte.list":
+            $rutas = "Servicio de Soporte Tecnico";
+            break;
+        case "edit.soporte":
+             $rutas = "Editar Servicio de Soporte Tecnico";
+             break;
+        case "crear.soporte":
+             $rutas = "Crear Incidencia de Soporte Tecnico";
+             break;
+        case "incidencias.list":
+            $rutas = "Listado de tipo de Incidencias";
+            break;
+        case "edit.incidencias":
+            $rutas = "Editar un tipo de incidencias";
+            break;
+        case "crear.incidencias":
+            $rutas = "Crear un tipo de incidencias";
+            break;
+        case "departamentos.list":
+            $rutas = "Listado de tipo de departamentos";
+            break;
+        case "edit.departamentos":
+            $rutas = "Editar un tipo de departamentos";
+            break;
+        case "crear.departamentos":
+            $rutas = "Crear un tipo de departamentos";
+            break;
+        case "asignacion.list":
+            $rutas = "Listado de asignacioness";
+            break;
+        case "edit.asignacion":
+            $rutas = "Editar una asignación";
+            break;
+        case "crear.asignacion":
+            $rutas = "Crear una asignación";
+            break;
         case "obtener_pedidos.movinv":
             $rutas = "Listado de pedido del periodo activo";
-            break;       
-            default:
+            break;
+            
+        case "soportepdf.list":
+             $rutas = "Listado de Soporte de Servicios Pdf";
+             break; 
+
+        default:
             $rutas=Route::current()->action['as'];
       }
    
         return $rutas;
     }
 
-    
-
+   
     function getValuesFromAssignedUser($url = NULL)
     {
        

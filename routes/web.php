@@ -36,7 +36,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 Route::get('/logout', [HomeController::class, 'destroy'])->name('log_out');
 Route::get('login/forgot.password', [ResetPasswordController::class, 'sendEmail'])->name('forgot.password');
-Route::get('login/reset.password', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
+//Route::get('login/reset.password', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
 
 Route::get('user/create', [UsersController::class,'create'])->name('user.create');
 Route::post('user/store', [UsersController::class,'store'])->name('store.user');
@@ -46,152 +46,76 @@ Route::post('user/store', [UsersController::class,'store'])->name('store.user');
  * SISTEMAS 
  * 
  */
-Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers\SistemaAbastecimiento', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'servicios', 'namespace' => 'App\Http\Controllers\Servicios', 'middleware' => ['auth']], function () {
+  
+  /////Soporte Tecnico 
+
+  Route::get('soportetecnico', 'SoporteController@index')->name('soporte.list');    
+  Route::get('soportetecnico/edit/{id}', 'SoporteController@edit')->name('edit.soporte');
+  Route::delete('soportetecnico/{id}/destroy', 'SoporteController@destroy')->name('destroy.soporte');
+  Route::get('soportetecnico/show/{id}', 'SoporteController@show')->name('soporte.show'); 
+  Route::get('soportetecnico/delete/{id}', 'SoporteController@destroy')->name('soporte.delete'); 
+  Route::get('soportetecnico/delete_confirm/{id}', 'SoporteController@delete_confirm')->name('soporte.delete_confirm');
+  Route::get('soportetecnico/create', 'SoporteController@create')->name('crear.soporte');
+  Route::post('soportetecnico', 'SoporteController@store')->name('save.soporte');
+  Route::post('soportetecnico/{id}', 'SoporteController@update')->name('update.soporte');
+  Route::get('soportetecnico/reporte', 'SoporteController@reporte')->name('reporte.soporte');
+
+
+
+  Route::get('asignacion', 'AsignacionController@index')->name('asignacion.list');    
+  Route::get('asignacion/edit/{id}', 'AsignacionController@edit')->name('edit.asignacion');
+  Route::post('asignacion/{id}', 'AsignacionController@update')->name('update.asignacion');
+  Route::delete('asignacion/{id}/destroy', 'AsignacionController@destroy')->name('destroy.asignacion');
+  Route::get('asignacion/show/{id}', 'AsignacionController@show')->name('asignacion.show'); 
+  Route::get('asignacion/disable/{id}', 'AsignacionController@disable')->name('asignacion.disable'); 
+  Route::get('asignacion/disable_confirm/{id}', 'AsignacionController@disable_confirm')->name('asignacion.disable_confirm');
+  Route::get('asignacion/create', 'AsignacionController@create')->name('crear.asignacion');
+  Route::post('asignacion', 'AsignacionController@store')->name('save.asignacion');
+ 
+
+  Route::get('incidencias', 'IncidenciasController@index')->name('incidencias.list');    
+  Route::get('incidencias/edit/{id}', 'IncidenciasController@edit')->name('edit.incidencias');
+  Route::post('incidencias/{id}', 'IncidenciasController@update')->name('update.incidencias');
+  Route::delete('incidencias/{id}/destroy', 'IncidenciasController@destroy')->name('destroy.incidencias');
+  Route::get('incidencias/show/{id}', 'IncidenciasController@show')->name('incidencias.show'); 
+  Route::get('incidencias/delete/{id}', 'IncidenciasController@destroy')->name('incidencias.delete'); 
+  Route::get('incidencias/delete_confirm/{id}', 'IncidenciasController@delete_confirm')->name('incidencias.delete_confirm');
+  Route::get('incidencias/create', 'IncidenciasController@create')->name('crear.incidencias');
+  Route::post('incidencias', 'IncidenciasController@store')->name('save.incidencias'); 
+
+  Route::get('departamentos', 'DepartamentosController@index')->name('departamentos.list');    
+  Route::get('departamentos/edit/{id}', 'DepartamentosController@edit')->name('edit.departamentos');
+  Route::post('departamentos/{id}', 'DepartamentosController@update')->name('update.departamentos');
+  Route::get('departamentos/show/{id}', 'DepartamentosController@show')->name('departamentos.show'); 
+  Route::get('departamentos/delete/{id}', 'DepartamentosController@destroy')->name('departamentos.delete'); 
+  Route::get('departamentos/delete_confirm/{id}', 'DepartamentosController@delete_confirm')->name('departamentos.delete_confirm');
+  Route::get('departamentos/create', 'DepartamentosController@create')->name('crear.departamentos');
+  Route::post('departamentos', 'DepartamentosController@store')->name('save.departamentos');
+
+ 
+
+  
     
-  /*RUTAS DE PROVEEDORES*/
-  Route::get('proveedores', 'ProveedoresController@index')->name('proveedores.list');    
-  Route::get('proveedores/edit/{id}', 'ProveedoresController@edit')->name('edit.proveedores');
-  Route::post('proveedores/{id}', 'ProveedoresController@update')->name('update.proveedores');
-  Route::delete('proveedores/{id}/destroy', 'ProveedoresController@destroy')->name('destroy.proveedores');
-  Route::get('proveedores/show/{id}', 'ProveedoresController@show')->name('proveedores.show'); 
-  Route::get('proveedores/disable/{id}', 'ProveedoresController@disable')->name('proveedores.disable'); 
-  Route::get('proveedores/disable_confirm/{id}', 'ProveedoresController@disable_confirm')->name('proveedores.disable_confirm');
-  Route::get('proveedores/create', 'ProveedoresController@create')->name('crear.proveedores');
-  Route::post('proveedores', 'ProveedoresController@store')->name('save.proveedores');
 
-  ///*Pedidos////
-   Route::get('pedidos', 'PedidosController@index')->name('pedidos.list');    
-   Route::get('pedidos/edit/{id}', 'PedidosController@edit')->name('edit.pedidos');
-   Route::post('pedidos/{id}', 'PedidosController@update')->name('update.pedidos');
-   Route::delete('pedidos/{id}/destroy', 'PedidosController@destroy')->name('destroy.pedidos');
-   Route::get('pedidos/show/{id}', 'PedidosController@show')->name('pedidos.show'); 
-   Route::get('pedidos/disable/{id}', 'PedidosController@disable')->name('pedidos.disable'); 
-   Route::get('pedidos/disable_confirm/{id}', 'PedidosController@disable_confirm')->name('pedidos.disable_confirm');
-   Route::get('pedidos/create', 'PedidosController@create')->name('crear.pedidos');
-   Route::post('pedidos', 'PedidosController@store')->name('save.pedidos');
-
-  ///*Sku////catalogos
-  Route::get('catalogos', 'SkuController@index')->name('catalogos.list');    
-  Route::get('catalogos/edit/{id}', 'SkuController@edit')->name('edit.catalogos');
-  Route::post('catalogos/{id}', 'SkuController@update')->name('update.catalogos');
-  Route::delete('catalogos/{id}/destroy', 'SkuController@destroy')->name('destroy.catalogos');
-  Route::get('catalogos/show/{id}', 'SkuController@show')->name('catalogos.show'); 
-  Route::get('catalogos/disable/{id}', 'SkuController@disable')->name('catalogos.disable'); 
-  Route::get('catalogos/disable_confirm/{id}', 'SkuController@disable_confirm')->name('catalogos.disable_confirm');
-  Route::get('catalogos/create', 'SkuController@create')->name('crear.catalogos');
-  Route::post('catalogos', 'SkuController@store')->name('save.catalogos');
-
- ///*Productos////
- Route::get('productos', 'ProductosController@index')->name('productos.list');    
- Route::get('productos/edit/{id}', 'ProductosController@edit')->name('edit.productos');
- Route::post('productos/{id}', 'ProductosController@update')->name('update.productos');
- Route::delete('productos/{id}/destroy', 'ProductosController@destroy')->name('destroy.productos');
- Route::get('productos/show/{id}', 'ProductosController@show')->name('productos.show'); 
- Route::get('productos/disable/{id}', 'ProductosController@disable')->name('productos.disable'); 
- Route::get('productos/disable_confirm/{id}', 'ProductosController@disable_confirm')->name('productos.disable_confirm');
- Route::get('productos/create', 'ProductosController@create')->name('crear.productos');
- Route::post('productos', 'ProductosController@store')->name('save.productos');
-
- ///*Planes////
- Route::get('planes', 'PlanesController@index')->name('planes.list');    
- Route::get('planes/edit/{id}', 'PlanesController@edit')->name('edit.planes');
- Route::post('planes/{id}', 'PlanesController@update')->name('update.planes');
- Route::delete('planes/{id}/destroy', 'PlanesController@destroy')->name('destroy.planes');
- Route::get('planes/show/{id}', 'PlanesController@show')->name('planes.show'); 
- Route::get('planes/disable/{id}', 'PlanesController@disable')->name('planes.disable'); 
- Route::get('planes/disable_confirm/{id}', 'PlanesController@disable_confirm')->name('planes.disable_confirm');
- Route::get('planes/create', 'PlanesController@create')->name('crear.planes');
- Route::post('planes', 'PlanesController@store')->name('save.planes');
-
-
-
- ///*Periodo////
- Route::get('periodo', 'PeriodoController@index')->name('periodo.list');    
- Route::get('periodo/edit/{id}', 'PeriodoController@edit')->name('edit.periodo');
- Route::get('periodo/abrir/{id}', 'PeriodoController@abrirPeriodo')->name('abrir.periodo');
- Route::get('periodo/cerrar/{id}', 'PeriodoController@cerrarPeriodo')->name('cerrar.periodo');
- Route::get('periodo/generar', 'PeriodoController@generar_periodo')->name('generar.periodo');
- Route::post('periodo/{id}', 'PeriodoController@update')->name('update.periodo');
- Route::delete('periodo/{id}/destroy', 'PeriodoController@destroy')->name('destroy.periodo');
- Route::get('periodo/show/{id}', 'PeriodoController@show')->name('periodo.show'); 
- Route::get('periodo/disable/{id}', 'PeriodoController@disable')->name('periodo.disable'); 
- Route::get('periodo/disable_confirm/{id}', 'PeriodoController@disable_confirm')->name('periodo.disable_confirm');
- Route::get('periodo/create', 'PeriodoController@create')->name('crear.periodo');
- Route::post('periodo', 'PeriodoController@store')->name('save.periodo');
-
-  ///*MovTer////
-  Route::get('movter', 'MovTerController@index')->name('movter.list');    
-  Route::get('movter/edit/{id}', 'MovTerController@edit')->name('edit.movter');
-  Route::post('movter/{id}', 'MovTerController@update')->name('update.movter');
-  Route::delete('movter/{id}/destroy', 'MovTerController@destroy')->name('destroy.movter');
-  Route::get('movter/show/{id}', 'MovTerController@show')->name('movter.show'); 
-  Route::get('movter/disable/{id}', 'MovTerController@disable')->name('movter.disable'); 
-  Route::get('movter/disable_confirm/{id}', 'MovTerController@disable_confirm')->name('movter.disable_confirm');
-  Route::get('movter/create', 'MovTerController@create')->name('crear.movter');
-  Route::post('movter', 'MovTerController@store')->name('save.movter');
-
-  ///*MovInv////
-  Route::get('movinv', 'MovInvController@index')->name('movinv.list');    
-  Route::get('movinv/edit/{id}', 'MovInvController@edit')->name('edit.movinv'); 
-  Route::delete('movinv/{id}/destroy', 'MovInvController@destroy')->name('destroy.movinv');
-  Route::get('movinv/show/{id}', 'MovInvController@show')->name('movinv.show'); 
-  Route::get('movinv/show/pedido/{id}', 'MovInvController@showPedido')->name('movinv.show_pedido'); 
-  Route::get('movinv/disable/{id}', 'MovInvController@disable')->name('movinv.disable'); 
-  Route::get('movinv/disable_confirm/{id}', 'MovInvController@disable_confirm')->name('movinv.disable_confirm');  
-  Route::post('movinv', 'MovInvController@store')->name('save.movinv');
-  Route::get('movinv/list-pedido-activo', 'MovInvController@listpedidoactivo')->name('obtener_pedidos.movinv');
-  Route::post('movinv/{id}', 'MovInvController@update')->name('update.movinv');
-
-    ///*Combos////
-    Route::get('combos', 'CombosController@index')->name('combos.list');    
-    Route::get('combos/edit/{id}', 'CombosController@edit')->name('edit.combos');
-    Route::post('combos/{id}', 'CombosController@update')->name('update.combos');
-    Route::delete('combos/{id}/destroy', 'CombosController@destroy')->name('destroy.combos');
-    Route::get('combos/show/{id}', 'CombosController@show')->name('combos.show'); 
-    Route::get('combos/disable/{id}', 'CombosController@disable')->name('combos.disable'); 
-    Route::get('combos/disable_confirm/{id}', 'CombosController@disable_confirm')->name('combos.disable_confirm');
-    Route::get('combos/create', 'CombosController@create')->name('crear.combos');
-    Route::post('combos', 'CombosController@store')->name('save.combos');
-
-    ///*Categorias////
-    Route::get('categorias', 'CategoriasController@index')->name('categorias.list');    
-    Route::get('categorias/edit/{id}', 'CategoriasController@edit')->name('edit.categorias');
-    Route::post('categorias/{id}', 'CategoriasController@update')->name('update.categorias');
-    Route::delete('categorias/{id}/destroy', 'CategoriasController@destroy')->name('destroy.categorias');
-    Route::get('categorias/show/{id}', 'CategoriasController@show')->name('categorias.show'); 
-    Route::get('categorias/disable/{id}', 'CategoriasController@disable')->name('categorias.disable'); 
-    Route::get('categorias/disable_confirm/{id}', 'CategoriasController@disable_confirm')->name('categorias.disable_confirm');
-    Route::get('categorias/create', 'CategoriasController@create')->name('crear.categorias');
-    Route::post('categorias', 'CategoriasController@store')->name('save.categorias');
-
-    ///*CombosCategorias////
-    Route::get('comboscategorias', 'CombosCategoriasController@index')->name('comboscategorias.list');    
-    Route::get('comboscategorias/edit/{id}', 'CombosCategoriasController@edit')->name('edit.comboscategorias');
-    Route::post('comboscategorias/{id}', 'CombosCategoriasController@update')->name('update.comboscategorias');
-    Route::delete('comboscategorias/{id}/destroy', 'CombosCategoriasController@destroy')->name('destroy.comboscategorias');
-    Route::get('comboscategorias/show/{id}', 'CombosCategoriasController@show')->name('comboscategorias.show'); 
-    Route::get('comboscategorias/disable/{id}', 'CombosCategoriasController@disable')->name('comboscategorias.disable'); 
-    Route::get('comboscategorias/disable_confirm/{id}', 'CombosCategoriasController@disable_confirm')->name('comboscategorias.disable_confirm');
-    Route::get('comboscategorias/create', 'CombosCategoriasController@create')->name('crear.comboscategorias');
-    Route::post('comboscategorias', 'CombosCategoriasController@store')->name('save.comboscategorias');
-
-
-    ///*Existencia////
-    Route::get('existencia', 'ExistenciaController@index')->name('existencia.list');    
-    Route::get('existencia/edit/{id}/{periodo}', 'ExistenciaController@edit')->name('edit.existencia');
-    Route::post('existencia/{id}', 'ExistenciaController@update')->name('update.existencia');
-    Route::delete('existencia/{id}/destroy', 'ExistenciaController@destroy')->name('destroy.existencia');
-    Route::get('existencia/show/{id}/{periodo}', 'ExistenciaController@show')->name('existencia.show'); 
-    Route::get('existencia/disable/{id}', 'ExistenciaController@disable')->name('existencia.disable'); 
-    Route::get('existencia/disable_confirm/{id}', 'ExistenciaController@disable_confirm')->name('existencia.disable_confirm');
-    Route::get('existencia/create', 'ExistenciaController@create')->name('crear.existencia');
-    Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
-
-
-    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');    
+       
 
   
 });
+
+/***
+ * 
+ * SISTEMAS 
+ * 
+ */
+Route::group(['prefix' => 'pdf', 'namespace' => 'App\Http\Controllers\PDF', 'middleware' => ['auth']], function () {
+  
+  /////Soporte Tecnico 
+  Route::get('soportetecnicopdf', 'PdfController@index')->name('soportepdf.list');    
+ 
+  
+});
+
 
 /**
  * 

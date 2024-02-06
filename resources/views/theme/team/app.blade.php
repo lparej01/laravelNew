@@ -5,10 +5,10 @@
   <meta charset="utf-8" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/apple-icon.png")}}">
-  <link rel="icon"  href="{{asset("assets/team/img/images2.jfif")}}" class="rounded">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/iconos.jpeg")}}">
+  <link rel="icon"  href="{{asset("assets/team/img/iconos.jpeg")}}" class="rounded">
   <title>
-    Proyecto Web
+    Gestion de Soporte
   </title>
   
   <!--     Fonts and icons     -->
@@ -24,12 +24,12 @@
   <link href="{{asset("assets/team/css/nucleo-svg.css")}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset("assets/team/css/soft-ui-dashboard.css?v=1.0.7")}}" rel="stylesheet" />
-  <script src="{{asset("assets/team/js/jquery.min.js")}}"></script>
-
-  <script src="{{asset("assets/team/js/toastr.min.js")}}" type="text/javascript"></script>
+ 
   <link href="{{ asset("assets/team/css/toastr.min.css")}}" rel="stylesheet" type="text/css" />
   
-  
+  <script src="{{asset("assets/team/js/jquery.min.js")}}"></script>
+
+
 
 </head>
 
@@ -42,8 +42,8 @@
 
 
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
-    
-        @include("theme/$theme/navbar")    
+   
+          @include("theme/$theme/navbar")    
         <main class="py-4">
        
          @yield('content', View::make('theme.team.container'))  
@@ -70,7 +70,9 @@
     <script src="{{asset("assets/team/js/plugins/bootstrap-notify.js") }}"></script>
     <script src="{{asset("assets/team/js/plugins/axios.js") }}"></script>
     <script src="{{asset("assets/team/js/plugins/axios.min.js") }}"></script>  
-    
+     
+
+   <script src="{{asset("assets/team/js/toastr.min.js")}}" type="text/javascript"></script>
 
     <script>
     var win = navigator.platform.indexOf('Win') > -1;

@@ -21,7 +21,7 @@ class User extends Authenticatable implements Auditable
 
    
     
-    protected $connection = 'sqlite_1';
+    protected $connection = 'sqlite';
     protected $table="users";
 
 
@@ -95,7 +95,7 @@ class User extends Authenticatable implements Auditable
         public static function getAllUsers(){
            
             
-            $users = DB::connection('sqlite_1')->table('users')                 
+            $users = DB::connection('sqlite')->table('users')                 
             ->select('users.id',
             'users.username',
             'users.names', 
@@ -115,7 +115,7 @@ class User extends Authenticatable implements Auditable
         public static function getUserId($id)       {
            
             
-            return  DB::connection('sqlite_1')->table('users')->where('id',$id)->first();       
+            return  DB::connection('sqlite')->table('users')->where('id',$id)->first();       
        
         }
 

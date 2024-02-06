@@ -48,7 +48,6 @@ netstat -putona
 php artisan cache:clear
 php artisan config:clear
 php artisan config:cache
-php artisan view:clear
 php artisan event:cache
 php artisan event:clear
 php artisan route:cache
@@ -201,7 +200,8 @@ Controladores
 C:\xampp\htdocs\HMOWEB>php artisan make:controller Planes/PlanesController --resource
 Controller created successfully.
 
-Modelos
+Modelos Ejemplos
+
 C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/Afiliados
 Model created successfully.
 
@@ -214,9 +214,10 @@ Model created successfully.
 C:\xampp\htdocs\HMOWEB>php artisan make:model Admin/Estados
 Model created successfully.
 
+##crear un seedeer
+php artisan make:seeder UserSeeder
 
-php artisan db:seed
- 
+#ejecutar un seeder 
 php artisan db:seed --class=UserSeeder
 
 
@@ -238,15 +239,9 @@ php artisan db:seed --class=UserSeeder
   php artisan migrate --path=database\migrations\2023_09_22_092416_create_tabla_tipo_producto.php
   
 
-
-  php artisan db:seed --class=Databaseeder
-  
+####Llamar un seeder determinado
+php artisan db:seed --class=Databaseeder
  
-  
-  
-
-
-
 vendor/bin/phpunit
 
 Crear tu host local en Windows
@@ -282,6 +277,8 @@ Crear el certificado y la clave privada del servidor con OPENSSL
 Después de personalizar "cert-template.conf" y guardar los cambios, 
 solo necesitamos ejecutar "make-cert.bat".
 
+########################################conexiones#########################
+
 protected $connection = 'mysql2'; 
 cuando tienes varios base de datos se coloca en el modelo
 
@@ -304,7 +301,7 @@ class Invoice extends Eloquent {
 
     // ... resto del modelo
 }
-
+Ejemplos
 Schema::connection('comments')->create('users', function($table)
 {
    $table->increments('id');
@@ -312,3 +309,27 @@ Schema::connection('comments')->create('users', function($table)
 
 
  composer require barryvdh/laravel-debugbar --dev
+
+
+
+ #################################################################################################
+ ###########################Generar Pdf con chart
+
+  https://cdnjs.com/libraries/Chart.js  -> para buscar las librerias la ultima version
+
+    https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js   Por los momento se va utilizar esta version
+
+    https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.cjs
+
+    https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.cjs.map
+
+    https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js
+
+    https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js.map
+    
+    ######libreria de pdf
+    composer require barryvdh/laravel-dompdf
+
+    activar extension=gd
+
+    crear una carpeta storage/fonts

@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/team/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/team/img/favicon.png') }}">
     <title>
-        Proyecto Web
+        GESTION DE SOPORTE
     </title>
 
     <!--     Fonts and icons     -->
@@ -48,8 +48,7 @@
                             <div class="col-xl-4 col-lg-6 col-md-8 d-flex flex-column mx-auto">
                                 <div class="card card-plain mt-2">
                                     <div class="pb-0 text-left bg-transparent">
-                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Agricola
-                                            Santa Cruz</h4>
+                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Gestion de Soporte</h4>
 
                                     </div>                                   
                                         <form method="POST" action="{{ route('login') }}">

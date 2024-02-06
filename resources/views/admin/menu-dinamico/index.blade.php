@@ -4,20 +4,19 @@
   Menu
 @endsection
 
+
 @section('content')
 
-<link href="{{ asset("assets/team/js/jquery-nestable/jquery.nestable.css")}}" rel="stylesheet" type="text/css" />
-
-
+<link href="{{ asset("assets/team/js/jquery-nestable/jquery.nestable.css")}}" rel="stylesheet" type="text/css" /> 
+<script src="{{asset("assets/team/js/jquery-nestable/jquery.nestable.js")}}" type="text/javascript"></script>
      
         <div class="card card-info">        
             <x-forms.template-form form-redirect-back="{{ route('menu.list') }}" form-route="#" form-method="POST">
                 @csrf
                 <x-slot:formHeader>
-                    <span class="align-self-center">IR A LISTA DE MENU</span>
+                    <span class="align-self-center">Ir a lista de menu</span>
                 </x-slot:formHeader>          
                 <x-slot:formBody>      
-                       
                                                   
                                 
                         <div class="container">
@@ -44,7 +43,14 @@
            
         
         </div>
-        <script src="{{asset("assets/team/js/jquery-nestable/jquery.nestable.js")}}" type="text/javascript"></script>
+      
+        
         <script src="{{asset("assets/team/scripts/tables/menu/menu_dinamico.js")}}" type="text/javascript"></script>
         <script src="{{asset("assets/team/funciones.js")}}" type="text/javascript"></script>
+        
+                
+         
+       
 @endsection
+
+

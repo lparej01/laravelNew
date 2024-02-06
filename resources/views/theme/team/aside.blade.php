@@ -4,21 +4,21 @@
      <div class="sidenav-header">
          <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
              aria-hidden="true" id="iconSidenav"></i>
-         <a class="navbar-brand m-0" href="{{ route('inicio') }}" target="_blank">
-             <img src="{{ asset('assets/team/img/images2.jfif') }}"  width="50px" height="100px" class="navbar-brand-img h-200" alt="main_logo">
-             <span class="ms-1 font-weight-bold">Sistema Web</span>
+         <a class="navbar-brand m-2" href="{{ route('inicio') }}" target="_blank">
+           
+            <div class="img-inner dark">
+                <img fetchpriority="high" decoding="async" width="80" height="80" src="https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-1024x985.png" class="attachment-large size-large" alt="" srcset="https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-1024x985.png 1024w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-300x288.png 300w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-768x738.png 768w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-600x577.png 600w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda.png 1324w" sizes="(max-width: 1020px) 100vw, 1020px">
+                <span class="ms-1 font-weight-bold">Gestion de Soporte Web</span>
+            </div>
+             
          </a>
      </div>
      <hr class="horizontal dark mt-0">
      <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-            aria-hidden="true" id="iconSidenav"></i>
-        {{-- <a class="navbar-brand m-0" href="{{ route('inicio') }}" target="_blank">
-           
-            <span class="ms-1 font-weight-bold">Escritorio</span>
-        </a> --}}
-        <a class="btn btn-primary mt-3 w-100" href="{{ route('inicio') }}">Inicio</a>
-    </div>
+            aria-hidden="true" id="iconSidenav"></i>       
+             <a class="btn btn-primary mt-3 w-100" href="{{ route('inicio') }}">Inicio</a>
+     </div>
      <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
          <ul class="navbar-nav">
              @foreach ($menusComposer as $key => $item)

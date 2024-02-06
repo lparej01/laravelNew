@@ -21,18 +21,18 @@ class UsersTableSeeder extends Seeder
             'names' => 'Luis',
             'surnames' => 'Parejo Diaz',
             'email'  => 'parejo1962@hotmail.com',
-            'password' => bcrypt('Emma*2023'),
+            'password' => bcrypt('Emma*2024'),
             'status' => true,            
             'created_at' => now(),
             'updated_at' => now()
         ]);
         
         DB::table('users')->insert([           
-            'username'  => 'lparej01',
-            'names' => 'Jose',
-            'surnames' => 'Parejo Diaz',
-            'email'  => 'parejo1962@gmail.com',
-            'password' => bcrypt('Emma*2022'),
+            'username'  => 'rcampelo',
+            'names' => 'Roberto',
+            'surnames' => 'Campelo',
+            'email'  => 'rcampelo@lagiralda.com.ve',
+            'password' => bcrypt('Lg*2024'),
             'status' => true,            
             'created_at' => now(),
             'updated_at' => now()
