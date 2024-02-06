@@ -26,7 +26,7 @@
                 {{ Form::label('Tipo de Incidencias (*)') }}               
                     @foreach ($incidencias as $item)
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name ="incid_id[{{$item->nombre}}]"  value="{{$item->nombre}}"  id="incid_id" CheckState >
+                            <input class="form-check-input" type="checkbox" name ="incid_id[{{$item->id}}]"  value="{{$item->nombre}}"  id="incid_id" CheckState >
                          <label class="form-check-label" for="flexSwitchCheckDefault">{{ $item->nombre}}</label>
                         </div>                    
                     @endforeach           

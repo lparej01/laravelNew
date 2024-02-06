@@ -28,6 +28,8 @@ class SoporteTecnico extends Model implements Auditable
     protected $casts = [
       'sopt1' => 'integer',
     ];
+
+
      /**
      * Buscar todos los Soporte tabla de servicos vista principal
      * 
@@ -52,6 +54,21 @@ class SoporteTecnico extends Model implements Auditable
   
           return $soporte;
     
+     }
+     public static function getIncidencias(){
+
+      $inc = DB::connection('sqlite')->table('soporte')                  
+      ->select(      
+         'soporte.incid_id as incidencias')                                     
+         ->orderBy('soporte.id','DESC')
+         ->groupBy('soporte.id') 
+         ->get();
+
+      $plucked = $inc->pluck('incidencias');
+
+      return $plucked;
+
+
      }
      /***
       * Buscar por el identificador o id 
@@ -138,7 +155,8 @@ class SoporteTecnico extends Model implements Auditable
 
         $plucked = $data->pluck('incidencias');
 
-        return $plucked; 
+        return json_decode($plucked); 
+
 
        
      }

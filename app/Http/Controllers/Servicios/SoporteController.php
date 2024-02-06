@@ -37,11 +37,16 @@ class SoporteController extends Controller
                         "can_edit" => $permiso_status[2]->status, 
                         "can_show" => $permiso_status[5]->status,
                         "can_disable" => $permiso_status[4]->status,
-                        "can_delete" => $permiso_status[1]->status); 
+                        "can_delete" => $permiso_status[1]->status);
+
       
+        //$inc = SoporteTecnico::getIncidencias(); 
+       
+
+      // dd($inc);
+       
 
         
-       
          $actions = serializeJson($array);
 
 
@@ -181,13 +186,14 @@ class SoporteController extends Controller
         
        
 
-       // dd($request->incid_id);
+      // dd($request->all());
 
        $soporte= DB::table('soporte')->insert([
             'usuarios'  => $request->usuarios,  
             'depart_id'  => $request->depart_id, 
-            'incid_id'  => implode(",", $request->incid_id), //lo convierte en un aray
-            'sopt1' => count($request->incid_id),           
+            'incid_id'  => implode(",", $request->incid_id), //lo convierte en una cadena
+            'sopt1' => count($request->incid_id),
+           // 'sopt2' => $request->incid_id,              
             'comentario'  => $request->comentario,                
             'created_at' => $request->created_at,
             'updated_at' => now()
