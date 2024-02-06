@@ -92,6 +92,7 @@ class Sku extends Model implements Auditable
         return $sku;
        
     }
+
     
 
      /**
@@ -112,7 +113,7 @@ class Sku extends Model implements Auditable
                     'sku.empaque',
                     'sku.costoUnitario')
         ->where('activo',1)        
-        ->orderBy('marca')                      
+        ->orderBy('descripcion')                      
         ->get(); 
        
     }

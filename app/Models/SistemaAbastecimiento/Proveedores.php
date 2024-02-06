@@ -26,10 +26,6 @@ class Proveedores extends Model implements Auditable
 
     /***definicion de la clave primaria cuando no es id */
     protected $primaryKey = "provId";
-
-   
-
-
            
     protected $fillable = ['nombre','contacto','telf1','telf2','telfContacto','email','emailContacto','activo','timestamp','usuario'];
 
@@ -38,7 +34,7 @@ class Proveedores extends Model implements Auditable
      */
     public static function getProveeodresAll()
     {
-        $proveedores=DB::connection('sqlite')->table('proveedores')->where('activo',1)->get();        
+        $proveedores=DB::connection('sqlite')->table('proveedores')->where('activo',1)->where('provId',"<>",300000 )->get();        
        
         return $proveedores ;
     }

@@ -65,12 +65,30 @@ class MovInvController extends Controller
      * Display the specified resource.
      * Modal de vista de pedidos
      */
-    public function showPedido(string $pedidoId) {       
+    public function showPedido(Request $request) {   
+    
+
+        $pedido = Pedidos::getPedidosPeriodoActual($request->sku,$request->tipo);    
        
-        $movinv = $movinv = MovInv::buscarPedidoId($pedidoId);      
-        
-        return view('abastecimiento.transacciones.movinventario.show_pedido_activo',compact('movinv'));
-     }
+        if(isset($pedido)){
+
+            return response()->json(
+                [
+                    'lista' => $pedido,                   
+                    'success' => true
+                ]
+                );
+      
+        }else
+        {
+            return response()->json(
+                [
+                    'danger' => false
+                ]
+                );
+
+        } 
+      }
 
  
     public function store(Request $request){
@@ -99,7 +117,7 @@ class MovInvController extends Controller
         ], $messages); */
 
 
-      //  dd($request->sku);
+
 
 
        // $sku= MovInv::buscarSkuPedido($request->sku); 
@@ -134,8 +152,8 @@ class MovInvController extends Controller
      * table existencia  
      */
     public function update(Request $request){       
-             
-        
+              
+
         $messages = [
            
             'tipoMovinv.required' => 'El tipo de movimiento es requerido',
@@ -243,7 +261,7 @@ class MovInvController extends Controller
            if ($request->tipoMovinv =="Despacho") {
 
                     
-     
+                #todos lo que son despacho se guarda en pedidos con el proveedor =300000 eso para diferenciar 
 
                 # buscar en existencia por sku y por el periodo activo ver si tiene disponible
                 # buscar en movimiento de inventario si este pedido existe por despacho
@@ -285,10 +303,10 @@ class MovInvController extends Controller
      * Para generar un movimiento de inventario 
      * Por recepcion, despacho, devolucion , devolucion y retorno
      */
-    public function listpedidoactivo(Request $request){
+    public function agregarMovInv(){
        
               
-        $mov = MovInv::buscarPedidosActivos(); 
+        /* $mov = MovInv::buscarPedidosActivos(); 
        
         $movInv = serializeJson($mov);         
         $usuario_id= user()->id; 
@@ -311,7 +329,12 @@ class MovInvController extends Controller
         
       
 
-        return view('abastecimiento.transacciones.movinventario.create',compact('movInv','actions'));
+        return view('abastecimiento.transacciones.movinventario.edit',compact('movInv','actions')); */
+
+        $movsku= Sku::getSkuActivos();
+
+        return view('abastecimiento.transacciones.movinventario.create_pedidos',compact('movsku')); 
+
 
 
     }

@@ -21,9 +21,9 @@
 
                               <div class="float-right"  >
                                     @if ($actionsBlade->can_create > 0)
-                                      <a href="{{ route('obtener_pedidos.movinv') }}" class="btn btn-primary float-right"data-placement="left">
+                                      <a href="{{ route('obtener_pedidos.movinv') }}" class="btn btn-primary float-right"data-placement="left" >
 
-                                          {{ __('Agregar  movimiento') }}
+                                          {{ __('Agregar Movimiento de Inventario') }}
                                       </a>
                                   @endif 
 

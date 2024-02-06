@@ -6,15 +6,13 @@ namespace App\Models\SistemaAbastecimiento;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\SistemaAbastecimiento\Periodo;
 use App\Models\SistemaAbastecimiento\Sku;
 
 class Pedidos extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    protected $connection = 'sqlite';
-    
-    
+    protected $connection = 'sqlite';  
 
 
     protected $guarded = ['pedidoId'];
@@ -51,6 +49,7 @@ class Pedidos extends Model implements Auditable
                 ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
                 ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
                 ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
+                ->where('proveedores.provId',"<>", 300000)
                 ->orderByDesc('pedidos.pedidoId')      
                 ->get();   
 
@@ -154,6 +153,40 @@ class Pedidos extends Model implements Auditable
         
     }
     
+    public static function getPedidosPeriodoActual($sku,$tipo){
+      
+       $periodoActual= Periodo::buscarPeriodoActual();
+       $fec= strtotime($periodoActual->anio."-".$periodoActual->mes."-01");
+       $fecha= date('Y-m-d',$fec );  
+       
+       
+            if ($tipo=="Recepcion") {
+
+                $pedidos =  DB::connection('sqlite')->table('pedidos')
+                ->Select('sku','pedidoId', 'fechaPedido', 'cant',  'cantPendiente','provId')          
+                ->where('fechaPedido','>=', $fecha)
+                ->where('sku',$sku)
+                ->where('provId',"<>",300000)          
+                ->get();
+        
+            } else {
+                $pedidos =  DB::connection('sqlite')->table('pedidos')
+                ->Select('sku','pedidoId', 'fechaPedido', 'cant',  'cantPendiente','provId')          
+                ->where('fechaPedido','>=', $fecha)
+                ->where('sku',$sku)
+                ->where('provId',"=",300000)          
+                ->get();
+        
+            }
+     
+       
+      
+ 
+       
+       return $pedidos;
+
+
+    }
 
 
 
