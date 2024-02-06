@@ -312,3 +312,10 @@ Schema::connection('comments')->create('users', function($table)
 
 
  composer require barryvdh/laravel-debugbar --dev
+
+ ################################################################
+                           GIT
+ git add .
+ git commit -m "Iniciando el repositorio"
+ git push
+ 
