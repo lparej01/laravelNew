@@ -147,6 +147,8 @@ class MenuController extends Controller
 		 
             $img = $request->file("icono")->store('imagenes','public');
 
+          
+
             $tipo=strtolower($request->nombre);
 
             $url="#". $tipo;           

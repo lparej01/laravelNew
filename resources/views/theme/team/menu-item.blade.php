@@ -20,7 +20,7 @@
              aria-controls="ui-basic">
              <div
                  class="icon icon-shape icon-sm shadow bg-gradient-white border-radius-md bg-outline-danger text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="25" height="25" >
+                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="45" height="45" >
                   
                  
              </div>
@@ -33,9 +33,10 @@
                      <li class="nav-item mt-2">
                          <a class="nav-link" href="{{ route($submenu['url']) }}">
                          
-                             <div class="icon icon-shape icon-sm shadow bg-gradient-primary border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            {{-- <div class="icon icon-shape icon-sm shadow bg-gradient-primary border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"> --}}
+                                <div class="icon icon-shape icon-sm  border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                              
-                              <img id="imagen" src ="{{ asset('storage').'/'.$submenu['icono']}}"  class="rounded" width="25" height="25" >
+                              <img id="imagen" src ="{{ asset('storage').'/'.$submenu['icono']}}"  class="rounded" width="35" height="35" >
                              </div>
                              <span class="nav-link-text ms-1" style="color: black">{{ $submenu['nombre'] }}</span>
                          </a>

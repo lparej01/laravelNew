@@ -170,11 +170,15 @@ class UsersController extends Controller
             'email' => 'required|email|unique:users,email,'.$request->id,
             
         ], $messages);
+
+     
                                 
         if($request->file("images")){ 
 		   
 		 
             $img = $request->file("images")->store('imagenes','public');
+
+            
 
             $Object = User::find($id);
             $Object ['names']  = ucfirst( $request->names); 
