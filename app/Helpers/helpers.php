@@ -307,6 +307,9 @@ if (function_exists('user')) {
         case "soportepdf.list":
              $rutas = "Listado de Soporte de Servicios Pdf";
              break; 
+        case "reporte.soporte":
+              $rutas = "Gestion de Reporte de Soporte";
+              break; 
 
         default:
             $rutas=Route::current()->action['as'];

@@ -333,3 +333,21 @@ Schema::connection('comments')->create('users', function($table)
     activar extension=gd
 
     crear una carpeta storage/fonts
+
+    ###########Librerias excel
+
+      composer require maatwebsite/excel
+
+      añadir archivo app.php
+      
+      'providers' => [
+
+       
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
+        ],
+
+        Despues de añadir la clase, seguimos bajando en nuestro archivo app.php 
+        hasta llegar a «aliases»
+
+          'Excel' => Maatwebsite\Excel\Facades\Excel::class,

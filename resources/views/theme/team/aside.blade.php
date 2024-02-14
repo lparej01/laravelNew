@@ -4,10 +4,9 @@
      <div class="sidenav-header">
          <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
              aria-hidden="true" id="iconSidenav"></i>
-         <a class="navbar-brand m-2" href="{{ route('inicio') }}" target="_blank">
-           
+         <a  href="#" >           
             <div class="img-inner dark">
-                <img fetchpriority="high" decoding="async" width="80" height="80" src="https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-1024x985.png" class="attachment-large size-large" alt="" srcset="https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-1024x985.png 1024w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-300x288.png 300w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-768x738.png 768w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda-600x577.png 600w, https://alimentoslagiralda.com/wp-content/uploads/2023/08/La-giralda.png 1324w" sizes="(max-width: 1020px) 100vw, 1020px">
+                <img   width="100" height="100" src="{{ asset('assets/team/img/La-giralda-1024x985.png') }}" >
                 <span class="ms-1 font-weight-bold">Gestion de Soporte Web</span>
             </div>
              
@@ -17,7 +16,7 @@
      <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>       
-             <a class="btn btn-primary mt-3 w-100" href="{{ route('inicio') }}">Inicio</a>
+             <a class="btn btn-primary  w-80" href="{{ route('inicio') }}">Inicio</a>
      </div>
      <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
          <ul class="navbar-nav">
@@ -39,9 +38,8 @@
             <span class="ms-1 font-weight-bold">Salir del Sistema</span>
         </a>
     </div>
-
-    
-
+  
+  
 </aside>
 
              

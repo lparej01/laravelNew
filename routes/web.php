@@ -60,6 +60,7 @@ Route::group(['prefix' => 'servicios', 'namespace' => 'App\Http\Controllers\Serv
   Route::post('soportetecnico', 'SoporteController@store')->name('save.soporte');
   Route::post('soportetecnico/{id}', 'SoporteController@update')->name('update.soporte');
   Route::get('soportetecnico/reporte', 'SoporteController@reporte')->name('reporte.soporte');
+  Route::get('soportetecnico/exportar', 'SoporteController@export')->name('generar.excel');
 
 
 

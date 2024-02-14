@@ -44,6 +44,7 @@ class SoporteTecnico extends Model implements Auditable
                      'soporte.depart_id',
                      'soporte.incid_id as incidencias',
                      'soporte.comentario',
+                     'soporte.users',
                      'soporte.created_at',
                      'departamentos.nombre as departamentos',             
                      DB::raw("(CASE WHEN soporte.status = 1  THEN 'En proceso' WHEN soporte.status=2 THEN 'Caso cerrado' END) as status"))                                     
@@ -228,7 +229,7 @@ class SoporteTecnico extends Model implements Auditable
        }
        /***
       * 
-      *Me suma las incidencia por departamentos por mes
+      * Me suma las incidencia por departamentos por mes
       *
       */
       public static function getIncUsuarios(){

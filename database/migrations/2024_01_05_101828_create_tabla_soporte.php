@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('sopt1')->nullable(); 
             $table->string('sopt2')->nullable();  
             $table->string('sopt3')->nullable();   
-            $table->integer('status')->default(1)->coment('1 Activa y 2 Cerrada');  
+            $table->integer('status')->default(1)->coment('1 Activa y 2 Cerrada'); 
+            $table->string('users')->nullable();   ;              
             $table->timestamps();
            
         });

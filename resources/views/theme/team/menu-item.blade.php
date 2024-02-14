@@ -20,7 +20,7 @@
              aria-controls="ui-basic">
              <div
                  class="icon icon-shape icon-sm shadow bg-gradient-white border-radius-md bg-outline-danger text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="45" height="45" >
+                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="35" height="35" >
                   
                  
              </div>

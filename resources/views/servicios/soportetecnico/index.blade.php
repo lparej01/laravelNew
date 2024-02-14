@@ -10,7 +10,7 @@
     <div class="col-sm-12" >       
                    
              <x-tables.bo-table :data="$soporte" title="LISTADO DE SOPORTE TECNICO DE USUARIOS " data-id="dtHorizontalExample" data-toolbar="#toolbar"
-                                data-toggle="table" data-show-refresh="false" data-show-toggle="true"
+                                data-toggle="table" data-show-refresh="false" data-show-toggle="true" 
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
                                 data-search-align="left" data-search-highlight="true" data-search-on-enter-key="false"

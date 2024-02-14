@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Servicios\SoporteTecnico\SoporteTecnico;
 use App\Models\Servicios\SoporteTecnico\Departamentos;
 use App\Models\Servicios\SoporteTecnico\Incidencias;
+use App\Exports\SoporteExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SoporteController extends Controller
 {
@@ -40,13 +42,7 @@ class SoporteController extends Controller
                         "can_delete" => $permiso_status[1]->status);
 
       
-        //$inc = SoporteTecnico::getIncidencias(); 
        
-
-      // dd($inc);
-       
-
-        
          $actions = serializeJson($array);
 
 
@@ -120,6 +116,8 @@ class SoporteController extends Controller
             
                        
         ], $messages);  
+
+        $usuario = user()->username;      
             
             $object = new SoporteTecnico; 
             $Object = SoporteTecnico::find($id);
@@ -128,7 +126,8 @@ class SoporteController extends Controller
             $Object ['incid_id']  = implode(",", $request->incid_id);//lo convierte en un array
             $Object ['sopt1']  =   count($request->incid_id);            
             $Object ['status']  =    $request->status;
-            $Object ['comentario']  =  $request->comentario;            
+            $Object ['comentario']  =  $request->comentario;
+            $Object ['users']  =   $usuario;             
             $Object ['updated_at']  =  now();
             $Object ->save();
 
@@ -184,18 +183,16 @@ class SoporteController extends Controller
                        
         ], $messages);  
         
-       
-
-      // dd($request->all());
+        $usuario = user()->username;      
 
        $soporte= DB::table('soporte')->insert([
             'usuarios'  => $request->usuarios,  
             'depart_id'  => $request->depart_id, 
             'incid_id'  => implode(",", $request->incid_id), //lo convierte en una cadena
-            'sopt1' => count($request->incid_id),
-           // 'sopt2' => $request->incid_id,              
+            'sopt1' => count($request->incid_id),                
             'comentario'  => $request->comentario,                
             'created_at' => $request->created_at,
+            'users' => $usuario,
             'updated_at' => now()
                            
            
@@ -205,5 +202,22 @@ class SoporteController extends Controller
             ->with('success', 'El nuevo tipo de Soporte se creo correctamente');
 
     }
+        /***
+         * exportar a excel
+         * 
+         * ****/
+        public function export(){
+            return Excel::download(new SoporteExport, 'soporte.xlsx');
+        }
+
+        public function reporte(){
+
+            SoporteTecnico::getIncidencias()->dd();
+            
+           // dd(SoporteTecnico::getIncCantidad());
+
+            return view('servicios.soportetecnico.reporte-gestion');
+            
+        }  
 
 }

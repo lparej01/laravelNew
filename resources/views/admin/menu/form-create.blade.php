@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    {{ Form::label('Url') }}
+                    {{ Form::label('Url (*)') }}
                     {{ Form::text('url', null, ['class' => 'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el url del menu']) }}
                     {!! $errors->first('url', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -25,32 +25,31 @@
                     {!! $errors->first('tipo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
-                <div class="col-lg-6">
-                 <label for="formFile" class="form-label">Seleccione icono o imagen svg (*)</label>
-                  <table><tr><td><input class="form-control is-invalid" type="file" name="icono" id="icono">
-                    @error('icono')
-                    <span class="invalid-feedback" role="alert">
-                       <strong>{{ $message }}</strong>
-                     </span>
-                    @enderror
-                 </td>
-                  <td> 
-                 </td>
-                  <td><img id="imagenPrevisualizacion" ></td></tr></table>    
-                 
-                 
-                    
-                </div>           
-                       
-   
-
-                           
+                 <div class="col-lg-6">
+                    <label for="formFile" class="form-label">Seleccione icono(*)</label>
+                    <table>
+                        <tr>   
+                            <td >
+                                <input class="form-control " type="file" name="icono" id="icono" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                                @error('icono')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </td>
+                            <td> 
+                            </td>
+                            <td>
+                                <img id="imagenPrevisualizacion" >
+                            </td>
+                        </tr>
+                      </table>    
+                  </div>                           
            
               </div>
               <script>
                 const $icono = document.querySelector("#icono"),
                 $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
-
                 // Escuchar cuando cambie
                 $icono.addEventListener("change", () => {
                 // Los archivos seleccionados, pueden ser muchos o uno
@@ -68,7 +67,7 @@
                 $imagenPrevisualizacion.src = objectURL;
                 });
 
-            </script>
+                </script>
             <style>
 
                 /*contenedor del form*/

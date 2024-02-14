@@ -67,22 +67,27 @@ class MenuController extends Controller
         $messages = [
             'nombre.regex' => 'El nombre no debe contener caracteres especiales',               
             'nombre.required'=> 'El nombre debe ser requerido', 'nombre.unique' => 'El nombre ya se encuentra asignado a un Menu',                          
-           /* 'url.unique'=> 'La Url  ya se encuentra asignado a un Menu',*/
+            'url.unique'=> 'La Url  ya se encuentra asignado a un Menu',
+            'url.required'=> 'La Url  es requerida',
             'icono.required'=> 'El Icono  debe ser requerido',
             'tipo.required'=> 'El tipo de menu es requerido'                          
             
         ];
         $request->validate([
             'nombre'           => ['required', 'regex:/^[A-Za-z\s]+$/', 'unique:menu'],
-           /*'url'           => ['unique:menu'],*/
-            'icono'           => ['required','image','mimes:svg','max:3000'] ,
-            'tipo'           => ['required'],        
+             'url'           => ['required','unique:menu'],
+            'icono' => ['required','image','mimes:svg','max:3000'] ,
+            'tipo'  => ['required'],        
             
             
         ], $messages);
 
+        dd($request->all());
+
         $tipo=strtolower($request->nombre);
-       
+
+       // Valida si el menu es de tipo padre o hijo  
+       // = es padre y 1 es Hijo
         if ($request->tipo == 0) {
             $url="#". $tipo;
             $tipo;
@@ -95,11 +100,11 @@ class MenuController extends Controller
                                 
       if($request->file("icono")){		   
 		 
-        $img = $request->file("icono")->store('imagenes','public'); 
-       
+        $img = $request->file("icono")->store('imagenes','public');
+
         DB::table('menu')->insert([
             'nombre'  => $request->nombre,
-            'url' =>  $url,
+            'url' => str_replace(' ','' , $url),  
             'icono' => $img,
             'tipo' =>  $tipo,
             'created_at' => now(),
@@ -145,80 +150,61 @@ class MenuController extends Controller
           /***con imagenes */
         if($request->file("icono")){		   
 		 
-            $img = $request->file("icono")->store('imagenes','public');
-
-          
+            $img = $request->file("icono")->store('imagenes','public');        
 
             $tipo=strtolower($request->nombre);
+            $url="#". $tipo; 
 
-            $url="#". $tipo;           
-
-            $menu= Menu::obtMenuId($id);
-                
-
-           
+            $menu= Menu::obtMenuId($id);       
                 if ($menu->menu_id ==0) {
-
                         $url="#". $tipo;
-
                         /**menu padre */      
                         Menu::findOrFail($id)->update([
                             'nombre'  => $request->nombre,
-                            'url' =>  $url,
+                            'url' => str_replace(' ','' , $url), 
                             'tipo' => strtolower($request->nombre),
-                            'icono' => $img
-                                
+                            'icono' => $img                              
                         
                         ]);    
                     
                 } else {
-
                         /**menu hijo */      
                         Menu::findOrFail($id)->update([
                             'nombre'  => $request->nombre,
-                            'url' =>  $request->url,
-                            'icono' => $img               
-                            
-                        ]);            
+                            'url' =>  str_replace(' ','' , $request->url), 
+                            'icono' => $img                            
+                        ]);        
                 
-                }
-           
+                }         
           
 
         }else{
                 
             /***No tiene imagenes */            
             $tipo=strtolower($request->nombre);
-
             $menu= Menu::obtMenuId($id);
-
-            $url="#". $tipo;   
+            $url="#". $tipo;  
         
                 /***menu padre */
-            if ($menu->menu_id ==0) {
-
-               
+            if ($menu->menu_id ==0) {              
                 
                         /**menu padre */      
                         Menu::findOrFail($id)->update([
                             'nombre'  => $request->nombre,
-                            'url' =>   $url,
-                            'tipo' => $tipo
-                          
+                            'url' =>   str_replace(' ','' , $url),
+                            'tipo' => strtolower($tipo)                         
                         
                         ]);    
                     
                 } else {
-
                             
                         Menu::findOrFail($id)->update([
                             'nombre'  => $request->nombre,
-                            'url' =>  $request->url               
+                            'url' =>  str_replace(' ','' , $request->url),              
                             
                         ]);            
                 
-                }
-            
+                }           
 
 
         }

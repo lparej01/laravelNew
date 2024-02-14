@@ -103,13 +103,13 @@
                 searchable: true
                
             },  
-           /*  {
-                field: "comentario",
-                title: "Comentario",
+             {
+                field: "users",
+                title: "Tecnico",
                 sortable: true,
                 align: "left",
                 searchable: true,
-            },  */
+            },  
             {
                 field: "created_at",
                 title: "Fecha",
