@@ -6,6 +6,7 @@ namespace App\Models\Servicios\SoporteTecnico;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use Arr;
 
 class SoporteTecnico extends Model implements Auditable
 {
@@ -227,31 +228,98 @@ class SoporteTecnico extends Model implements Auditable
         return  $getSuma;
   
        }
-       /***
+      /***
+      * 
+      * Me suma las incidencia totales
+      *
+      */
+      public static function getCountInc(){
+           
+       
+         $getIncid = DB::table('incidencias')->select('id','nombre')->get();  
+         $pluck = $getIncid->pluck('nombre');        
+
+        
+
+         foreach ($getIncid as $plucked) {
+              /**Convertir el stdclass en un array */
+               $array[] = DB::table('soporte')                                       
+               ->selectRaw('count(incid_id) ' .str_replace(' ','' ,$plucked->nombre))                  
+               ->where('incid_id','like', '%'.$plucked->nombre.'%')                             
+               ->first(); 
+          
+                      
+         }
+
+                        //nuevo arreglo
+                         $val = array(
+                         "Telefonia" => $array[0]->Correo, 
+                          "ERP" => $array[1]->ERP,
+                          "Hadware" => $array[2]->Hardware, 
+                          "Impresion" =>  $array[3]->Impresion,
+                          "Power BI" =>  $array[4]->PowerBI,
+                          "Red" =>  $array[5]->Red,
+                          "Respaldo" =>  $array[6]->Respaldo,
+                          "Servicios de Mantenimiento" =>  $array[7]->ServiciosdeMantenimiento,                         
+                          "Software" =>  $array[8]->Software,                        
+                          "Telefonia" =>  $array[9]->Telefonia
+                         
+                        );   
+                         
+        
+         //dd($val); 
+            
+
+           
+         return  $val; 
+  
+       }
+         /***
       * 
       * Me suma las incidencia por departamentos por mes
       *
       */
-      public static function getIncUsuarios(){
+      public static function getCountIncMonth($month){
            
-        /*  DB::table('soporte')->select('departamentos.nombre as depart',                        
-         DB::raw('CAST(sum(sopt1) as CountSum) AS cantidad'),
-         'soporte.created_at as fecha', 
-         )                 
+       
+         $getIncid = DB::table('incidencias')->select('id','nombre')->get();  
+         $pluck = $getIncid->pluck('nombre');
+        
 
-         $getSuma = DB::table('soporte') 
-                  ->join('departamentos', 'soporte.depart_id', '=', 'departamentos.id')                          
-                   ->select('departamentos.nombre as depart',                        
-                           DB::raw('CAST(sum(sopt1) as CountSum) AS cantidad'),
-                           'soporte.created_at as fecha', 
-                           )                
-                   ->groupBy('depart_id')
-                   ->whereMonth('fecha','=',$mes)   
-                   ->get();
-  
-                   
-  
-        return  $getSuma; */
+        
+
+         foreach ($getIncid as $plucked) {
+              /**Convertir el stdclass en un array */
+               $array[] = DB::table('soporte')                                       
+               ->selectRaw('count(incid_id) ' .str_replace(' ','' ,$plucked->nombre))                  
+               ->where('incid_id','like', '%'.$plucked->nombre.'%')
+               ->whereMonth('created_at', $month)               
+               ->first(); 
+          
+                      
+         }
+
+                        //nuevo arreglo
+                         $val = array(
+                         "Telefonia" => $array[0]->Correo, 
+                          "ERP" => $array[1]->ERP,
+                          "Hadware" => $array[2]->Hardware, 
+                          "Impresion" =>  $array[3]->Impresion,
+                          "Power BI" =>  $array[4]->PowerBI,
+                          "Red" =>  $array[5]->Red,
+                          "Respaldo" =>  $array[6]->Respaldo,
+                          "Servicios de Mantenimiento" =>  $array[7]->ServiciosdeMantenimiento,                         
+                          "Software" =>  $array[8]->Software,                        
+                          "Telefonia" =>  $array[9]->Telefonia
+                         
+                        );   
+                         
+        
+        
+            
+
+           
+         return  $val; 
   
        }
 }

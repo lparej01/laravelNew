@@ -142,6 +142,10 @@ class SoporteController extends Controller
     {
         return view('servicios.soportetecnico.delete', compact('id'));
     }
+    /**
+     * 
+     * 
+     * */
     public function delete_confirm($id)
     {
 
@@ -209,10 +213,19 @@ class SoporteController extends Controller
         public function export(){
             return Excel::download(new SoporteExport, 'soporte.xlsx');
         }
+        /**
+         * 
+         * 
+         * 
+        */
+        public function reporte($repor){
 
-        public function reporte(){
+            
+            // totales 
+            SoporteTecnico::getCountInc( );
 
-            SoporteTecnico::getIncidencias()->dd();
+            //por mes
+            SoporteTecnico::getCountIncMonth($repor);
             
            // dd(SoporteTecnico::getIncCantidad());
 
