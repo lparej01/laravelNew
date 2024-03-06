@@ -46,7 +46,6 @@ class Menu extends Model implements Auditable
                 $usuario_id= user()->id; 
                 $user = UsersRol::getUserRolId($usuario_id);
 
-
                  $query->where('rol_id', $user->rol_id)->orderby('menu_id');
              })->orderby('menu_id')
                  ->orderby('orden')

@@ -19,12 +19,16 @@ class UsersRol extends Model implements Auditable
 
     public static function getUserRolId($id)
     {
-        $usersrol=DB::table('users_rol as usrol')
-            ->join('rol', 'rol.id', '=', 'usrol.rol_id')
-            ->join('users', 'users.id', '=', 'usrol.usuario_id')
-            ->select('rol.nombre','usrol.*','users.username',DB::raw("(CASE WHEN usrol.estado =true  THEN 'Activo' WHEN usrol.estado=false THEN 'Inactivo' END) as estado"))       
-            ->where('usrol.rol_id', $id)->first();        
+     
        
+        $usersrol=DB::table('users_rol as usrol')           
+            ->join('rol', 'usrol.rol_id', '=', 'rol.id')
+            ->join('users', 'users.id', '=', 'usrol.usuario_id')
+            ->select('usrol.*',
+            'users.username',
+            DB::raw("(CASE WHEN usrol.estado = 1  THEN 'Activo' WHEN usrol.estado = 0 THEN 'Inactivo' END) as estado"))       
+            ->where('usrol.usuario_id', $id)->first();       
+      
         return $usersrol ;
     }
 

@@ -36,10 +36,11 @@ class LoginController extends Controller
       
 
         $usuario_id= user()->id; 
-        $rol = UsersRol::getUserRolId($usuario_id);
-     
+
+
+        $rol = UsersRol::getUserRolId($usuario_id);   
        
-        if ($user->status  && $rol->estado == "Activo" ) {
+        if ($user->status == 1  && $rol->estado == "Activo" ) {
 
             return redirect('home')->with(['success' => 'Ha iniciado sesión.']);
 
