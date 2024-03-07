@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use App\Models\Servicios\SoporteTecnico\SoporteTecnico;
 
 class Departamentos extends Model implements Auditable
 {
@@ -96,13 +97,31 @@ class Departamentos extends Model implements Auditable
     {
        
               
-        return Departamentos::find($id)->delete();
+        $buscarId=SoporteTecnico::getDepId($id);
+       
+       
+
+        if ($buscarId == 0) {
+           
+           return  Departamentos::find($id)->delete();
+             
+        } else {
+           
+            return false;        
+        }
+
+       
+       
+       
         
     }
 
     public static function getDepartamentosCount(){
 
+        
+
         $dep = DB::connection('sqlite')->table('departamentos')->distinct()->count(); 
+
         return $dep;
 
      }

@@ -6,6 +6,7 @@ namespace App\Models\Servicios\SoporteTecnico;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use App\Models\Servicios\SoporteTecnico\SoporteTecnico;
 
 class Incidencias extends Model implements Auditable
 {
@@ -91,9 +92,20 @@ class Incidencias extends Model implements Auditable
      */
     public static function deleteInicidencia($id)
     {
+        $buscarId=SoporteTecnico::getIncId($id);
+
        
+
+        if ($buscarId == 0 ) {           
+            return Incidencias::find($id)->delete();          
+
+        } else {
+
+            return false; 
+        }
+        
               
-        return Incidencias::find($id)->delete();
+        
         
     }
 

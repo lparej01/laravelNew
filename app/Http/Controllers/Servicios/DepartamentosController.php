@@ -151,7 +151,7 @@ class DepartamentosController extends Controller
             if ($departamentos) {
                 return redirect()->route('departamentos.list')->with('success', 'Departamento eliminado exitosamente');
             } else {
-                return redirect()->route('departamentos.list')->with('info', 'Verifique los datos');
+                return redirect()->route('departamentos.list')->with('info', 'Verifique los datos no puede ser eliminado');
             }
 
            

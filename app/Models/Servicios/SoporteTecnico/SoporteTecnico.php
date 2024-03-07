@@ -205,6 +205,35 @@ class SoporteTecnico extends Model implements Auditable
   
         
        }
+
+      /***
+      * 
+      * Buscar incidencia en soporte por id
+      *
+      */
+      public static function getIncId($id){   
+         
+          $inc= DB::table('incidencias')->where('id',$id)->first();
+        
+               
+         return   DB::table('soporte')->where('incid_id','LIKE','%'.$inc->nombre.'%')->count();
+  
+         
+       }
+
+       /***
+      * 
+      * Buscar departamentos en soporte por id
+      *
+      */
+      public static function getDepId($id){ 
+         
+        // dd( DB::table('soporte')->where('depart_id',$id)->count());
+               
+         return  DB::table('soporte')->where('depart_id',$id)->count();
+  
+        
+       }
      /***
       * 
       *Me suma las incidencia por departamentos por mes
