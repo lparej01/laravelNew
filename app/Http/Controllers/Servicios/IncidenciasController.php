@@ -152,7 +152,7 @@ class IncidenciasController extends Controller
             if ($incidencias) {
                 return redirect()->route('incidencias.list')->with('success', 'Incidencia eliminada exitosamente');
             } else {
-                return redirect()->route('incidencias.list')->with('info', 'Verifique los datos');
+                return redirect()->route('incidencias.list')->with('info', 'Verifique los datos no puede ser eliminado');
             }
 
            
