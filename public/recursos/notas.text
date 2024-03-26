@@ -192,9 +192,11 @@ Migraciones:
 C:\xampp\htdocs\HMOWEB>php artisan make:migration create_tabla_tipo_afiliado --create=tipo_afiliado
 Created Migration: 2020_10_19_162546_create_tabla_tipo_afiliado
 
+#############una sola tabla####################
 C:\xampp\htdocs\HMOWEB>php artisan migrate --path=database\migrations\2020_10_19_162546_create_tabla_tipo_afiliado.php
 Migrating: 2020_10_19_162546_create_tabla_tipo_afiliado
 Migrated:  2020_10_19_162546_create_tabla_tipo_afiliado (294.54ms)}
+
 
 Controladores
 C:\xampp\htdocs\HMOWEB>php artisan make:controller Planes/PlanesController --resource

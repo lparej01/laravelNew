@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Servicios;
+namespace App\Http\Controllers\Servicios\Asignacion;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AsignacionController extends Controller
+class AsignacionEquipoController extends Controller
 {
     /**
      * Display a listing of the resource.
