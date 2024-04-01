@@ -64,6 +64,9 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+       
+       
+       
         $messages = [
             'nombre.regex' => 'El nombre no debe contener caracteres especiales',               
             'nombre.required'=> 'El nombre debe ser requerido', 'nombre.unique' => 'El nombre ya se encuentra asignado a un Menu',                          
@@ -82,7 +85,7 @@ class MenuController extends Controller
             
         ], $messages);
 
-        dd($request->all());
+        //dd($request->all());
 
         $tipo=strtolower($request->nombre);
 

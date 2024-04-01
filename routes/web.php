@@ -64,15 +64,15 @@ Route::group(['prefix' => 'servicios', 'namespace' => 'App\Http\Controllers\Serv
 
 
 
-  Route::get('asignacion', 'AsignacionController@index')->name('asignacion.list');    
-  Route::get('asignacion/edit/{id}', 'AsignacionController@edit')->name('edit.asignacion');
-  Route::post('asignacion/{id}', 'AsignacionController@update')->name('update.asignacion');
-  Route::delete('asignacion/{id}/destroy', 'AsignacionController@destroy')->name('destroy.asignacion');
-  Route::get('asignacion/show/{id}', 'AsignacionController@show')->name('asignacion.show'); 
-  Route::get('asignacion/disable/{id}', 'AsignacionController@disable')->name('asignacion.disable'); 
-  Route::get('asignacion/disable_confirm/{id}', 'AsignacionController@disable_confirm')->name('asignacion.disable_confirm');
-  Route::get('asignacion/create', 'AsignacionController@create')->name('crear.asignacion');
-  Route::post('asignacion', 'AsignacionController@store')->name('save.asignacion');
+  Route::get('asignacion', 'AsignacionEquipoController@index')->name('asignacion.list');    
+  Route::get('asignacion/edit/{id}', 'AsignacionEquipoController@edit')->name('edit.asignacion');
+  Route::post('asignacion/{id}', 'AsignacionEquipoController@update')->name('update.asignacion');
+  Route::delete('asignacion/{id}/destroy', 'AsignacionEquipoController@destroy')->name('destroy.asignacion');
+  Route::get('asignacion/show/{id}', 'AsignacionEquipoController@show')->name('asignacion.show'); 
+  Route::get('asignacion/disable/{id}', 'AsignacionEquipoController@disable')->name('asignacion.disable'); 
+  Route::get('asignacion/disable_confirm/{id}', 'AsignacionEquipoController@disable_confirm')->name('asignacion.disable_confirm');
+  Route::get('asignacion/create', 'AsignacionEquipoController@create')->name('crear.asignacion');
+  Route::post('asignacion', 'AsignacionEquipoController@store')->name('save.asignacion');
  
 
   Route::get('incidencias', 'IncidenciasController@index')->name('incidencias.list');    
