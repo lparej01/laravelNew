@@ -56,7 +56,74 @@ class AsignacionEquipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+
+       $messages = [
+       
+        'equipo_asignado_person.required'    => 'La persona o entidad debe ser requerida',
+        'teclado_serial.required'               => 'El Serial del teclado debe ser requerido',
+        'cpu_serial.required'            => 'El Serial del CPU es requerido',
+        'procesador.required'            => 'El tipo de procesador es requerido',
+        'disco.required'                => 'El tamaño del disco es requerido',
+        'any_desk.required'                => 'El Codigo del Any es requerido',
+        'correo_electronico.required'        => 'El correo es requerido',
+        'correo_electronico.email'        => 'El correo no es valido',
+       
+    ];
+
+    $request->validate([
+        'equipo_asignado_person'  => ['required'] ,
+        'teclado_serial'  => ['required'] ,
+        'cpu_serial'  => ['required'] ,
+        'procesador'  => ['required'] ,
+        'disco'  => ['required'] ,
+        'any_desk' => ['required'] ,
+        'correo_electronico'  => ['required','email'] 
+        
+        
+
+
+    ], $messages);
+
+   if($request->tipo_equipo =="Tipo Pc"){
+     $tipo_equipo="Tipo Pc";
+
+
+   }
+   if($request->tipo_equipo =="Tipo  Laptop"){
+
+     $tipo_equipo="Tipo  Laptop";
+   }
+
+   dd( $request->all());
+
+
+    
+     DB::table('equipos_asignados')->insert([
+        'equipo_asignado_person'  => $request->equipo_asignado_person, 
+        'tipo_equipo'  => $tipo_equipo,    
+        'teclado_serial'  => $request->teclado_serial,    
+        'mouse'  => $request->nombre,    
+        'cpu_serial'  => $request->nombre,    
+        'conector_internet'  => $request->nombre,    
+        'conector_corriente_cpu'  => $request->nombre,    
+        'conector_corriente_monitor'  => $request->nombre,    
+        'conector_cpu_monitor'  => $request->nombre,  
+        'status'  => $request->nombre, 
+        'procesador'  => $request->procesador, 
+        'disco'  => $request->disco,
+        'any_desk'  => $request->any_desk,
+        'correo_electronico'  => $request->correo_electronico,             
+        'created_at' => now(),
+        'updated_at' => now()
+                       
+       
+    ]);                     
+                     
+  
+    
+
+    return redirect()->route('asignacion.list')->with('success', 'Se ingreso el Equipo al sistema');
     }
 
     /**

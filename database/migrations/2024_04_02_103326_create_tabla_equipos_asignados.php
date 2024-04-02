@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asignacion_equipos', function (Blueprint $table) {
+        Schema::create('equipos_asignados', function (Blueprint $table) {
             $table->increments('id');
             $table->string('equipo_asignado_person', 100);
             $table->string('tipo_equipo', 100);
             $table->string('teclado_serial', 50)->nullable();
-            $table->string('mouse', 50)->nullable();
+            $table->integer('mouse')->default(0);
             $table->string('cpu_serial', 50)->nullable();
             $table->string('oficina', 50);
-            $table->integer('conector_internet')->nullable()->coment('1 Asignado , 0 No tiene'); 
-            $table->integer('conector_corriente_cpu')->nullable()->coment('1 Asignado , 0 No tiene'); 
-            $table->integer('conector_corriente_monitor')->nullable()->coment('1 Asignado , 0 No tiene'); 
-            $table->integer('conector_cpu_monitor')->nullable()->coment('1 Asignado , 0 No tiene'); 
+            $table->integer('conector_internet')->default(0)->coment('1 Asignado , 0 No tiene'); 
+            $table->integer('conector_corriente_cpu')->default(0)->coment('1 Asignado , 0 No tiene'); 
+            $table->integer('conector_corriente_monitor')->default(0)->coment('1 Asignado , 0 No tiene'); 
+            $table->integer('conector_cpu_monitor')->default(0)->coment('1 Asignado , 0 No tiene'); 
             $table->string('correo_electronico', 100)->nullable();
-            $table->integer('status')->default(1)->coment('1 Activo , 2 Equipo Sin Asignar , 3 Dañado 4 Transferido'); 
+            $table->integer('status')->default(0)->coment('1 Activo , 0 Equipo Sin Asignar , 3 Dañado, 4 Transferido'); 
             $table->string('procesador', 50)->nullable();
             $table->string('disco', 50)->nullable();
             $table->string('any_desk', 50)->nullable();
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asignacion_equipo');
+        Schema::dropIfExists('equipos_asignados');
     }
 };

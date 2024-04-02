@@ -2,7 +2,7 @@
     <div class="box-body">
             <div class="col-lg-3">
                 {{ Form::label('Asignados (*)') }}
-                {{ Form::text('equipo_asignado_person', null, ['class' => 'form-control' . ($errors->has('equipo_asignado_person') ? ' is-invalid' : ''),  "id" => "equipo_asignado_person","name" => "equipo_asignado_person","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese el a quien se le asigna']) }}
+                {{ Form::text('equipo_asignado_person', null, ['class' => 'form-control' . ($errors->has('equipo_asignado_person') ? ' is-invalid' : ''),  "id" => "equipo_asignado_person","name" => "equipo_asignado_person","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese  a quien se le asigna']) }}
                 {!! $errors->first('equipo_asignado_person', '<div class="invalid-feedback">:message</div>') !!}
             </div>          
           
@@ -12,7 +12,7 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="radio" name ="tipo_equipo"  value="tipo"  id="tipo_equipo" CheckState  checked>
+            <input class="form-check-input" type="radio" name ="tipo_equipo"   id="tipo_equipo" value="Tipo Pc" CheckState  checked>
          <label class="form-check-label" for="flexSwitchCheckDefault"> Tipo Pc</label>
         </div>          
           
@@ -20,7 +20,7 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="radio" name ="tipo_equipo"  value="tipo"  id="tipo_equipo" CheckState >
+            <input class="form-check-input" type="radio" name ="tipo_equipo"   id="tipo_equipo" value="Tipo  Laptop" CheckState >
          <label class="form-check-label" for="flexSwitchCheckDefault"> Tipo  Laptop</label>
     </div>          
           
@@ -40,7 +40,7 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" name ="tipo"  value="tipo"  id="mouse" CheckState >
+            <input class="form-check-input" type="checkbox" name ="mouse"  id="mouse" value=1  CheckState >
          <label class="form-check-label" for="flexSwitchCheckDefault">Mouse</label>
     </div>          
           
@@ -61,22 +61,22 @@
                 {{ Form::label('CONECTORES') }}
                 <div class="box-body">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name ="tipo"  value=""  id="conector_internet" CheckState >
+                        <input class="form-check-input" type="checkbox" name ="conector_internet"  id="conector_internet" CheckState >
                      <label class="form-check-label" for="flexSwitchCheckDefault">Conector Internet</label>
                 </div>  
                 <div class="box-body">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name ="tipo"  value=""  id="conector_corriente_cpu" CheckState >
+                        <input class="form-check-input" type="checkbox" name ="conector_corriente_cpu"   id="conector_corriente_cpu" CheckState >
                      <label class="form-check-label" for="flexSwitchCheckDefault">Conector Corriente CPU</label>
                 </div>     
                 <div class="box-body">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name ="tipo"  value="tipo"  id="conector_corriente_monitor" CheckState >
+                        <input class="form-check-input" type="checkbox" name ="conector_corriente_monitor"   id="conector_corriente_monitor" CheckState >
                      <label class="form-check-label" for="flexSwitchCheckDefault">Conector Corriente Monitor</label>
                 </div>     
                 <div class="box-body">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name ="tipo"  value="tipo"  id="conector_cpu_monitor" CheckState >
+                        <input class="form-check-input" type="checkbox" name ="conector_cpu_monitor"    id="conector_cpu_monitor" CheckState >
                      <label class="form-check-label" for="flexSwitchCheckDefault">Conector CPU Monitor</label>
                 </div>        
             </div>          
@@ -86,12 +86,12 @@
     <div class="box-body">
         {{ Form::label('Estado del Equipo') }}
         <div class="form-check form-switch">
-            <input class="form-check-input" type="radio" name ="status"  value=""  id="status" CheckState >
+            <input class="form-check-input" type="radio" name ="status"  value="1"  id="status" CheckState >
          <label class="form-check-label" for="flexSwitchCheckDefault"> Activo</label>
     </div>  
     <div class="box-body">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="radio" name ="status"  value=""  id="status" CheckState >
+            <input class="form-check-input" type="radio" name ="status"  value="0"  id="status" CheckState >
          <label class="form-check-label" for="flexSwitchCheckDefault"> Desactivado</label>
     </div>           
           
@@ -117,8 +117,8 @@
 <div class="box box-info padding-1">
     <div class="box-body">
             <div class="col-lg-6">
-                {{ Form::label('Any Desk') }}
-                {{ Form::text('any_desk', null, ['class' => 'form-control' . ($errors->has('any_desk') ? ' is-invalid' : ''),  "id" => "any_desk","name" => "any_desk","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el codigo']) }}
+                {{ Form::label('Escritorio Remoto') }}
+                {{ Form::text('any_desk', null, ['class' => 'form-control' . ($errors->has('any_desk') ? ' is-invalid' : ''),  "id" => "any_desk","name" => "any_desk","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el codigo Any Desk']) }}
                 {!! $errors->first('any_desk', '<div class="invalid-feedback">:message</div>') !!}
             </div>          
           
@@ -127,7 +127,7 @@
     <div class="box-body">
             <div class="col-lg-6">
                 {{ Form::label('Correo electronico') }}
-                {{ Form::text('correo_electronico', null, ['class' => 'form-control' . ($errors->has('correo_electronico') ? ' is-invalid' : ''),  "id" => "correo_electronico","name" => "correo_electronico","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese el correo electronico']) }}
+                {{ Form::email('correo_electronico', null, ['class' => 'form-control' . ($errors->has('correo_electronico') ? ' is-invalid' : ''),  "id" => "correo_electronico","name" => "correo_electronico","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese el correo electronico']) }}
                 {!! $errors->first('correo_electronico', '<div class="invalid-feedback">:message</div>') !!}
             </div>          
           

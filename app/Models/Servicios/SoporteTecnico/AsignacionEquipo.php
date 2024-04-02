@@ -12,7 +12,7 @@ class AsignacionEquipo extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $guarded = ['id'];
-    protected $table="asignacion_equipos";
+    protected $table="equipos_asignados";
 
     protected $fillable = ['equipo_asignado_person','tipo_equipo','teclado_serial','mouse','cpu_serial','oficina'
                             ,'conector_internet','conector_corriente_cpu','conector_corriente_monitor','correo_electronico',
@@ -26,8 +26,8 @@ class AsignacionEquipo extends Model implements Auditable
     public static function getAllEquipos(){
        
 
-        $equipos = DB::table('asignacion_equipos')                
-                 ->orderByDesc('asignacion_equipos.equipo_asignado_person')      
+        $equipos = DB::table('equipos_asignados')                
+                 ->orderByDesc('equipos_asignados.equipo_asignado_person')      
                  ->get();   
  
  
@@ -43,12 +43,12 @@ class AsignacionEquipo extends Model implements Auditable
     public static function getAsignacionId($id){
        
 
-        $asign = DB::table('asignacion_equipos')                
-                 ->orderByDesc('asignacion_equipos.equipo_asignado_person')
+        $asign = DB::table('equipos_asignados')                
+                 ->orderByDesc('equipos_asignados.equipo_asignado_person')
                  ->where('id',$id)      
                  ->first();   
  
- dd( $asign);
+
          return  $asign;
  
      }

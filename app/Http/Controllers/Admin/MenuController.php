@@ -66,27 +66,27 @@ class MenuController extends Controller
     {
        
        
+
        
         $messages = [
             'nombre.regex' => 'El nombre no debe contener caracteres especiales',               
             'nombre.required'=> 'El nombre debe ser requerido', 'nombre.unique' => 'El nombre ya se encuentra asignado a un Menu',                          
             'url.unique'=> 'La Url  ya se encuentra asignado a un Menu',
             'url.required'=> 'La Url  es requerida',
-            'icono.required'=> 'El Icono  debe ser requerido',
+            'icono.required'=> 'La imagen es requerida',
             'tipo.required'=> 'El tipo de menu es requerido'                          
             
         ];
         $request->validate([
             'nombre'           => ['required', 'regex:/^[A-Za-z\s]+$/', 'unique:menu'],
              'url'           => ['required','unique:menu'],
-            'icono' => ['required','image','mimes:svg','max:3000'] ,
+            'icono' => ['required'] ,
             'tipo'  => ['required'],        
             
             
         ], $messages);
 
-        //dd($request->all());
-
+      //  dd($request->file("icono"));
         $tipo=strtolower($request->nombre);
 
        // Valida si el menu es de tipo padre o hijo  
@@ -99,7 +99,7 @@ class MenuController extends Controller
             $url=$request->url;
             $tipo;
         }
-        
+       
                                 
       if($request->file("icono")){		   
 		 

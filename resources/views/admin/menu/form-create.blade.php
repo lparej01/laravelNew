@@ -30,7 +30,7 @@
                     <table>
                         <tr>   
                             <td >
-                                <input class="form-control " type="file" name="icono" id="icono" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                                <input class="form-control" type="file" name="icono" id="icono" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
                                 @error('icono')
                                 <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
