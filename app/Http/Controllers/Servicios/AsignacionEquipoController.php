@@ -57,13 +57,17 @@ class AsignacionEquipoController extends Controller
     public function store(Request $request)
     {
        
-
-       $messages = [
+        dd( $request->all());
+      
+      
+        $messages = [
        
         'equipo_asignado_person.required'    => 'La persona o entidad debe ser requerida',
         'teclado_serial.required'               => 'El Serial del teclado debe ser requerido',
         'cpu_serial.required'            => 'El Serial del CPU es requerido',
         'procesador.required'            => 'El tipo de procesador es requerido',
+        'marca.required'                 => 'La marca es  requerido',
+        'sistema_oper.required'                 => 'El sistema Operativo es requerido',
         'disco.required'                => 'El tamaño del disco es requerido',
         'any_desk.required'                => 'El Codigo del Any es requerido',
         'correo_electronico.required'        => 'El correo es requerido',
@@ -76,6 +80,8 @@ class AsignacionEquipoController extends Controller
         'teclado_serial'  => ['required'] ,
         'cpu_serial'  => ['required'] ,
         'procesador'  => ['required'] ,
+        'marca'  => ['required'] ,
+        'sistema_oper'  => ['required'] ,
         'disco'  => ['required'] ,
         'any_desk' => ['required'] ,
         'correo_electronico'  => ['required','email'] 
@@ -95,21 +101,20 @@ class AsignacionEquipoController extends Controller
      $tipo_equipo="Tipo  Laptop";
    }
 
-   dd( $request->all());
-
-
-    
+   
      DB::table('equipos_asignados')->insert([
         'equipo_asignado_person'  => $request->equipo_asignado_person, 
         'tipo_equipo'  => $tipo_equipo,    
         'teclado_serial'  => $request->teclado_serial,    
-        'mouse'  => $request->nombre,    
-        'cpu_serial'  => $request->nombre,    
-        'conector_internet'  => $request->nombre,    
-        'conector_corriente_cpu'  => $request->nombre,    
-        'conector_corriente_monitor'  => $request->nombre,    
-        'conector_cpu_monitor'  => $request->nombre,  
-        'status'  => $request->nombre, 
+        'mouse'  => $request->mouse,  
+        'marca'  => $request->marca,  
+        'sistema_oper'  => $request->sistema_oper,     
+        'cpu_serial'  => $request->cpu_serial,    
+        'conector_internet'  => $request->conector_internet,    
+        'conector_corriente_cpu'  => $request->conector_corriente_cpu,    
+        'conector_corriente_monitor'  => $request->conector_corriente_monitor,    
+        'conector_cpu_monitor'  => $request->conector_cpu_monitor,  
+        'status'  => $request->status, 
         'procesador'  => $request->procesador, 
         'disco'  => $request->disco,
         'any_desk'  => $request->any_desk,
