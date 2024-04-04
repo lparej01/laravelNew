@@ -57,8 +57,7 @@ class AsignacionEquipoController extends Controller
     public function store(Request $request)
     {
        
-        dd( $request->all());
-      
+       
       
         $messages = [
        
@@ -90,6 +89,9 @@ class AsignacionEquipoController extends Controller
 
 
     ], $messages);
+
+    dd( $request->all());
+      
 
    if($request->tipo_equipo =="Tipo Pc"){
      $tipo_equipo="Tipo Pc";

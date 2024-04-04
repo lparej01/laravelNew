@@ -41,7 +41,7 @@ class DepartamentosController extends Controller
         $actions = serializeJson($array);
 
 
-        //dd($permiso_status);
+       // var_dump( $departamentos );
 
 
 

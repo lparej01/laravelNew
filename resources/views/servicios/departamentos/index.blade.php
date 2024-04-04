@@ -7,6 +7,7 @@
 @section('content') 
 
 @php($actionsBlade = json_decode($actions))
+
 <div class="container-fluid">           
     <div class="col-sm-12" >       
                    
