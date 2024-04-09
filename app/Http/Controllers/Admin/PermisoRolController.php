@@ -27,7 +27,11 @@ class PermisoRolController extends Controller
        $permiso_roles = DB::table('permiso_rol')      
       ->join('permiso', 'permiso_rol.permiso_id', '=', 'permiso.id') 
       ->join('rol', 'permiso_rol.rol_id', '=', 'rol.id')   
-      ->select('permiso_rol.id','permiso_rol.status as estado','permiso.nombre','rol.nombre as rol',DB::raw("(CASE WHEN permiso_rol.status =1  THEN 'Activo' WHEN permiso_rol.status=0 THEN 'Inactivo' END) as estado"))      
+      ->select('permiso_rol.id',
+            'permiso_rol.status as estado',
+            'permiso.nombre',
+            'rol.nombre as rol',
+            DB::raw("(CASE WHEN permiso_rol.status =1  THEN 'Activo' WHEN permiso_rol.status=0 THEN 'Inactivo' END) as estado"))      
       ->get();   
 
        $permisos_rol = serializeJson($permiso_roles);   

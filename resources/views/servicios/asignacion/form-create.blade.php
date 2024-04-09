@@ -1,8 +1,8 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        <div class="form-check  form-check-inline col-lg-4">
+        <div class="form-check  form-check-inline col-lg-4 ">
                 {{ Form::label('Equipo asignado (*)') }}
-                {{ Form::text('equipo_asignado_person', null, ['class' => 'form-control' . ($errors->has('equipo_asignado_person') ? ' is-invalid' : ''),  "id" => "equipo_asignado_person","name" => "equipo_asignado_person","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese  a quien se le asigna']) }}
+                {{ Form::text('equipo_asignado_person', null, ['class' => 'form-control' . ($errors->has('equipo_asignado_person') ? ' is-invalid' : ''),  "id" => "equipo_asignado_person","name" => "equipo_asignado_person","onKeyPress"=> "if(this.value.length==60) return false;" ,'placeholder' => 'Ingrese  a quien se le asigna', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('equipo_asignado_person', '<div class="invalid-feedback">:message</div>') !!}
         </div>          
         <div class="form-check  form-check-inline col-lg-4">
@@ -35,8 +35,8 @@
                 {{ Form::label('Tipo de Equipo(*)') }}
                 <select name="tipo_equipo" id="tipo_equipo" class="form-select @error('tipo_equipo') is-invalid @enderror" >
                     <option value=""selected> Seleccione</option>                
-                    <option value="Baruta" > PC</option>  
-                    <option value="Cagua" > Laptop</option>            
+                    <option value="PC" > PC</option>  
+                    <option value="Laptop" > Laptop</option>            
                  
                  </select> 
                 {!! $errors->first('tipo_equipo', '<div class="invalid-feedback">:message</div>') !!}
@@ -46,27 +46,27 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('Sistema Operativo(*)') }}
-                {{ Form::text('sistema_oper', null, ['class' => 'form-control' . ($errors->has('sistema_oper') ? ' is-invalid' : ''),  "id" => "sistema_oper","name" => "sistema_oper","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Sistema Operativo']) }}
+                {{ Form::label('Sistema Operativo') }}
+                {{ Form::text('sistema_oper', null, ['class' => 'form-control' . ($errors->has('sistema_oper') ? ' is-invalid' : ''),  "id" => "sistema_oper","name" => "sistema_oper","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Sistema Operativo', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('sistema_oper', '<div class="invalid-feedback">:message</div>') !!}
             </div>  
             <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('Tipo de Procesedor(*)') }}
-                {{ Form::text('procesador', null, ['class' => 'form-control' . ($errors->has('procesador') ? ' is-invalid' : ''),  "id" => "procesador","name" => "procesador","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Procesador Intel..']) }}
-                {!! $errors->first('procesador', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('Tipo de Procesedor') }}
+                {{ Form::text('tipo_procesador', null, ['class' => 'form-control' . ($errors->has('tipo_procesador') ? ' is-invalid' : ''),  "id" => "tipo_procesador","name" => "tipo_procesador","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'tipo_procesador Intel..', 'onkeyup'=> 'mayus(this)']) }}
+                {!! $errors->first('tipo_procesador', '<div class="invalid-feedback">:message</div>') !!}
             </div>              
           
 </div>
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('Disco duro (*)') }}
-                {{ Form::text('disco', null, ['class' => 'form-control' . ($errors->has('disco') ? ' is-invalid' : ''),  "id" => "disco","name" => "disco","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Disco almacenamiento de datos']) }}
+                {{ Form::label('Disco duro ') }}
+                {{ Form::text('disco', null, ['class' => 'form-control' . ($errors->has('disco') ? ' is-invalid' : ''),  "id" => "disco","name" => "disco","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Disco almacenamiento de datos', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('disco', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('Procesador Almacenamiento(*)') }}
-                {{ Form::text('memoria_ram', null, ['class' => 'form-control' . ($errors->has('memoria_ram') ? ' is-invalid' : ''),  "id" => "memoria_ram","name" => "memoria_ram","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Memoria expresadas en GB..']) }}
+                {{ Form::label('Procesador Almacenamiento') }}
+                {{ Form::text('memoria_ram', null, ['class' => 'form-control' . ($errors->has('memoria_ram') ? ' is-invalid' : ''),  "id" => "memoria_ram","name" => "memoria_ram","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Memoria expresadas en GB..', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('memoria_ram', '<div class="invalid-feedback">:message</div>') !!}
             </div>              
           
@@ -74,13 +74,13 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('CPU Marca (*)') }}
-                {{ Form::text('cpu_marca', null, ['class' => 'form-control' . ($errors->has('cpu_marca') ? ' is-invalid' : ''),  "id" => "cpu_marca","name" => "cpu_marca","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Marca de CPU']) }}
+                {{ Form::label('CPU Marca ') }}
+                {{ Form::text('cpu_marca', null, ['class' => 'form-control' . ($errors->has('cpu_marca') ? ' is-invalid' : ''),  "id" => "cpu_marca","name" => "cpu_marca","onKeyPress"=> "if(this.value.length==50) return false;" ,'placeholder' => 'Marca de CPU', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('cpu_marca', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('CPU Serial Inv(*)') }}
-                {{ Form::text('cpu_serial', null, ['class' => 'form-control' . ($errors->has('cpu_serial') ? ' is-invalid' : ''),  "id" => "cpu_serial","name" => "cpu_serial","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Marca Serial']) }}
+                {{ Form::label('CPU Serial Inv') }}
+                {{ Form::text('cpu_serial', null, ['class' => 'form-control' . ($errors->has('cpu_serial') ? ' is-invalid' : ''),  "id" => "cpu_serial","name" => "cpu_serial","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Marca Serial', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('cpu_serial', '<div class="invalid-feedback">:message</div>') !!}
             </div>              
           
@@ -89,12 +89,12 @@
     <div class="box-body">
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Teclado Marca') }}
-                {{ Form::text('teclado_marca', null, ['class' => 'form-control' . ($errors->has('teclado_marca') ? ' is-invalid' : ''),  "id" => "teclado_marca","name" => "teclado_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca']) }}
+                {{ Form::text('teclado_marca', null, ['class' => 'form-control' . ($errors->has('teclado_marca') ? ' is-invalid' : ''),  "id" => "teclado_marca","name" => "teclado_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('teclado_marca', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Teclado Serial Inv') }}
-                {{ Form::text('teclado_marca', null, ['class' => 'form-control' . ($errors->has('teclado_serial') ? ' is-invalid' : ''),  "id" => "teclado_serial","name" => "teclado_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial']) }}
+                {{ Form::text('teclado_marca', null, ['class' => 'form-control' . ($errors->has('teclado_serial') ? ' is-invalid' : ''),  "id" => "teclado_serial","name" => "teclado_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('teclado_serial', '<div class="invalid-feedback">:message</div>') !!}
             </div>             
           
@@ -103,12 +103,12 @@
     <div class="box-body">
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Mouse Marca') }}
-                {{ Form::text('mouse_marca', null, ['class' => 'form-control' . ($errors->has('mouse_marca') ? ' is-invalid' : ''),  "id" => "mouse_marca","name" => "mouse_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca']) }}
+                {{ Form::text('mouse_marca', null, ['class' => 'form-control' . ($errors->has('mouse_marca') ? ' is-invalid' : ''),  "id" => "mouse_marca","name" => "mouse_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('mouse_marca', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Mouse Serial Inv') }}
-                {{ Form::text('monitor_serial', null, ['class' => 'form-control' . ($errors->has('mouse_serial') ? ' is-invalid' : ''),  "id" => "mouse_serial","name" => "mouse_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial']) }}
+                {{ Form::text('monitor_serial', null, ['class' => 'form-control' . ($errors->has('mouse_serial') ? ' is-invalid' : ''),  "id" => "mouse_serial","name" => "mouse_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('mouse_serial', '<div class="invalid-feedback">:message</div>') !!}
             </div>             
           
@@ -117,12 +117,12 @@
     <div class="box-body">
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Monitor Marca') }}
-                {{ Form::text('monitor_marca', null, ['class' => 'form-control' . ($errors->has('monitor_marca') ? ' is-invalid' : ''),  "id" => "monitor_marca","name" => "monitor_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca']) }}
+                {{ Form::text('monitor_marca', null, ['class' => 'form-control' . ($errors->has('monitor_marca') ? ' is-invalid' : ''),  "id" => "monitor_marca","name" => "monitor_marca","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese la Marca', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('monitor_marca', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="form-check  form-check-inline col-lg-4">
                 {{ Form::label('Monitor Serial Inv') }}
-                {{ Form::text('monitor_serial', null, ['class' => 'form-control' . ($errors->has('monitor_serial') ? ' is-invalid' : ''),  "id" => "monitor_serial","name" => "monitor_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial']) }}
+                {{ Form::text('monitor_serial', null, ['class' => 'form-control' . ($errors->has('monitor_serial') ? ' is-invalid' : ''),  "id" => "monitor_serial","name" => "monitor_serial","onKeyPress"=> "if(this.value.length==3mouse0) return false;" ,'placeholder' => 'Ingrese el serial', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('monitor_serial', '<div class="invalid-feedback">:message</div>') !!}
             </div>             
           
@@ -131,8 +131,8 @@
 <div class="box box-info padding-1">
     <div class="box-body">
              <div class="form-check  form-check-inline col-lg-4">
-                {{ Form::label('Escritorio Remoto (*)') }}
-                {{ Form::text('any_desk', null, ['class' => 'form-control' . ($errors->has('any_desk') ? ' is-invalid' : ''),  "id" => "any_desk","name" => "any_desk","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el codigo Any Desk']) }}
+                {{ Form::label('Escritorio Remoto ') }}
+                {{ Form::text('any_desk', null, ['class' => 'form-control' . ($errors->has('any_desk') ? ' is-invalid' : ''),  "id" => "any_desk","name" => "any_desk","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el codigo Any Desk', 'onkeyup'=> 'mayus(this)']) }}
                 {!! $errors->first('any_desk', '<div class="invalid-feedback">:message</div>') !!}
             </div>  
             <div class="form-check  form-check-inline col-lg-4">
@@ -145,16 +145,22 @@
 
 </div>
 <div class="box box-info padding-1">
-    <div class="box-body">               
+    <div class="box-body">
+                 
         <div class="form-check  form-check-inline col-lg-4">
             {{ Form::label('Comentario') }}
-            {{ Form::textarea('any_desk', null, ['class' => 'form-control' . ($errors->has('any_desk') ? ' is-invalid' : ''),  "id" => "any_desk","name" => "any_desk","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el codigo Any Desk','rows'=>'3']) }}
-            {!! $errors->first('any_desk', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::text('comentario', null, ['class' => 'form-control' . ($errors->has('comentario') ? ' is-invalid' : ''),  "id" => "comentario","name" => "comentario","onKeyPress"=> "if(this.value.length==100) return false;" ,'placeholder' => 'Ingrese su comentario','rows'=>'1', 'onkeyup'=> 'mayus(this)']) }}
+            {!! $errors->first('comentario', '<div class="invalid-feedback">:message</div>') !!}
         </div>  
         <div class="form-check  form-check-inline col-lg-4">
+                {{ Form::label('Nombre del Equipo') }}
+                {{ Form::text('nombre_equipo', null, ['class' => 'form-control' . ($errors->has('nombre_equipo') ? ' is-invalid' : ''),  "id" => "nombre_equipo","name" => "nombre_equipo","onKeyPress"=> "if(this.value.length==30) return false;" ,'placeholder' => 'Ingrese el nombre del Equipo o dispositivo', 'onkeyup'=> 'mayus(this)']) }}
+                {!! $errors->first('nombre_equipo', '<div class="invalid-feedback">:message</div>') !!}
+        </div>     
            
-        </div>  
-           
+       
+        
+    </div>       
 
 </div>
 <div class="container">
@@ -240,4 +246,9 @@
     
    
 </div>
+<script>
 
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
+</script>

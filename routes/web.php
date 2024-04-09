@@ -73,7 +73,8 @@ Route::group(['prefix' => 'servicios', 'namespace' => 'App\Http\Controllers\Serv
   Route::get('asignacion/disable_confirm/{id}', 'AsignacionEquipoController@disable_confirm')->name('asignacion.disable_confirm');
   Route::get('asignacion/create', 'AsignacionEquipoController@create')->name('crear.asignacion');
   Route::post('asignacion', 'AsignacionEquipoController@store')->name('save.asignacion');
- 
+  Route::get('asignacion/{id}/pdf', 'AsignacionEquipoController@pdf')->name('asignacion.pdf');
+  
 
   Route::get('incidencias', 'IncidenciasController@index')->name('incidencias.list');    
   Route::get('incidencias/edit/{id}', 'IncidenciasController@edit')->name('edit.incidencias');
@@ -152,6 +153,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin', 
      Route::get('permiso/delete/{id}', 'PermisoController@delete')->name('permiso.delete');
      Route::get('permiso/delete_confirm/{id}', 'PermisoController@delete_confirm')->name('permiso.delete_confirm');
      Route::get('permiso/show/{id}', 'PermisoController@show')->name('permiso.show');
+
      
      
      

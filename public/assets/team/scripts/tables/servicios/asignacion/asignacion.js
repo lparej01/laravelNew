@@ -17,8 +17,9 @@
                 class: "d-flex,gap-2,justify-content-center",
             },
             actions: (function() {   
-                return tableControlles.setConditions(
-                    row.nombre != null 
+                console.log("Prueba"+ row);
+                return tableControlles.setConditions(                   
+                    row.id != 0 
                     ? [
                         {
                             name: 'edit',
@@ -40,6 +41,15 @@
                                 url: `asignacion/show/${row.id}`,
                             },
                             tooltip: {title:"Detalle asignacion", toggle: "tooltip",placement:"top"},
+                        },
+                        {
+                            name: 'pdf',
+                            iClass: "fa,fa-external-link-square",
+                            aClass: "btn,btn-primary,btn-icon-only",
+                            href: `asignacion/${row.id}/pdf`,
+                            tooltip: { title: "Pdf Asignacion", toggle: "tooltip",
+                                placement: "top",
+                            },
                         },
                        
                         {
@@ -74,13 +84,34 @@
                 sortable: true,
             },
             {
+                field: "nombre_equipo",
+                title: "Nombre del Equipo",
+                sortable: true,
+                align: "left",
+                searchable: true,
+            }, 
+            {
+                field: "sistema_oper",
+                title: "Sistema Operativo",
+                sortable: true,
+                align: "left",
+                searchable: true,
+            }, 
+            {
+                field: "tipo_procesador",
+                title: "Tipo de Procesador",
+                sortable: true,
+                align: "left",
+                searchable: true,
+            }, 
+            {
                 field: "equipo_asignado_person",
                 title: "Equipo asignado",
                 sortable: true,
                 align: "left",
                 searchable: true,
             }, 
-            {
+           /*  {
                 field: "tipo_equipo",
                 title: "Tipo de equipo",
                 sortable: true,
@@ -93,7 +124,7 @@
                 sortable: true,
                 align: "left",
                 searchable: true,
-            },     
+            },      */
             {
                 field: "actions",
                 title: "Acciones",

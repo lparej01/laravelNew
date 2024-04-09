@@ -36,7 +36,8 @@ return new class extends Migration
             $table->string('disco', 50)->nullable();
             $table->string('any_desk', 50)->nullable();           
             $table->string('sistema_oper', 200)->nullable();
-            $table->string('comentario', 200)->nullable();  
+            $table->string('comentario', 200)->nullable(); 
+            $table->string('nombre_equipo', 50)->nullable();  
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation='utf8mb4_spanish_ci';
