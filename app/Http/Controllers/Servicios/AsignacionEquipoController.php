@@ -130,7 +130,11 @@ class AsignacionEquipoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data= AsignacionEquipo::getAsignacionShowId($id);
+
+        
+
+        return view('servicios/asignacion/show',compact('data'));
     }
 
     /**
@@ -162,7 +166,10 @@ class AsignacionEquipoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data= AsignacionEquipo::getAsignacionShowId($id);  
+           
+
+        return view('servicios/asignacion/edit',compact('data'));
     }
 
     /**
@@ -170,14 +177,41 @@ class AsignacionEquipoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+               
+        $messages = [
+            
+            'equipo_asignado_person.required' => 'El nombre es requerido'
+            
+        ];
 
+        $request->validate([
+           
+            'equipo_asignado_person'   => ['required']                
+        ], $messages);
+
+       
+
+        $object = new AsignacionEquipo;  
+        $object = AsignacionEquipo::find($request->id);
+        $object->nombre_equipo = $request->nombre_equipo;
+        $object->oficina = $request->oficina;
+        $object->status = $request->Status;
+        $object->equipo_asignado_person = $request->equipo_asignado_person;
+        $object->dominio_sistema = $request->dominio;
+        $object->created_at = now();       
+        $object->updated_at =   now();             
+        $object->save();                          
+      
+        
+  
+        return redirect()->route('asignacion.list')->with('success', 'El equipo se modifico correctamente');
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+       
+
     }
 }

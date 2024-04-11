@@ -57,9 +57,9 @@
                                                     pdf: rolActions.can_pdf,
                                                 @endif
 
-                                                @if ($actionsBlade->can_delete)
+                                                /* @if ($actionsBlade->can_delete)
                                                     disable: rolActions.can_delete,
-                                                @endif
+                                                @endif */
                                             })
                                         })()
                                     </script>
