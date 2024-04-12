@@ -115,6 +115,79 @@ class PedidosController extends Controller
      * 
      * 
      */
+    public function costtotal(Request $request){
+
+        
+        
+       if( !isset($request->costo) || $request->costo ==0){
+
+        $costototal =$request->cant;
+
+       }       
+       else{
+
+        $costototal = $request->cant * $request->costo;
+
+       }
+
+       
+              
+        if(isset($costototal) >= 0){
+
+            return response()->json(
+                [
+                    'lista' => $costototal,                   
+                    'success' => true
+                ]
+                );
+      
+        }else
+        {
+            return response()->json(
+                [
+                    'danger' => false
+                ]
+                );
+
+        } 
+      
+        
+
+
+    }
+    
+    /**
+    *
+    */
+     public function totalflete(Request $request){      
+        
+        $totalflete = $request->costototal + $request->flete;      
+              
+        if(isset($totalflete) >= 0){
+
+            return response()->json(
+                [
+                    'lista' => $totalflete,                   
+                    'success' => true
+                ]
+                );
+      
+        }else
+        {
+            return response()->json(
+                [
+                    'danger' => false
+                ]
+                );
+
+        } 
+      
+
+     }
+    /**
+     * 
+     * 
+     */
     public function create(){
 
         $proveedor= Pedidos::getProveedores();

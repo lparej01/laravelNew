@@ -59,17 +59,17 @@ class Pedidos extends Model implements Auditable
     }
 
     public static function getProveedores(){       
-        
-  
-          return Proveedores::select('nombre','provId')->get(); 
+          
+        $almacen=300000;  
+        return Proveedores::select('nombre','provId')->where('provId','!=',$almacen)->orderBy('proveedores.nombre', 'asc')->get(); 
 
 
     }
 
     public static function getSku(){
 
-      
-        return  Sku::select('sku', 'marca','descripcion')->get();        
+        $sku=200000;
+        return  Sku::select('sku', 'marca','descripcion')->where('sku','!=',$sku)->orderBy('sku.descripcion', 'asc')->get();        
           
 
 

@@ -69,6 +69,8 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
    Route::get('pedidos/disable_confirm/{id}', 'PedidosController@disable_confirm')->name('pedidos.disable_confirm');
    Route::get('pedidos/create', 'PedidosController@create')->name('crear.pedidos');
    Route::post('pedidos', 'PedidosController@store')->name('save.pedidos');
+   Route::get('pedidos/costtotal', 'PedidosController@costtotal');
+   Route::get('pedidos/totalflete', 'PedidosController@totalflete');
 
   ///*Sku////catalogos
   Route::get('catalogos', 'SkuController@index')->name('catalogos.list');    

@@ -45,7 +45,7 @@
 
             <div class="col-lg-6">
                 {{ Form::label('Costo Unitario (*)') }}
-                {{ Form::number('costoUnitario', null, ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario","onKeyPress"=> "if(this.value.length==12) return false;", 'placeholder' => 'Ingrese el costo unitario']) }}
+                {{ Form::number('costoUnitario', null, ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario","onKeyPress"=> "if(this.value.length==6) return false;","onblur"=> "obtenerPedidosCosto()",  'placeholder' => 'Ingrese el costo unitario']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
@@ -55,7 +55,7 @@
             </div>
             <div class="col-lg-6">
                 {{ Form::label('Flete (*)') }}
-                {{ Form::number('flete', null, ['class' => 'form-control' . ($errors->has('flete') ? ' is-invalid' : ''), "id" => "flete","name" => "flete","onKeyPress"=> "if(this.value.length==12) return false;", 'placeholder' => 'Flete del Producto']) }}
+                {{ Form::number('flete', null, ['class' => 'form-control' . ($errors->has('flete') ? ' is-invalid' : ''), "id" => "flete","name" => "flete","onKeyPress"=> "if(this.value.length==12) return false;","onblur"=> "obtenerTotalFlete()", 'placeholder' => 'Flete del Producto']) }}
                 {!! $errors->first('flete', '<div class="invalid-feedback">:message</div>') !!}
             </div>  
             <div class="col-lg-6">
@@ -64,7 +64,8 @@
                 {!! $errors->first('costoTotalFlete', '<div class="invalid-feedback">:message</div>') !!}
             </div>  
             
-          
+           
+                              <script src="{{asset("assets/team/scripts/tables/abastecimiento/transacciones/pedido_costo.js")}}"></script>
         </div>
       </div>
     </div>
