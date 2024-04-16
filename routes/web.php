@@ -71,6 +71,7 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
    Route::post('pedidos', 'PedidosController@store')->name('save.pedidos');
    Route::get('pedidos/costtotal', 'PedidosController@costtotal');
    Route::get('pedidos/totalflete', 'PedidosController@totalflete');
+   Route::get('total_edit', 'PedidosController@totaledit');
 
   ///*Sku////catalogos
   Route::get('catalogos', 'SkuController@index')->name('catalogos.list');    

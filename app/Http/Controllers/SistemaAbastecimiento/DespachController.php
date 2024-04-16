@@ -4,8 +4,13 @@ namespace App\Http\Controllers\SistemaAbastecimiento;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Rol;
+use App\Models\Admin\UsersRol;
+use App\Models\Admin\PermisoRol;
+use Illuminate\Support\Facades\DB;
+use App\Models\SistemaAbastecimiento\Pedidos;
 
-class SolicitudDespachoController extends Controller
+class DespachController extends Controller
 {
     /**
      * Display a listing of the resource.

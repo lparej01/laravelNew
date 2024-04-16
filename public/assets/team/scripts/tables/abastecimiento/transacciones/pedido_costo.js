@@ -35,8 +35,8 @@ function obtenerPedidosCosto (){
 
     
 
-    }
-    function obtenerTotalFlete (){  
+}
+function obtenerTotalFlete (){  
         const data = {
          costototal :document.getElementById('costoTotal').value,
          flete: document.getElementById('flete').value
@@ -72,6 +72,7 @@ function obtenerPedidosCosto (){
 
     
 
-    }
+}
+
 
 
