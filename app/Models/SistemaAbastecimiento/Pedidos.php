@@ -8,6 +8,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
 use App\Models\SistemaAbastecimiento\Periodo;
 use App\Models\SistemaAbastecimiento\Sku;
+use App\Models\SistemaAbastecimiento\Existencia;
 
 class Pedidos extends Model implements Auditable
 {
@@ -126,7 +127,7 @@ class Pedidos extends Model implements Auditable
 
        
         return  Sku::select('sku', 'marca','descripcion')
-                        ->where('sku','=',$sku)                       
+                        ->where('sku','=',$id)                       
                         ->first();        
           
 
@@ -166,6 +167,8 @@ class Pedidos extends Model implements Auditable
 
 
     }
+
+    
     /**
      * Crear un pedido
      */
@@ -194,6 +197,39 @@ class Pedidos extends Model implements Auditable
         
         
         return $getPedido;
+
+
+    }
+     /**
+     * Crear un pedido
+     */
+    public static function createPedidosDespachos($request){
+
+        $usuario_id= user()->username; 
+
+        
+   
+
+        $getPedidoDespacho= Pedidos::create([
+            'fechaPedido'  => $request->fechaPedido,
+            'provId'  => 300000,
+            'sku'  => $request->sku,
+            'cant'  => $request->cant,
+            'costoUnitario'  => $request->costoUnitario,
+            'costoTotal'  =>   $request->costoTotal,
+            'flete'  => 0,        
+            'costoTotalFlete'  =>0,           
+            'saldoPendiente' =>0, 
+            'cantPendiente' =>$request->cant,         
+            'activo' => 1,
+            'usuario'  => $usuario_id,           
+            'timestamp' => time()   
+                   
+           
+        ]);   
+        
+        
+        return $getPedidoDespacho;
 
 
     }
@@ -226,6 +262,16 @@ class Pedidos extends Model implements Auditable
          return $object;
         
         
+    }
+    public static function getPeriodoSkuExistencia($sku){
+
+        $periodoActual= Periodo::buscarPeriodoActual();
+        $periodo=$periodoActual->periodo;
+        $existencia = Existencia::getExistenciaSkuPeriodo($sku,$periodo);
+
+        return $existencia;
+
+
     }
     
     public static function getPedidosPeriodoActual($sku,$tipo){

@@ -36,7 +36,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 Route::get('/logout', [HomeController::class, 'destroy'])->name('log_out');
 Route::get('login/forgot.password', [ResetPasswordController::class, 'sendEmail'])->name('forgot.password');
-Route::get('login/reset.password', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
+//Route::get('login/reset.password', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
 
 Route::get('user/create', [UsersController::class,'create'])->name('user.create');
 Route::post('user/store', [UsersController::class,'store'])->name('store.user');
@@ -72,6 +72,19 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
    Route::get('pedidos/costtotal', 'PedidosController@costtotal');
    Route::get('pedidos/totalflete', 'PedidosController@totalflete');
    Route::get('total_edit', 'PedidosController@totaledit');
+
+  
+   
+   ///*Despachos////
+    Route::get('despachos', 'DespachosController@index')->name('despachos.list');    
+    Route::get('despachos/edit/{id}', 'DespachosController@edit')->name('edit.despachos');
+    Route::post('despachos/{id}', 'DespachosController@update')->name('update.despachos');
+    Route::delete('despachos/{id}/destroy', 'DespachosController@destroy')->name('destroy.despachos');
+    Route::get('despachos/show/{id}', 'DespachosController@show')->name('despachos.show'); 
+    Route::get('despachos/disable/{id}', 'DespachosController@disable')->name('despachos.disable'); 
+    Route::get('despachos/disable_confirm/{id}', 'DespachosController@disable_confirm')->name('despachos.disable_confirm');
+    Route::get('despachos/create', 'DespachosController@create')->name('crear.despachos');
+    Route::post('despachos', 'DespachosController@store')->name('save.despachos'); 
 
   ///*Sku////catalogos
   Route::get('catalogos', 'SkuController@index')->name('catalogos.list');    
