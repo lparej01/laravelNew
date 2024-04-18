@@ -67,26 +67,25 @@ class DespachosController extends Controller
      */
     public function store(Request $request)
     {
-       //dd($request->all());
+       
         /**Valido los campos del formulario */
         $messages = [
            
             'fechaPedido.required' => 'La fecha es requerida',             
             'sku.required' => 'El Catálogo o Sku  es requerido',
-            'cant.required'=> 'La Cantidad es requeridad',
-            'costoUnitario.required'=> 'El Costo Unitario es requerido',
+            'cant.required'=> 'La Cantidad es requeridad'
             
         ];
 
         $request->validate([
             'fechaPedido'           => ['required'],          
             'sku'           => ['required'],
-            'cant'           => ['required','min:1', 'max:10'],
-            'costoUnitario'           => ['required','min:1', 'max:10'],
+            'cant'           => ['required','min:1', 'max:10']
+            
             
           
         ], $messages);
-
+        //dd($request->all());
 
         
         //envio datos al create para guadar  
@@ -136,7 +135,38 @@ class DespachosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         /**Valido los campos del formulario */
+         $messages = [
+           
+            'fechaPedido.required' => 'La fecha es requerida',             
+            'sku.required' => 'El Catálogo o Sku  es requerido',
+            'cant.required'=> 'La Cantidad es requeridad'
+            
+        ];
+
+        $request->validate([
+            'fechaPedido'   => ['required'],          
+            'sku'           => ['required'],
+            'cant'          => ['required','min:1', 'max:10']
+            
+            
+          
+        ], $messages);
+       
+
+        /**Actualizo los datos */
+        $despachos = Pedidos::actualizarDespachos($request ,$id);
+        
+        //valida la actualiazacion
+        if ($despachos) {
+            return redirect()->route('despachos.list')
+                    ->with('success', 'La solicitud de despacho se actualizo correctamente');
+           } else {
+            return redirect()->route('edit.despachos')
+                ->with('danger', 'Error en la edicion del pedido');
+           }
+
+
     }
 
     /**

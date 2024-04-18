@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     @includeif('partials.errors')
-                    <x-forms.template-form form-redirect-back="{{ route('despachos.list') }}" form-route="{{ route('save.permiso') }}"
+                    <x-forms.template-form form-redirect-back="{{ route('despachos.list') }}" form-route="{{ route('save.despachos') }}"
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>

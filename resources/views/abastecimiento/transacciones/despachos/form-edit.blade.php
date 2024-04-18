@@ -32,12 +32,12 @@
 
             <div class="col-lg-6">
                 {{ Form::label('Costo Unitario (*)') }}
-                {{ Form::number('costoUnitario', old('costoUnitario',$despachos->costoUnitario), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario","onKeyPress"=> "if(this.value.length==6) return false;","onblur"=> "obtenerCosto()",  'placeholder' => 'Ingrese el costo unitario']) }}
+                {{ Form::number('costoUnitario', old('costoUnitario',$despachos->costoUnitario), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'placeholder' => 'Ingrese el costo unitario','readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
                 {{ Form::label('Costo Total') }}
-                {{ Form::number('costoTotal', old('costoTotal',$despachos->costoTotal), ['class' => 'form-control' . ($errors->has('costoTotal') ? ' is-invalid' : ''), "id" => "costoTotal","name" => "costoTotal","onKeyPress"=> "if(this.value.length==12) return false;",'readonly', 'placeholder' => 'Costo Total']) }}
+                {{ Form::number('costoTotal', old('costoTotal',$despachos->costoTotal), ['class' => 'form-control' . ($errors->has('costoTotal') ? ' is-invalid' : ''), "id" => "costoTotal","name" => "costoTotal", 'placeholder' => 'Costo Total','readonly']) }}
                 {!! $errors->first('costoTotal', '<div class="invalid-feedback">:message</div>') !!}
             </div>   
             

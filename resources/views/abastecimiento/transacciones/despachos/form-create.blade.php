@@ -30,8 +30,8 @@
             </div> 
 
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario (*)') }}
-                {{ Form::number('costoUnitario', old('costoUnitario'), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario","onKeyPress"=> "if(this.value.length==6) return false;","onchange"=> "obtenerCosto()",  'placeholder' => 'Ingrese el costo unitario']) }}
+                {{ Form::label('Costo Unitario ') }}
+                {{ Form::number('costoUnitario', old('costoUnitario'), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'placeholder' => 'Costo Unitario','readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">

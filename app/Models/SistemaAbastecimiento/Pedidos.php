@@ -187,7 +187,7 @@ class Pedidos extends Model implements Auditable
             'flete'  => $request->flete,        
             'costoTotalFlete'  =>$request->costoTotalFlete,           
             'saldoPendiente' =>$request->costoTotalFlete, 
-            'cantPendiente' =>0,         
+            'cantPendiente' =>$request->costoTotal,         
             'activo' => 1,
             'usuario'  => $usuario_id,           
             'timestamp' => time()   
@@ -215,8 +215,8 @@ class Pedidos extends Model implements Auditable
             'provId'  => 300000,
             'sku'  => $request->sku,
             'cant'  => $request->cant,
-            'costoUnitario'  => $request->costoUnitario,
-            'costoTotal'  =>   $request->costoTotal,
+            'costoUnitario'  =>0,
+            'costoTotal'  =>   0,
             'flete'  => 0,        
             'costoTotalFlete'  =>0,           
             'saldoPendiente' =>0, 
@@ -263,6 +263,30 @@ class Pedidos extends Model implements Auditable
         
         
     }
+    public static function actualizarDespachos($request,$id){
+
+
+       
+
+        $usuario_id= user()->username; 
+        /*
+         *se crea el object para actualizar los valores 
+         * Esta funcion permite auditar la actualizacion
+         */
+        $object = new Pedidos;            
+        $object = Pedidos::find($id);  
+        $object->cant = $request->cant;       
+        $object->cantPendiente = $request->cant;           
+        $object->usuario =  $usuario_id;      
+        $object->timestamp =   time() ;  
+        $object->save(); 
+
+        
+       
+        return $object;
+       
+       
+   }
     public static function getPeriodoSkuExistencia($sku){
 
         $periodoActual= Periodo::buscarPeriodoActual();
