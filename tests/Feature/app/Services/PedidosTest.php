@@ -14,15 +14,18 @@ class PedidosTest extends TestCase
      */
     public function test_example(): void
     {
-        $pedidos = DB::table('pedidos')      
+        $pedidos =  DB::connection('sqlite')->table('pedidos')      
         ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
         ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
         ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')      
         ->get();   
   
   
-      // return  $pedidos;
+    
        $response = $this->get('/');
        $response->assertStatus(200);
+       
+       
+
     }
 }
