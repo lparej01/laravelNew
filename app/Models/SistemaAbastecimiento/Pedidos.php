@@ -80,8 +80,10 @@ class Pedidos extends Model implements Auditable
  
      }
 
-
-    public static function getProveedores(){       
+     /**
+      * buscar proveedores sin el de Almacen
+      */
+    public static function getProveedores(){      
           
         $almacen=300000;  
         return Proveedores::select('nombre','provId')
@@ -90,6 +92,9 @@ class Pedidos extends Model implements Auditable
 
 
     }
+    /***
+     * Buscar un proveedor por su id
+     */
     public static function getProveedoresId($id){         
           
         
@@ -99,6 +104,9 @@ class Pedidos extends Model implements Auditable
 
         
     }
+    /***
+     * Buscar proveedores diferentes de ?
+     */
     public static function getProveedoresDif($id){       
           
         $almacen=300000;  
@@ -112,9 +120,10 @@ class Pedidos extends Model implements Auditable
            
     }
 
-
+    /**
+     * 
+     * Buscar todos los sku */
     public static function getSku(){
-
         $sku=200000;
         return  Sku::select('sku', 'marca','descripcion')
                 ->where('sku','!=',$sku)
@@ -123,6 +132,9 @@ class Pedidos extends Model implements Auditable
 
 
     }
+    /***
+     * buscar sku por su id
+     */
     public static function getSkuId($id){
 
        
@@ -133,7 +145,9 @@ class Pedidos extends Model implements Auditable
 
 
     }
-
+    /**
+     * Buscar sku activos 
+     */
     public static function getSkuDif($id){
 
         $sku=200000;
@@ -150,32 +164,28 @@ class Pedidos extends Model implements Auditable
 
     
     /**
-     * Buscar por el id 
+     * Buscar pedido  por el id 
      */
     public static function getPedidoId($pedidoId){
-
 
         $pedidos= DB::connection('sqlite')->table('pedidos')
         ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
         ->join('sku','pedidos.sku', '=', 'sku.sku')   
         ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
-        ->where('pedidoId',$pedidoId)->first();  
-        
-        
+        ->where('pedidoId',$pedidoId)->first();       
        
         return $pedidos;
 
 
     }
-
     
     /**
      * Crear un pedido
      */
     public static function createPedidos($request){
 
-        $usuario_id= user()->username; 
-   
+        //buscar usuario logeado
+        $usuario_id= user()->username;
 
         $getPedido= Pedidos::create([
             'fechaPedido'  => $request->fechaPedido,
@@ -201,14 +211,12 @@ class Pedidos extends Model implements Auditable
 
     }
      /**
-     * Crear un pedido
+     * Crear una solicitud de Despacho
      */
     public static function createPedidosDespachos($request){
 
-        $usuario_id= user()->username; 
-
-        
-   
+        //Buscar usuario logeado
+        $usuario_id= user()->username;  
 
         $getPedidoDespacho= Pedidos::create([
             'fechaPedido'  => $request->fechaPedido,
@@ -233,8 +241,9 @@ class Pedidos extends Model implements Auditable
 
 
     }
-
-
+    /**
+     * Actualizar pedido 
+     */
     public static function actualizarPedido($request){
 
 
@@ -263,6 +272,10 @@ class Pedidos extends Model implements Auditable
         
         
     }
+    /***
+     * Actualizar solicitud de despacho
+     * 
+     */
     public static function actualizarDespachos($request,$id){
 
 
@@ -287,6 +300,9 @@ class Pedidos extends Model implements Auditable
        
        
    }
+    /***
+    * Obtener un periodo por Sku y Existencia
+    */
     public static function getPeriodoSkuExistencia($sku){
 
         $periodoActual= Periodo::buscarPeriodoActual();
@@ -296,8 +312,10 @@ class Pedidos extends Model implements Auditable
         return $existencia;
 
 
-    }
-    
+    } 
+    /**
+     * Obtener pedidos por period actual
+     *  */   
     public static function getPedidosPeriodoActual($sku,$tipo){
       
        $periodoActual= Periodo::buscarPeriodoActual();

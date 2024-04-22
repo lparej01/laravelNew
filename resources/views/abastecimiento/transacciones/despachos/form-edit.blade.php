@@ -21,7 +21,7 @@
             </div> 
             <div class="col-lg-6">
                 {{ Form::label('Sku (*)') }}
-                {{ Form::number('sku',$sku->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''), "id" => "sku","name" => "sku","onKeyPress"=> "if(this.value.length==12) return false;", 'placeholder' => 'Ingrese la cantidad']) }}
+                {{ Form::number('sku',$sku->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''), "id" => "sku","name" => "sku",'readonly']) }}
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">

@@ -209,6 +209,15 @@ if (function_exists('user')) {
         case "edit.movinv":
             $rutas = "Editar movimiento de inventario";
             break;
+        case "despachos.list":
+            $rutas = "Solicitudes de Despacho";
+            break;
+        case "edit.despachos":
+            $rutas = "Editar solicitud de despacho";
+            break;
+        case "crear.despachos":
+            $rutas = "crear solicitud de despacho";
+            break;
         case "obtener_pedidos.movinv":
             $rutas = "Listado de pedido del periodo activo";
             break;       
