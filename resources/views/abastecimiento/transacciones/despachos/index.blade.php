@@ -7,7 +7,7 @@
 @section('content')  
 <div class="container-fluid">
   <div class="col-sm-12" >                     
-       <x-tables.bo-table :data="$despachos" title="LISTADOS DE DESPACHO" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+       <x-tables.bo-table :data="$despachos" title="LISTADOS DE SOLICITUDES DESPACHOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                           data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                           data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                           data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

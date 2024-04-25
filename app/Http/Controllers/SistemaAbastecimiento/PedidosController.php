@@ -283,7 +283,7 @@ class PedidosController extends Controller
         } else {
 
             return redirect()->route('pedidos.list')
-                    ->with('warning', 'El pedido esta en el inventario no se puede modificar');
+                    ->with('info', 'El pedido esta en el inventario no se puede modificar');
         }
         
 

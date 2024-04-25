@@ -9,6 +9,11 @@ use App\Models\Admin\UsersRol;
 use App\Models\Admin\PermisoRol;
 use Illuminate\Support\Facades\DB;
 use App\Models\SistemaAbastecimiento\Pedidos;
+use App\Models\SistemaAbastecimiento\MovInv;
+
+
+
+
 
 
 class DespachosController extends Controller
@@ -127,7 +132,21 @@ class DespachosController extends Controller
   
         $skudif= Pedidos::getSkuDif($sku->sku);
 
-        return view("abastecimiento.transacciones.despachos.edit",compact('despachos','sku','skudif'));
+         //para editar no debe estar en movimiento de inventario 
+         $movinv = MovInv::buscarPedidoMovint( $id);
+
+         if ($movinv == null) {
+
+            return view("abastecimiento.transacciones.despachos.edit",compact('despachos','sku','skudif'));
+
+        } else {
+
+            return redirect()->route('despachos.list')
+                    ->with('info', 'Esta Solicitud  esta en el inventario no se puede modificar');
+        }
+        
+
+        
     }
 
     /**

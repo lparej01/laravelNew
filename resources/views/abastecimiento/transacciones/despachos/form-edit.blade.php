@@ -20,7 +20,7 @@
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Sku (*)') }}
+                {{ Form::label('Sku') }}
                 {{ Form::number('sku',$sku->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''), "id" => "sku","name" => "sku",'readonly']) }}
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -31,7 +31,7 @@
             </div> 
 
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario (*)') }}
+                {{ Form::label('Costo Unitario') }}
                 {{ Form::number('costoUnitario', old('costoUnitario',$despachos->costoUnitario), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'placeholder' => 'Ingrese el costo unitario','readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>

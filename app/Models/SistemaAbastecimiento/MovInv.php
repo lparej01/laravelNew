@@ -42,7 +42,10 @@ class MovInv extends Model implements Auditable
        
         return $movinv ;
     }
-
+    /**
+     * Buscando el periodo activo
+     * 
+     */
     public static function periodoActivo(){
 
         $periodo =DB::connection('sqlite')->table('periodo')->where('esActual', 1)->first();  
@@ -51,21 +54,24 @@ class MovInv extends Model implements Auditable
         return $periodo;
 
     }
-
+     /***
+      * Buscar pedido por sko o catalogo
+      */
     public static function buscarSkuPedido($sku){
 
-        $periodo=MovInv::periodoActivo();
-
+       $periodo=MovInv::periodoActivo();
             
-        /**Obtengo los pedidos en un determinado mes y año */
+       /**Obtengo los pedidos en un determinado mes y año */
        $pedidos= DB::connection('sqlite')->table('pedidos')->where('sku', $sku)
                                     ->whereYear('fechaPedido', $periodo->anio)
                                     ->whereMonth('fechaPedido', '>=' , $periodo->mes)
-                                    ->get();
-      
+                                    ->get();      
        return $pedidos;
     }
-
+    /***
+     * Buscar sku en determinado periodo de mes y año
+     * 
+     */
     public static function buscarPedidosActivos(){
 
         $periodo= MovInv::periodoActivo();       
@@ -82,14 +88,19 @@ class MovInv extends Model implements Auditable
       
         return $pedidos;
     }
-
+    /**Buscar pedido por id */
     public static function buscarPedidoId($pedidoId){
 
         $pedidos= DB::connection('sqlite')->table('pedidos')->where('pedidoId',$pedidoId)->first();
 
-         return $pedidos;
+        return $pedidos;
 
     }
+
+    /**Buscar un  pedido en el movimiento de inventario
+     * 
+     * 
+     */
     public static function buscarPedidoMovint($pedidoId){
 
         $movinv = DB::connection('sqlite')->table('movinv')->where('pedidoId',$pedidoId)->first();
