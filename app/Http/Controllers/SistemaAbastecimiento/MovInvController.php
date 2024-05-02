@@ -68,7 +68,38 @@ class MovInvController extends Controller
     public function showPedido(Request $request) {   
     
 
-        $pedido = Pedidos::getPedidosPeriodoActual($request->sku,$request->tipo);    
+        $pedido = Pedidos::getPedidosTipo($request->sku,$request->tipo);    
+        //dd($pedido);
+        if(isset($pedido)){
+
+            return response()->json(
+                [
+                    'lista' => $pedido,                   
+                    'success' => true
+                ]
+                );
+      
+        }else
+        {
+            return response()->json(
+                [
+                    'danger' => false
+                ]
+                );
+
+        } 
+      }
+      
+      /**
+     * Display the specified resource.
+     * Modal de vista de pedidos
+     */
+    public function buscarPedido(Request $request) {   
+    
+
+        $pedido = Pedidos::getPedidoId($request->pedido);    
+
+       
        
         if(isset($pedido)){
 
@@ -305,32 +336,6 @@ class MovInvController extends Controller
      */
     public function agregarMovInv(){
        
-              
-        /* $mov = MovInv::buscarPedidosActivos(); 
-       
-        $movInv = serializeJson($mov);         
-        $usuario_id= user()->id; 
-        $user = UsersRol::getUserRolId($usuario_id);
-        $permisorol=PermisoRol::getPermisoRolId($user->rol_id);
-
-        $permiso_status = DB::table('permiso_rol')
-            ->join('permiso', 'permiso_rol.permiso_id', '=', 'permiso.id')            
-            ->select('permiso.nombre', 'permiso_rol.*')
-            ->where('permiso_rol.rol_id',$user->rol_id)
-            ->get();         
-
-        $array = array("can_create" => $permiso_status[0]->status, 
-                        "can_edit" => $permiso_status[2]->status, 
-                        "can_show" => $permiso_status[5]->status,
-                        "can_disable" => $permiso_status[4]->status,
-                        "can_delete" => $permiso_status[1]->status);  
-
-        $actions = serializeJson($array); 
-        
-      
-
-        return view('abastecimiento.transacciones.movinventario.edit',compact('movInv','actions')); */
-
         $movsku= Sku::getSkuActivos();
 
         return view('abastecimiento.transacciones.movinventario.create_pedidos',compact('movsku')); 

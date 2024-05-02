@@ -19,7 +19,7 @@ class ExistenciaController extends Controller
     public function index()
     {
        
-        $exist = Existencia::getExistenciaAll();
+        $exist = Existencia::getExistenciaPeriodActivo();
         $existencia = serializeJson($exist);         
         $usuario_id= user()->id; 
         $user = UsersRol::getUserRolId($usuario_id);

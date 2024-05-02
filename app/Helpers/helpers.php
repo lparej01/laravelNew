@@ -219,7 +219,7 @@ if (function_exists('user')) {
             $rutas = "crear solicitud de despacho";
             break;
         case "obtener_pedidos.movinv":
-            $rutas = "Listado de pedido del periodo activo";
+            $rutas = "Entradas y salidas Inventario ";
             break;       
             default:
             $rutas=Route::current()->action['as'];

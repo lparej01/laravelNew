@@ -18,17 +18,17 @@
             </div> 
             <div class="col-lg-6">
                 {{ Form::label('Entrada') }}
-                {{ Form::number('entradas', $existencia->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), "id" => "entradas","name" => "entradas","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                {{ Form::number('entradas', $existencia->entradas, ['class' => 'form-control' . ($errors->has('entradas') ? ' is-invalid' : ''), "id" => "entradas","name" => "entradas","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
                 {!! $errors->first('entradas', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
                 {{ Form::label('Salida') }}
-                {{ Form::number('salidas', $existencia->salidas, ['class' => 'form-control' . ($errors->has('salidas') ? ' is-invalid' : ''), "id" => "salidas","name" => "salidas","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                {{ Form::number('salidas', $existencia->salidas, ['class' => 'form-control' . ($errors->has('salidas') ? ' is-invalid' : ''), "id" => "salidas","name" => "salidas","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
                 {!! $errors->first('salidas', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
                 {{ Form::label('Merma') }}
-                {{ Form::number('merma', $existencia->merma, ['class' => 'form-control' . ($errors->has('merma') ? ' is-invalid' : ''), "id" => "merma","name" => "merma","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                {{ Form::number('merma', $existencia->merma, ['class' => 'form-control' . ($errors->has('merma') ? ' is-invalid' : ''), "id" => "merma","name" => "merma","onKeyPress"=> "if(this.value.length==6) return false;"]) }}
                 {!! $errors->first('merma', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">

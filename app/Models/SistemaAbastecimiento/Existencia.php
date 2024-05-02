@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use App\Models\SistemaAbastecimiento\Periodo;
 
 class Existencia extends Model implements Auditable
 {
@@ -39,6 +40,23 @@ class Existencia extends Model implements Auditable
         $existencia=DB::connection('sqlite')->table('existencia') ->orderBy('periodo', 'desc')->get();        
        
         return $existencia ;
+    }
+    /***
+     * Buscar Periodo activo
+     * traer la existencia de ese periodo
+     * 
+     */
+    public static function getExistenciaPeriodActivo(){
+
+          $periodo = Periodo::buscarPeriodoActual();
+
+          $existencia=DB::connection('sqlite')->table('existencia')
+                    ->where('periodo','=',$periodo->periodo) 
+                     ->orderBy('sku', 'desc')
+                     ->get();        
+       
+          return $existencia ; 
+
     }
 
      /**
@@ -141,46 +159,27 @@ class Existencia extends Model implements Auditable
     public static function actualizarExistenciaSkuPeriodo($request){
 
 
-      
-
-        $usuario= user()->username;      
-        $object = new Existencia;  
-        $object = Existencia::find($request->sku);      
-
         $sumaSalida = $request->salidas + $request->merma;
         $sumaEntradas =$request->invInicial+ $request->entradas;
         $totalInvFinal = $sumaEntradas - $sumaSalida ;
-        
-
-        
 
         if ($sumaSalida > $sumaEntradas ) {
-             return false;
-        } else {           
-            
-            
-           
-            $object->invInicial = $request->invInicial;
-            $object->entradas =  $request->entradas;       
-            $object->salidas =   $request->salidas;      
-            $object->merma =  $request->merma;       
-            $object->costoUnitario =  $request->costoUnitario; 
-            $object->invFinal = $totalInvFinal; 
-            $object->timestamp = time();       
-            $object->usuario =  $usuario;            
-            $object->save();       
-            
-            
-            return $object;
-        }
-               
+            return false;
+       }else { 
+        
+        $usuario= user()->username;      
+        $object = new Existencia;  
+        $object = Existencia::find($request->sku);      
+        $object->merma =  $request->merma; 
+        $object->invFinal =   $totalInvFinal; 
+        $object->timestamp = time();       
+        $object->usuario =  $usuario;            
+        $object->save();       
         
         
-
-
-
-
-        
+        return $object;   
+       }
+    
     }
 
 }

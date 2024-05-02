@@ -63,13 +63,15 @@
                                
                                 <script src="{{asset("assets/team/js/plugins/bootstrap-table.min.js")}}"></script>
                                 <script src="{{asset("assets/team/scripts/tables/abastecimiento/transacciones/movInvped.js")}}"></script>
-                            @endpush                             
+                               
+                            
+                                @endpush                             
                        
   
          </x-tables.bo-table>
      
     </div>   
   </div> 
-  
+ 
      
   @endsection

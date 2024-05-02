@@ -181,6 +181,10 @@ class Pedidos extends Model implements Auditable
     
     /**
      * Crear un pedido
+     * Costo total es igual cantidad por costo unitario
+     * Costotalflete  es igual a costotal mas flete
+     * cantPendiente es igual cantidad
+     * Saldo pendiente es igual costototalflete
      */
     public static function createPedidos($request){
 
@@ -313,37 +317,60 @@ class Pedidos extends Model implements Auditable
 
 
     } 
-    /**
-     * Obtener pedidos por period actual
+    /** 
+     * Esto es para movimiento de inventario   
+     * La recepcion son los pedidos solicitados que se reciben de la mercancias
+     * Los despachos son la salidas de mercancias se suponen que van a un almacen para ser procesados a su despacho
+     * Los despacho en existencia se agrega al campo salida se supone que va un almacen para su despacho
+     * Devolucion se agrega al campo  salida de la  existencia del sku considerado pedido
+     * Retornos se ajusta  al campo entrada en existencia del sku de los que son considerados pedidos 
      *  */   
-    public static function getPedidosPeriodoActual($sku,$tipo){
+    public static function getPedidosTipo($sku,$tipo){
       
-       $periodoActual= Periodo::buscarPeriodoActual();
-       $fec= strtotime($periodoActual->anio."-".$periodoActual->mes."-01");
-       $fecha= date('Y-m-d',$fec );  
-       
+      // $periodoActual= Periodo::buscarPeriodoActual();
+      // $fec= strtotime($periodoActual->anio."-".$periodoActual->mes."-01");       
+      // $fecha= date('Y-m-d',$fec );  
+      
        
             if ($tipo=="Recepcion") {
 
                 $pedidos =  DB::connection('sqlite')->table('pedidos')
-                ->Select('sku','pedidoId', 'fechaPedido', 'cant',  'cantPendiente','provId')          
-                ->where('fechaPedido','>=', $fecha)
-                ->where('sku',$sku)
-                ->where('provId',"<>",300000)          
+                //Recepcion de pedidos
+                ->where('provId',"<>",300000) // proveedor para distinguir lo que son de despacho           
+                ->where('sku',$sku)      
+                ->where('cantPendiente','>',0)                  
                 ->get();
-        
-            } else {
+            }
+            if ($tipo=="Despacho") {
                 $pedidos =  DB::connection('sqlite')->table('pedidos')
-                ->Select('sku','pedidoId', 'fechaPedido', 'cant',  'cantPendiente','provId')          
-                ->where('fechaPedido','>=', $fecha)
-                ->where('sku',$sku)
-                ->where('provId',"=",300000)          
+                //Despachos de productos
+                ->where('provId',"=",300000)
+                ->where('sku',$sku)            
+                ->where('cantPendiente','>',0)                    
                 ->get();
         
             }
+            if ($tipo=="Devolucion") {
+                $pedidos =  DB::connection('sqlite')->table('pedidos')
+                //->Select('sku.*')
+                ->where('provId',"<>",300000)
+                ->where('sku',$sku)            
+                ->where('cantPendiente','=',0)                    
+                ->get();
+        
+            }
+             if ($tipo=="Retorno") {
+                $pedidos =  DB::connection('sqlite')->table('pedidos')
+                //->Select('sku.*')
+                ->where('provId',"<>",300000)
+                ->where('sku',$sku)            
+                ->where('cantPendiente','=',0)                    
+                ->get();
+        
+            } 
      
        
-      
+         /// dd($pedidos);
  
        
        return $pedidos;

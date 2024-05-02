@@ -156,7 +156,8 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
   Route::post('movinv', 'MovInvController@store')->name('save.movinv');
   Route::get('movinv/agregar', 'MovInvController@agregarMovInv')->name('obtener_pedidos.movinv');
   //Route::post('movinv/{id}', 'MovInvController@update')->name('update.movinv');
-  Route::get('movinv/entrada_salida', 'MovInvController@showPedido')->name('movinv.show_agregar');  
+  Route::get('movinv/entrada_salida', 'MovInvController@showPedido')->name('movinv.show_agregar');
+  Route::get('movinv/buscar/pedido', 'MovInvController@buscarPedido')->name('movinv.buscar');    
 
     ///*Combos////
     Route::get('combos', 'CombosController@index')->name('combos.list');    

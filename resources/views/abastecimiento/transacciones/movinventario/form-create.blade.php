@@ -8,16 +8,16 @@
             <select name="tipoMovinv" id="tipoMovinv" class="form-select @error('tipoMovinv') is-invalid @enderror" >
                 <option value="0" selected='selected'>Seleccione el tipo de movimiento</option>
                  <option value="Recepcion" >Recepcion</option> 
-                 <option value="Despacho" >Despacho</option> 
-               {{--   <option value="Devolucion" >Devolucion</option> 
-                 <option value="Retorno" >Retorno</option>  --}}
+                 <option value="Despacho" >Despacho</option>                 
+                 <option value="Devolucion" >Devolucion</option>
+                 <option value="Retorno" >Retorno</option>
             
             </select>
             {!! $errors->first('tipoMovinv', '<div class="invalid-feedback">:message</div>') !!} 
           </div>
           <div class=" form-group col-6">
             <label >Sku o Catalogo (*)</label>
-            <select name="selectsku" id="selectsku" class="form-select @error('selectsku') is-invalid @enderror" onchange="obtenerPedidos()">
+            <select name="selectsku" id="selectsku" class="form-select @error('selectsku') is-invalid @enderror" onchange="obtenerPedidos(this)">
                 <option value="0">Seleccione el sku </option>
                 @foreach ($movsku as $sku)
                 <option value="{{ $sku->sku }}">{{ $sku->descripcion }}</option>
@@ -32,8 +32,8 @@
             <div class="col-lg-6">
              
               <label >Pedidos Relacionados (*)</label>
-              <select name="ped" id="ped" class="form-select @error('ped') is-invalid @enderror" >
-                  
+              <select name="ped" id="ped" class="form-select @error('ped') is-invalid @enderror" onchange="buscarPedido();" >
+                <option value="" selected>Seleccione un pedido</option>
                 {{--   @if (!empty($pedido))
                       @foreach ($pedido as $ped)
                       <option value="{{ $ped->pedidoId }}">{{ $ped->pedidoId }}</option>
@@ -75,7 +75,8 @@
             <div class="col-lg-6">
                
                 <label >Cantidad</label>
-                {{ Form::number('sku', null, ['class' => 'form-control' . ($errors->has('cant') ? ' is-invalid' : ''), "id" => "cant","name" => "cant","onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                <input id="cant" type="number" class="form-control @error('cant') is-invalid @enderror" onchange=vereficarCantidad();>
+                {{-- {{ Form::number('cant', null, ['class' => 'form-control' . ($errors->has('cant') ? ' is-invalid' : ''), "id" => "cant","name" => "cant","onKeyPress"=> "if(this.value.length==12) return false;","onchange"=>"vereficarCantidad();"]) }} --}}
                 {!! $errors->first('cant', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
           
@@ -84,4 +85,8 @@
       </div>
     </div>
    
-    <script src="{{asset("assets/team/scripts/tables/abastecimiento/transacciones/movInv.js")}}"></script>
+    
+      <script src="{{asset("assets/team/scripts/tables/abastecimiento/transacciones/movInv.js")}}"></script>
+      
+   
+    
