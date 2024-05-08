@@ -58,10 +58,17 @@
         [
             {
                 field: "sku",
-                title: "Catalogo",
+                title: "Sku",
                 align: "center",
                 valign: "middle",
                 sortable: true,
+            },
+            {
+                field: "descripcion",
+                title: "Descripcion",
+                sortable: true,
+                align: "left",
+                searchable: true,
             },
             {
                 field: "periodo",

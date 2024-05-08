@@ -49,10 +49,12 @@ class Existencia extends Model implements Auditable
     public static function getExistenciaPeriodActivo(){
 
           $periodo = Periodo::buscarPeriodoActual();
-
+         
           $existencia=DB::connection('sqlite')->table('existencia')
+                    ->join('sku', 'sku.sku', '=', 'existencia.sku') 
+                    ->select('existencia.*','sku.descripcion')
                     ->where('periodo','=',$periodo->periodo) 
-                     ->orderBy('sku', 'desc')
+                     ->orderBy('sku.descripcion', 'asc')
                      ->get();        
        
           return $existencia ; 
@@ -181,5 +183,53 @@ class Existencia extends Model implements Auditable
        }
     
     }
+    public static function updateExistenciaSkuPeriodoRecepcion($cant,$sku,$tipoMovinv){
+
+        /**Busco el sku por exsitencia actual para modificar */
+        $existencia = Existencia::buscarSkuPeriodoActual($sku);
+        //dd($existencia);
+        if ($tipoMovinv =="Recepcion") {
+
+            $usuario= user()->username;      
+            $object = new Existencia;  
+            $object = Existencia::find($sku); 
+            $entradas = $existencia->entradas + $cant;
+            $invFinal = $existencia->invFinal +  $cant ;
+            $object->entradas =   $entradas;    
+            $object->invFinal =   $invFinal; 
+            $object->timestamp = time();       
+            $object->usuario =  $usuario;            
+            $object->save();       
+           
+        }  
+        if ($tipoMovinv =="Despacho") {
+
+            $usuario= user()->username;      
+            $object = new Existencia;  
+            $object = Existencia::find($sku); 
+            $salidas = $existencia->salidas + $cant;
+            $invFinal = $existencia->invFinal - $cant ;
+            $object->salidas =  $salidas;    
+            $object->invFinal =  $invFinal; 
+            $object->timestamp = time();       
+            $object->usuario =  $usuario;            
+            $object->save();     
+        }
+        
+        return $object;   
+       
+    
+    }
+    public static function buscarSkuPeriodoActual($sku){
+        $periodo = Periodo::buscarPeriodoActual();
+
+        $existencia = DB::connection('sqlite')
+             ->table('existencia')
+             ->where('sku',$sku)
+             ->where('periodo',$periodo->periodo)->first(); 
+
+       return $existencia;
+    }
+
 
 }

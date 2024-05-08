@@ -6,7 +6,7 @@
           <div class=" form-group col-6">
             <label>Tipo de movimiento (*)</label>
             <select name="tipoMovinv" id="tipoMovinv" class="form-select @error('tipoMovinv') is-invalid @enderror" >
-                <option value="0" selected='selected'>Seleccione el tipo de movimiento</option>
+                <option value="" selected='selected'>Seleccione el tipo de movimiento</option>
                  <option value="Recepcion" >Recepcion</option> 
                  <option value="Despacho" >Despacho</option>                 
                  <option value="Devolucion" >Devolucion</option>
@@ -18,7 +18,7 @@
           <div class=" form-group col-6">
             <label >Sku o Catalogo (*)</label>
             <select name="selectsku" id="selectsku" class="form-select @error('selectsku') is-invalid @enderror" onchange="obtenerPedidos(this)">
-                <option value="0">Seleccione el sku </option>
+                <option value="">Seleccione el sku </option>
                 @foreach ($movsku as $sku)
                 <option value="{{ $sku->sku }}">{{ $sku->descripcion }}</option>
                 @endforeach
@@ -68,14 +68,14 @@
             <div class="col-lg-6">
                 
                 <label >Fecha Movimiento</label>
-                {{ Form::date('fechaMovinv', null, ['class' => 'form-control' . ($errors->has('fechaMovinv') ? ' is-invalid' : ''), "id" => "fechaMovinv","name" => "fechaMovinv", "onKeyPress"=> "if(this.value.length==12) return false;"]) }}
+                {{ Form::date('fechaMovinv', old('fechaMovinv'), ['class' => 'form-control' . ($errors->has('fechaMovinv') ? ' is-invalid' : ''), "id" => "fechaMovinv","name" => "fechaMovinv", "onKeyPress"=> "if(this.value.length==12) return false;"]) }}
                 {!! $errors->first('fechaMovinv', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <br>
             <div class="col-lg-6">
                
                 <label >Cantidad</label>
-                <input id="cant" type="number" class="form-control @error('cant') is-invalid @enderror" onchange=vereficarCantidad();>
+                <input id="cant" name="cant" type="number" class="form-control @error('cant') is-invalid @enderror" >
                 {{-- {{ Form::number('cant', null, ['class' => 'form-control' . ($errors->has('cant') ? ' is-invalid' : ''), "id" => "cant","name" => "cant","onKeyPress"=> "if(this.value.length==12) return false;","onchange"=>"vereficarCantidad();"]) }} --}}
                 {!! $errors->first('cant', '<div class="invalid-feedback">:message</div>') !!}
             </div> 

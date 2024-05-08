@@ -19,6 +19,7 @@ class MovInvController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Lista de movimiento de inventario 
      */
     public function index()
     {
@@ -51,7 +52,7 @@ class MovInvController extends Controller
 
      /**
      * Display the specified resource.
-     * vista de modal moviento de inventario
+     * vista de modal movimiento de inventario
      */
     public function show(string $movinvId) {       
        
@@ -90,11 +91,11 @@ class MovInvController extends Controller
         } 
       }
       
-      /**
+    /**
      * Display the specified resource.
      * Modal de vista de pedidos
-     */
-    public function buscarPedido(Request $request) {   
+     */   
+     public function buscarPedido(Request $request) {   
     
 
         $pedido = Pedidos::getPedidoId($request->pedido);    
@@ -122,37 +123,148 @@ class MovInvController extends Controller
       }
 
  
-    public function store(Request $request){
-
-       /*  $messages = [
-           
-            'catId.required' => 'El nombre de la categoria requerida',
-            'marca.required' => 'Seleccione la marca o sku es requerido',
-            'descripcion.required'=> 'El tipo de descripcion es requerida ',
-            'presentacion.required' => 'Tipo de presentación es requerido',
-            'unidadMedida.required'  => 'La unidad de medidada es requerido',
-            'empaque.required' => 'El tipo de empaque es requerido',
-            'costoUnitario.required'=> 'El costo unitario es  es requerido',
+    
+      /***
+       * Movimiento por Recepcion se rebeja de la tabla pedidos en la columna cantpendiente el monto asignado
+       * el monto no debe ser mayor al de la columna cant Luego en la tabla de 
+       * existencia se aumenta por la entrada y se modifica el inv final de ese sku
+       * en ese periodo.
+       * Cuando se hace un movimiento por despacho se rebaja en la tabla pedido en la columna cantidad pendiente no importa el monto 
+       * que tengas previamente en la columna pedido.cant 
+       * Se aumenta en existencia la salida del producto en la columna salida y se resta en el inventario final 
+       * ojo salida como despacho
+       * En mov de inventario debe a ver en existencia del producto para generar un movInventario
+       * Para que el producto aparezca en despacho debe tener un saldo positivo 
+       * Cuando esta en cero la cantidad pendiente indica el producto ya salio debe estar en proceso de 
+       * produccion o de entrega
+       * 
+       */
+      public function store(Request $request){
+        // dd($request->all());
+         //Modulo de mensages para validacion         
+        $messages = [           
+            'tipoMovinv.required' => 'Seleccione el tipo de movimiento',
+            'selectsku.required' => 'Seleccione el Sku',
+            'fechaMovinv.required'=> 'Seleccione la Fecha',
+            'cant.required' => 'La cantidad es requeridad'           
         ];
-
+        /**validando los campos */
         $request->validate([
-            'catId'           => ['required'],
-            'marca'           => ['required', 'regex:/^[A-Za-z0-9\s]+$/', 'min:3', 'max:30'],
-            'descripcion'           => ['required'],
-            'presentacion'           => ['required'],
-            'unidadMedida'           => ['required'],
-            'empaque'           => ['required'],          
-            'costoUnitario'           => ['required'],
+            'tipoMovinv'           => ['required'],
+            'selectsku'           => ['required'],
+            'fechaMovinv'           => ['required'],
+            'cant'           => ['required']
+        
+        ], $messages); 
+
+        $usuario_id= user()->username; 
+            /**TIPO RECEPCION  */
+         if ($request->tipoMovinv =="Recepcion") {
+            
+            /**Cantidad que viene del formulario */
+            $cant=$request->cant;
+            $sku = $request->sku;
+            /**Buscando el pedido verificando */
+            $pedido= MovInv::buscarPedidoId($request->ped);
+           
+            if ($cant < $pedido->cant) {
+                
+                    $dif = $pedido->cantPendiente -$cant;
+                    $object = new Pedidos;            
+                    $object = Pedidos::find($request->ped);                        
+                    $object->cantPendiente = $dif;           
+                    $object->usuario =  $usuario_id;      
+                    $object->timestamp =   time() ;  
+                    $object->save(); 
+
+                
+            }  
+            if ($cant == $pedido->cant) {
+                    $object = new Pedidos;            
+                    $object = Pedidos::find($request->ped);                        
+                    $object->cantPendiente = 0;           
+                    $object->usuario =  $usuario_id;      
+                    $object->timestamp =   time() ;  
+                    $object->save(); 
+            }
+
+            
           
-          
-        ], $messages); */
+             
+         }
+
+            /**TIPO DESPACHO */
+         if ($request->tipoMovinv =="Despacho") {
+            /**Cantidad que viene del formulario */
+            $cant=$request->cant;
+            $sku = $request->sku;
+            /**Buscando el pedido verificando */
+            $pedido= MovInv::buscarPedidoId($request->ped);
+
+            if ($cant <= $pedido->cant) {
+                
+                $dif = $pedido->cantPendiente -$cant;
+                $object = new Pedidos;            
+                $object = Pedidos::find($request->ped);                        
+                $object->cantPendiente = $dif;           
+                $object->usuario =  $usuario_id;      
+                $object->timestamp =   time() ;  
+                $object->save(); 
+
+            
+            }
+            if ($cant > $pedido->cant) {
+                //dd("aqui");
+                return redirect()->route('obtener_pedidos.movinv')
+                ->with('warning', 'Error la cantidad es mayor a la cantidad de despacho');
+
+            
+            }    
 
 
+         }
 
+         /***
+             * Actualizar la Existencia por la recepcion de sku
+             * sku, periodo y las Columna entrada e Inventario final
+             */
+            $exist = Existencia::updateExistenciaSkuPeriodoRecepcion($cant,$sku,$request->tipoMovinv);
 
-
-       // $sku= MovInv::buscarSkuPedido($request->sku); 
-
+           
+           /** TIPO DEVOLUCION */ 
+          if ($request->tipoMovinv =="Devolucion") {
+           
+         }
+           /** TIPO RETORNO */
+          if ($request->tipoMovinv =="Retorno") {
+           
+         } 
+        
+         /**Movimiento de Inventario */
+          $getMovInv= MovInv::create([          
+            'sku'  => $sku,
+            'tipoMovinv'  => $request->tipoMovinv,           
+            'fechaMovinv'  => $request->fechaMovinv,
+            'cant'  => $cant,
+            'pedidoId'  =>   $request->ped,
+            'referencia'  => 'NO_REF',       
+            'activo' => 1,
+            'usuario'  => $usuario_id,           
+            'timestamp' => time()   
+                   
+           
+        ]); 
+        
+                
+       //valida la actualiazacion
+        if ($getMovInv) {
+        return redirect()->route('movinv.list')
+                ->with('success', 'El movimiento de Inventario se actualizo correctamente');
+       } else {
+        return redirect()->route('movinv.show_agregar')
+            ->with('danger', 'Error en la edicion del movimiento');
+       }
+       
 
 
     }
@@ -326,8 +438,6 @@ class MovInvController extends Controller
 
 
     }
-
-
 
     /**
      * Lista del pedido activo

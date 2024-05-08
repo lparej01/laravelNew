@@ -91,7 +91,10 @@ class MovInv extends Model implements Auditable
     /**Buscar pedido por id */
     public static function buscarPedidoId($pedidoId){
 
-        $pedidos= DB::connection('sqlite')->table('pedidos')->where('pedidoId',$pedidoId)->first();
+        $pedidos= DB::connection('sqlite')
+        ->table('pedidos')
+        ->where('pedidoId',$pedidoId)
+        ->first();
 
         return $pedidos;
 
@@ -103,7 +106,10 @@ class MovInv extends Model implements Auditable
      */
     public static function buscarPedidoMovint($pedidoId){
 
-        $movinv = DB::connection('sqlite')->table('movinv')->where('pedidoId',$pedidoId)->first();
+        $movinv = DB::connection('sqlite')
+        ->table('movinv')
+        ->where('pedidoId',$pedidoId)
+        ->first();
 
         return $movinv;
 

@@ -3,9 +3,10 @@ function vereficarCantidad(){
      ped :document.getElementById('ped').value,
      tipo: document.getElementById('tipoMovinv').value
      
-     }   
+     }
      
-     alert(data.ped);
+     Biblioteca.notificaciones(data.ped, 'Seleccione el Pedido', 'info')
+     //alert(data.ped);
        
    
     $.ajax({ 
@@ -83,7 +84,6 @@ function vereficarCantidad(){
 
 
 }
-
 function buscarPedido(){ 
 
   const data = {
@@ -151,7 +151,7 @@ function obtenerPedidos(){
      data: data,
      success: function (response) 
      {
-
+      
        let arr = response.lista.length;
        let opc= document.createElement("option");
             
@@ -161,10 +161,9 @@ function obtenerPedidos(){
            
          let primero = response.lista[0].provId; 
          let sku =response.lista[0].sku;
-          if (primero ==300000 ) {          
+          if (primero ==300000 ) { //codigo de almacen         
              
-             //let codigo = 300000;                            
-            //let reg ='No hay registro';        
+                   
             opc.value = '';
             opc.innerHTML='Seleccione un pedido' ; 
             document.querySelector("#ped").append(opc); 
@@ -199,10 +198,7 @@ function obtenerPedidos(){
                 
                 
             });       
-            
-            
-            
-            
+          
           }
 
         }else{         
