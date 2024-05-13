@@ -38,6 +38,17 @@ class Proveedores extends Model implements Auditable
        
         return $proveedores ;
     }
+    /**
+     * Contar todos los proveedores
+     */
+    public static function contProveeodres()
+    {
+        $proveedores=DB::connection('sqlite')
+                        ->table('proveedores')
+                        ->where('activo',1)->count();      
+                       
+        return number_format($proveedores,2, ",", ".");  
+    }
 
     /**
      * obtener un proveedor por Id

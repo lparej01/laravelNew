@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/apple-icon.png")}}">
   <link rel="icon" type="image/png" href="{{asset("assets/team/img/favicon.png")}}">
   <title>
-    Proyecto Web
+    SEASC
   </title>
   
   <!--     Fonts and icons     -->

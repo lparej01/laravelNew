@@ -58,6 +58,42 @@ class Pedidos extends Model implements Auditable
         return  $pedidos;
 
     }
+    /**
+     * Sumas los pedidos de un periodo activos
+     * 
+     */
+    public static function getPedidosPeriodoActivo(){
+         
+        //Periodo actual
+        $periodoActual= Periodo::buscarPeriodoActual();
+       
+       
+
+        $pedidos = DB::connection('sqlite')->table('existencia')                       
+        ->where('existencia.periodo',"=", $periodoActual->periodo)        
+        ->sum('entradas');   
+        
+        
+        return number_format($pedidos,2, ",", ".");
+    }
+     /**
+     * Sumas los despachos de un periodo activos
+     * 
+     */
+    public static function getDespachosPeriodoActivo(){
+         
+        //Periodo actual
+        $periodoActual= Periodo::buscarPeriodoActual();  
+       
+
+        $despachos = DB::connection('sqlite')->table('existencia')                       
+        ->where('existencia.periodo',"=", $periodoActual->periodo)        
+        ->sum('salidas');   
+        
+        
+        return number_format($despachos,2, ",", ".");
+    }
+
 
     /**
      * Buscar todos los pedidos que esten en almacen

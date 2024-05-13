@@ -9,12 +9,12 @@
 @php($actionsBlade = json_decode($actions))
 <div class="container-fluid">
         <div class="col-sm-12" >                  
-             <x-tables.bo-table :data="$skuaction" title="LISTA DE CATALOGOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+             <x-tables.bo-table :data="$skuaction" title="LISTA DE CATALOGOS Ó SKU" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
                                 data-search-align="left" data-search-highlight="true" data-search-on-enter-key="false"
-                                data-strict-search="true" data-pagination="true"  >
+                                data-strict-search="true" data-pagination="true" >
                                 <x-slot:headerActions>
 
                                     <div class="float-right"  >

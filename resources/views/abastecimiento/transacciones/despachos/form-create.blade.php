@@ -19,7 +19,7 @@
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Sku (*)') }}
+                {{ Form::label('Codigo del Sku ') }}
                 {{ Form::text('sku', null, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''), "id" => "sku","name" => "sku", 'placeholder' => 'Ingrese la cantidad','readonly']) }}
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 

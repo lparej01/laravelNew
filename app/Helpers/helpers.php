@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Crypt;
 use App\Models\Users\UserHasRolModel;
 use App\Models\Rols\RolesAndPermissionsSpatie;
 use App\Models\Admin\UsersRol;
+use App\Models\SistemaAbastecimiento\Pedidos;
+use App\Models\SistemaAbastecimiento\Proveedores;
+use App\Models\SistemaAbastecimiento\Periodo;
 use Illuminate\Support\Facades\DB;
 
 
@@ -58,6 +61,39 @@ if (function_exists('user')) {
     function decryptString($token)
     {
         return Crypt::decryptString($token);
+    }
+     /*
+      * Funcion para traer el total todos los pedidos del periodo actual
+      *       
+      */
+    function obtenerSumaPedido(){
+
+
+        return Pedidos::getPedidosPeriodoActivo();
+    }
+     /*
+      * Funcion para traer el total de todos los despachos del periodo actual
+      *       
+      */
+    function obtenerSumaDespachos(){
+
+
+        return Pedidos::getDespachosPeriodoActivo();
+    }
+    function periodoActual(){
+
+       $periodo= Periodo::buscarPeriodoActual();
+
+       $fecha = $periodo->anio.'-'.$periodo->mes.'-01';
+
+        return $fecha;
+    }
+    
+
+    function contarProveedores(){
+
+
+        return Proveedores::contProveeodres();
     }
 
     function getCurrentRoute()
