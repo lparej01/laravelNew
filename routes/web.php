@@ -165,7 +165,7 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
     Route::post('combos/{id}', 'CombosController@update')->name('update.combos');
     Route::delete('combos/{id}/destroy', 'CombosController@destroy')->name('destroy.combos');
     Route::get('combos/show/{id}', 'CombosController@show')->name('combos.show'); 
-    Route::get('combos/disable/{id}', 'CombosController@disable')->name('combos.disable'); 
+    Route::get('combos/assignment/{id}', 'CombosController@assignment')->name('combos.assignment'); 
     Route::get('combos/disable_confirm/{id}', 'CombosController@disable_confirm')->name('combos.disable_confirm');
     Route::get('combos/create', 'CombosController@create')->name('crear.combos');
     Route::post('combos', 'CombosController@store')->name('save.combos');

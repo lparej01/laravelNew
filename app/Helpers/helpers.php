@@ -8,6 +8,7 @@ use App\Models\Admin\UsersRol;
 use App\Models\SistemaAbastecimiento\Pedidos;
 use App\Models\SistemaAbastecimiento\Proveedores;
 use App\Models\SistemaAbastecimiento\Periodo;
+use App\Models\SistemaAbastecimiento\Existencia;
 use Illuminate\Support\Facades\DB;
 
 
@@ -26,9 +27,6 @@ if (!function_exists('user')) {
     }
     
 }
-
-
-
 if (!function_exists('user_id')) {
     /**
      * Get id of current user.
@@ -84,11 +82,94 @@ if (function_exists('user')) {
 
        $periodo= Periodo::buscarPeriodoActual();
 
-       $fecha = $periodo->anio.'-'.$periodo->mes.'-01';
+        if ( $periodo->mes <= 9) {
+         $mes='0'.$periodo->mes;
 
-        return $fecha;
+        } else {
+            $mes = $periodo->mes;
+        }
+
+       $fecha = $periodo->anio.'-'.$mes.'-01';
+
+      return $fecha;
     }
-    
+    function periodoPedidos(){
+
+        $pedidos= Pedidos::obtenerPerPed();
+ 
+        
+        return $pedidos;
+        
+     }
+     function periodoPedidosCant(){
+
+        $cant= Pedidos::obtenerPerPedCant();
+ 
+        
+         return $cant;
+     }
+
+     function periodoDespachos(){
+
+        $pedidos= Pedidos::obtenerPerDesp();
+ 
+        
+        return $pedidos;
+        
+     }
+     function periodoDespCant(){
+
+        $cant= Pedidos::obtenerPerDespCant();
+ 
+        
+         return $cant;
+     }
+
+     function existenciaGraficoSku(){
+
+       
+        
+        $exit = Existencia::getExistenciaGrafic();
+        $plucked = $exit->pluck('sku');
+
+        return $plucked;
+     }
+     function existenciaGraficoEntradas(){
+
+       
+        
+        $exit = Existencia::getExistenciaGrafic();
+        $plucked = $exit->pluck('entradas');
+
+        return $plucked;
+     }
+     function existenciaGraficoSalidas(){
+
+       
+        
+        $exit = Existencia::getExistenciaGrafic();
+        $plucked = $exit->pluck('salidas');
+
+        return $plucked;
+     }
+     function existenciaGraficoInic(){
+
+       
+        
+        $exit = Existencia::getExistenciaGrafic();
+        $plucked = $exit->pluck('invInicial');
+
+        return $plucked;
+     }
+     function existenciaGraficoFinal(){
+
+       
+        
+        $exit = Existencia::getExistenciaGrafic();
+        $plucked = $exit->pluck('invFinal');
+
+        return $plucked;
+     }    
 
     function contarProveedores(){
 
@@ -254,6 +335,18 @@ if (function_exists('user')) {
         case "crear.despachos":
             $rutas = "crear solicitud de despacho";
             break;
+        case "crear.combos":
+            $rutas = "Crear combos";
+            break;
+        case "combos.list":
+            $rutas = "Lista de Combos";
+            break;
+        case "edit.combos":
+            $rutas = "Editar un combo";
+            break;
+        case "combos.assignment":
+            $rutas = "Plan de Combos";
+            break;
         case "obtener_pedidos.movinv":
             $rutas = "Entradas y salidas Inventario ";
             break;       
@@ -262,9 +355,7 @@ if (function_exists('user')) {
       }
    
         return $rutas;
-    }
-
-    
+    }   
 
     function getValuesFromAssignedUser($url = NULL)
     {
@@ -275,7 +366,6 @@ if (function_exists('user')) {
             getSession("rolActions")[$url ?? getCurrentRoute()]
         );
     }
-
     function getValueSession($name){
 
         
@@ -292,7 +382,6 @@ if (function_exists('user')) {
     }
  
 }
-
 if (!function_exists('should_queue')) {
     /**
      * Check if queue is enabled.

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+    Asignar Plan 
 @endsection
 
 @section('content')
@@ -10,21 +10,22 @@
             <div class="row">
                 <div class="col-md-12">
                     @includeif('partials.errors')
-                    <x-forms.template-form form-redirect-back="{{ route('combos.list') }}" form-route="{{ route('save.combos') }}"
+                    <x-forms.template-form form-redirect-back="{{ route('combos.list') }}" form-route="{{ route('combos.assignment',$combos->comboId) }}"
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">IR A LISTA DE COMBOS</span>
+                            <span class="align-self-center">Ir a lista de combos</span>
                         </x-slot:formHeader>                       
                            
                        
                         <x-slot:formBody>
                         
-                        @include('abastecimiento.produccion.combos.form-create')
+                        @include('abastecimiento.produccion.combos.form-assignment')
                             
                         </x-slot:formBody>
+                        
                         <x-slot:formFooter>
-                           
+                            @include('include.botones')
                         </x-slot:formFooter>
 
                     </x-forms.template-form>
@@ -32,5 +33,6 @@
                 </div>
             </div>
         </section>
+
 
 @endsection

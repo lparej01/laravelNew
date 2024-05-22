@@ -47,7 +47,7 @@ class Proveedores extends Model implements Auditable
                         ->table('proveedores')
                         ->where('activo',1)->count();      
                        
-        return number_format($proveedores,2, ",", ".");  
+        return number_format($proveedores,0, ",", ".");  
     }
 
     /**

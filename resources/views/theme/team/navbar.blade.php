@@ -127,7 +127,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Periodo Activo</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{periodoActual()}}
+                      {{periodoActual()   }}
                       
                     </h5>
                   </div>

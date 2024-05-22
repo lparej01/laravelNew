@@ -60,6 +60,31 @@ class Existencia extends Model implements Auditable
           return $existencia ; 
 
     }
+    public static function getExistenciaGrafic(){
+
+        $periodoActual= Periodo::buscarPeriodoActual();       
+
+        /**SELECT DISTINCT e.sku,e.periodo,e.invInicial,e.entradas,e.salidas,e.merma,e.invFinal,s.marca  
+            FROM existencia e ,sku s
+            INNER JOIN existencia ON e.sku = s.sku
+            WHERE e.periodo = 202403 AND e.entradas > 0 AND e.salidas > 0 AND e.invFinal > 0 and e.invinicial >= 0  ;  ; */
+
+
+        $existencia = DB::connection('sqlite')
+                        ->table('existencia')
+                        ->select('existencia.sku','existencia.periodo','existencia.invInicial',
+                         'existencia.entradas','existencia.salidas','existencia.invFinal','sku.marca')
+                         ->join('sku', 'sku.sku', '=', 'existencia.sku') 
+                        ->where('existencia.periodo', $periodoActual->periodo)
+                        ->where('existencia.entradas','>',0)   
+                        ->where('existencia.salidas','>',0)                        
+                        ->where('existencia.invInicial','>=',0)
+                        ->orderBy('existencia.sku', 'asc')
+                        ->get(); 
+
+        return $existencia;
+
+     }
 
      /**
      * obtener un existencia por sku y periodo
