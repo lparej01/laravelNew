@@ -79,7 +79,7 @@ class CombosController extends Controller
     
     }
     /**
-     * Remove the specified resource from storage.
+     * Eliminar combo por id 
      */
     public function confirm_delete(string $id)
     {

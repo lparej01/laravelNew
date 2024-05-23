@@ -90,13 +90,14 @@ class Combos extends Model implements Auditable
 
     }
     /**
-     * 
-     * 
-     * 
+     * tabla combo
+     * tabla combosxcat
+     * no debe existir ni tabla planes y productos
+     * sino no se puede eliminar
      */
     public static function deleteCombo(string $id){
 
-       
+       /* buscar en tabla planes y tabla productos */
         //dd( $id);
         
         return   DB::connection('sqlite')
