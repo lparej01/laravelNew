@@ -4,7 +4,8 @@
   Combos
 @endsection
 
-@section('content')  
+@section('content') 
+
 @php($actionsBlade = json_decode($actions))
 
 <div class="container-fluid">
@@ -42,23 +43,31 @@
                                     <script>
                                         (function() {
                                             let rolActions = {!! $actions !!};
+                                           
                                             tableControlles.conditionalRow({
 
-                                                /* @if ($actionsBlade->can_show > 0)
-                                                    show: rolActions.can_show,
-                                                @endif */
+                                                
 
-                                               /*  @if ($actionsBlade->can_edit > 0)
-                                                    edit: rolActions.can_edit,
-                                                @endif */
+                                                @if ($actionsBlade->can_delete > 0)
+                                                    delete: rolActions.can_delete,
+                                                @endif 
 
                                                 @if ($actionsBlade->can_assignment > 0)
+                                                   assignment: rolActions.can_assignment,
+                                                @endif
+                                                
+
+                                               /*  @if ($actionsBlade->can_delete > 0)
+                                                    delete: rolActions.can_delete,
+                                                @endif  */
+                                               
+                                               /*  @if ($actionsBlade->can_assignment > 0)
                                                    assignment: rolActions.can_assignment,
                                                 @endif
 
                                                  @if ($actionsBlade->can_delete > 0)
                                                     delete: rolActions.can_delete,
-                                                @endif  
+                                                @endif   */
                                             })
                                         })()
 

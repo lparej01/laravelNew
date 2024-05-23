@@ -43,13 +43,12 @@ class CombosController extends Controller
                         "can_assignment" => $permiso_status[4]->status,
                         "can_delete" => $permiso_status[1]->status);  
 
-      
-      
+         
         //convierto en json
         $actions = serializeJson($array);
-        // dd( $actions );
+       
 
-        return view("abastecimiento.produccion.combos.index",compact('combos', 'actions'));
+        return view("abastecimiento.produccion.combos.index",compact('combos','actions'));
 
         
     }
@@ -67,6 +66,37 @@ class CombosController extends Controller
         
         return view("abastecimiento.produccion.combos.create",compact('categorias','count'));
 
+    }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function delete(string $id)
+    {
+      
+        return view('abastecimiento.produccion.combos.delete', compact('id'));
+    
+    
+    
+    }
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function confirm_delete(string $id)
+    {
+      
+     
+        $deleteCombos = Combos::deleteCombo($id);
+   
+        if ($deleteCombos) {
+           
+            return redirect()->route('combos.list')
+            ->with('info', 'El combo se elimino correctamente');
+
+        } else {
+
+            return redirect()->route('combos.list')
+                    ->with('warning', 'El combo no se pudo eliminar');
+        }
     }
      /**
      * Funcion que va al formulario para crear un combo nuevo
@@ -191,8 +221,7 @@ class CombosController extends Controller
     public function show(string $combosId)
     {
         /**datos */
-        $combos= Combos::getComboCategorias($combosId);       
-        
+        $combos= Combos::getComboCategorias($combosId);     
        
        
         if ($combos) {

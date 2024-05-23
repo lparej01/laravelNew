@@ -17,7 +17,10 @@ class Combos extends Model implements Auditable
 
     protected $guarded = ['id'];
 
-    protected $fillable = [];
+     /***definicion de la clave primaria cuando no es id */
+     protected $primaryKey = 'comboId';
+
+    protected $fillable = ['descCombo','peso','activo','usuario'];
     
     /**
     * 
@@ -84,6 +87,22 @@ class Combos extends Model implements Auditable
     public static function updateCombo($request,$id){
 
 
+
+    }
+    /**
+     * 
+     * 
+     * 
+     */
+    public static function deleteCombo(string $id){
+
+       
+        //dd( $id);
+        
+        return   DB::connection('sqlite')
+                    ->table('combos')    
+                    ->where('combos.comboId',"=", $id)
+                    ->delete();
 
     }
    

@@ -45,7 +45,7 @@
         </div> 
         <div class="col-lg-6">
             {{ Form::label('Unidades (*)') }}
-            {{ Form::text('unidades', null, ['class' => 'form-control' . ($errors->has('unidades') ? ' is-invalid' : ''),  "id" => "unidades","name" => "unidades"]) }}
+            {{ Form::number('unidades', null, ['class' => 'form-control' . ($errors->has('unidades') ? ' is-invalid' : ''),  "id" => "unidades","name" => "unidades"]) }}
             {!! $errors->first('unidades', '<div class="invalid-feedback">:message</div>') !!}
         </div> 
         

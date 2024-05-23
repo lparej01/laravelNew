@@ -53,20 +53,20 @@
                             
                             tooltip: {title:"Detalle Combos", toggle: "tooltip",placement:"top"},
                         },
-                          {
+                        {
                             iClass: "fa,fa-eraser",
                             aClass: "remove,btn,btn-danger",
                             href: `combos/delete/${row.comboId}`,
-                            tooltip: {title:"Eliminar Combo", toggle: "tooltip",placement:"top"},
-                            name: 'disable',
+                            tooltip: {title:"Eliminar Combos", toggle: "tooltip",placement:"top"},
+                            name: 'delete',
                             iClass: "fa,fa-eraser",
                             aClass: "btn,btn-danger,btn-icon-only",                           
                             modal: {
                                 target: "#modalCombos",
                                 toggle: "modal",
-                                url: `combos/delete/${row.combosId}`,
-                            }
-                        },                      
+                                url: `combos/delete/${row.comboId}`,
+                            },
+                        },            
                       
 
 
