@@ -14,7 +14,7 @@
     function operateFormatter(value, row, index) {
         return tableControlles.onCreateActions({
             container: {
-                class: "d-flex,gap-2,justify-content-center",
+                class: "d-flex,gap-3,justify-content-center",
             },
             actions: (function() {   
                 console.log(row)
@@ -90,7 +90,7 @@
                 field: "descCombo",
                 title: "Nombre del Combo",
                 sortable: true,
-                align: "center",
+                align: "left",
                 searchable: true,
             },
             {

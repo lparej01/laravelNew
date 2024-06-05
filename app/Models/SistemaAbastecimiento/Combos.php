@@ -15,7 +15,13 @@ class Combos extends Model implements Auditable
     
     protected $table="combos";
 
-    protected $guarded = ['id'];
+   // protected $guarded = ['comboId'];
+
+    public $timestamp = false;
+
+    const UPDATED_AT = null;
+
+    const CREATED_AT = null;
 
      /***definicion de la clave primaria cuando no es id */
      protected $primaryKey = 'comboId';
@@ -30,7 +36,7 @@ class Combos extends Model implements Auditable
     public static function getCombAll(){
 
         $combos = DB::connection('sqlite')->table('combos')        
-        ->where('combos.comboId',"<>", 1000000)
+        ->where('combos.comboId',">", 1000000)
         ->orderByDesc('combos.comboId')  
         ->get();   
 
@@ -67,6 +73,21 @@ class Combos extends Model implements Auditable
         return DB::connection('sqlite')->table('combos')    
         ->where('combos.comboId',"=", $comboid)        
         ->first();   
+
+    }
+
+    /**
+    * 
+    * Buscar un combo por su descCombo
+    * 
+    */
+    public static function getCombDesCombo($descCombo){
+
+       // dd($descCombo);
+
+        return DB::connection('sqlite')->table('combos')    
+        ->where('combos.descCombo',"=", $descCombo)        
+        ->get();   
 
     }
     /**

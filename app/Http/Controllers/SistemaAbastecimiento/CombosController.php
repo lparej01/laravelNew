@@ -9,7 +9,9 @@ use App\Models\Admin\UsersRol;
 use App\Models\Admin\PermisoRol;
 use App\Models\SistemaAbastecimiento\Combos;
 use App\Models\SistemaAbastecimiento\Categorias;
+use App\Models\SistemaAbastecimiento\CombosCategorias;
 use Illuminate\Support\Facades\DB;
+use Arr;
 
 class CombosController extends Controller
 {
@@ -83,8 +85,8 @@ class CombosController extends Controller
      */
     public function confirm_delete(string $id)
     {
-      
-     
+        CombosCategorias::deleteCombId($id);
+       
         $deleteCombos = Combos::deleteCombo($id);
    
         if ($deleteCombos) {
@@ -106,9 +108,7 @@ class CombosController extends Controller
         
         $categorias = Categorias::getAllCategorias();
 
-        //$categ = Categorias::getAllCategorias->count();
-
-       // dd(   $categ);
+        //$categ = Categorias::getAllCategorias->count();      
         
         return view("abastecimiento.produccion.combos.create",compact('categorias'));
 
@@ -118,42 +118,98 @@ class CombosController extends Controller
      */
     public function store(Request $request){
         
-        //dd($request->all());
+       // dd($request->all());
         /**Valido los campos del formulario */
         $messages = [
            
-            'fechaPedido.required' => 'La fecha es requerida', 
-            'provId.required' => 'El proveedor es requerido',
-            'sku.required' => 'El Catálogo o Sku  es requerido',
-            'cant.required'=> 'La Cantidad es requeridad',
-            'costoUnitario.required'=> 'El Costo Unitario es requerido',
-            'flete.required'=> 'El flete es requerido',
+            'descCombo.required' => 'El nombre del Combo es necesario',
+            'peso.required' => 'El peso del combo es requerido'            
         ];
 
         $request->validate([
-            'fechaPedido'           => ['required'],
-            'provId'           => ['required'],
-            'sku'           => ['required'],
-            'cant'           => ['required','min:1', 'max:10'],
-            'costoUnitario'           => ['required','min:1', 'max:10'],
-            'flete'           => ['required','min:1', 'max:10'],
+            'descCombo'           => ['required'],
+            'peso'           => ['required']                
           
         ], $messages);
 
-        //envio datos al create para guadar  
-        $crearCombos = Combos::createCombo($request);
+         
+           $usuario_id= user()->username;  
 
-         /**
-          *validaciones  del Create
-          */
+             /**
+             * verifico si el combo ya existe 
+             */
+             $descombo= DB::connection('sqlite')->table('combos')    
+            ->where('descCombo',"=", $request->descCombo)        
+            ->first();  
 
-         if ($crearCombos) {
-            return redirect()->route('combos.list')
-                    ->with('success', 'El combo se creo correctamente');
-           } else {
-            return redirect()->route('crear.combos')
-                ->with('danger', 'Error en la creación del Combo');
-           }
+            /**si no existe ejecuto la accion */
+            if ($descombo ==null) {
+                    $combo = DB::connection('sqlite')->table('combos')
+                    ->insertGetId([
+                    'descCombo'  => $request->descCombo,
+                    'peso'  => $request->peso,           
+                    'activo' => 1,
+                    'usuario'  => $usuario_id,           
+                    'timestamp' => date('Ydm',time())           
+            
+                    ]);  
+
+                    /**quito lo valores que no necesito del arreglo */
+                    $array = $request->except(['_token','peso','descCombo']);
+            
+                    $arrayCatId= array_filter( $array, 
+                    function ($elemento) {
+                        return $elemento > 100000 ;
+                    }
+                   );
+        
+                  
+                    /***los valores no nulo */
+                    $ArrayNotNull = array_filter( $array, 
+                        function ($elemento) {
+                            return $elemento <> null ;
+                        }
+                    );
+                    /** los valores de calculo**/
+                    $arr = array_filter($ArrayNotNull, 
+                    function ($elemento) {
+                        return $elemento <= 50 ;
+                    }
+                    );
+        
+                    
+                        /**ejecuto insert dinamico para la tabla combo por categorias */
+                        foreach ($arr as $key => $value) {
+        
+                            if ($value > 0 ) {
+        
+                                CombosCategorias::create([
+                                    'catId'  => $key,
+                                    'comboId'  => $combo, 
+                                    'cantUM'  => $value,           
+                                    'activo' => 1,
+                                    'usuario'  => $usuario_id,           
+                                    'timestamp' => date('Ydm',time())             
+                                
+                                ]);  
+                                
+                            } 
+                    
+                            
+                        
+                        
+                       }  
+                   return redirect()->route('combos.list')
+                  ->with('success', 'El Combo se creo correctamente');
+              
+        
+
+            } else {
+                return redirect()->route('crear.combos')
+                    ->with('info', 'El combo  ya existe');
+            }  
+             
+           
 
         
     }
@@ -238,7 +294,7 @@ class CombosController extends Controller
     }
     /**
      * Show the form for editing the specified resource.
-     * Funcion que dirije los datos para hacer una actualizacion
+     * Funcion que dirige los datos para hacer una actualizacion
      * del pedido
      */
     public function assignment(string $combosId)

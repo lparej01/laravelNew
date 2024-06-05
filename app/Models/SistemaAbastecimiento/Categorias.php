@@ -67,8 +67,8 @@ class Categorias extends Model implements Auditable
                     'categorias.peso',                    
                     DB::raw("(CASE WHEN categorias.activo = 1  THEN 'Activa' WHEN categorias.activo=0 THEN 'Inactiva' END) as estatus"))
                     ->where('activo',1)                    
-                    ->orderBy('categoria') 
-                    ->get()->unique('categoria'); 
+                    ->orderBy('catId','Asc') 
+                    ->get(); 
        
 
         

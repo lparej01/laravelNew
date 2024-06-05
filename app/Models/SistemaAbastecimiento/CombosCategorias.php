@@ -5,6 +5,7 @@ namespace App\Models\SistemaAbastecimiento;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Support\Facades\DB;
 
 class CombosCategorias extends Model implements Auditable
 {
@@ -12,10 +13,34 @@ class CombosCategorias extends Model implements Auditable
    
     protected $connection = 'sqlite';
 
-    protected $table="comboscategorias";
+    protected $table="combosxcat";
 
-    protected $guarded = ['id'];
+    //protected $guarded = ['catId'];
 
-    protected $fillable = [];
+    /***definicion de la clave primaria cuando no es id */
+   // protected $primaryKey = 'catId';
+
+    public $timestamp = false;
+
+    const UPDATED_AT = null;
+
+    const CREATED_AT = null;
+
+    protected $fillable = ['catId','comboId','cantUM','activo','usuario'];
+
+     /**
+    * 
+    * Buscar un combocategoria  por su comboId 
+    * 
+    */
+    public static function deleteCombId($comboid){
+
+        return DB::connection('sqlite')
+        ->table('combosxcat')    
+        ->where('comboId',"=", $comboid)
+        ->delete();
+
+    }
+
     
 }
