@@ -109,6 +109,26 @@ class Existencia extends Model implements Auditable
 
         return $existencia->periodo;
     }
+    public static function updateExistencia($sku,$invInicial){
+
+        $existencia = Existencia::buscarSkuPeriodoActual($sku);
+        
+        $totalInvFinal =$existencia->invFinal +$invInicial;
+
+        $usuario_id= user()->username; 
+
+        $usuario= user()->username;      
+        $object = new Existencia;  
+        $object = Existencia::find($sku);      
+        $object->invInicial =   $invInicial; 
+        $object->invFinal =   $totalInvFinal; 
+        $object->timestamp = time();       
+        $object->usuario =  $usuario;            
+        $object->save();       
+        
+        
+        return $object;   
+    }
 
 
     /**

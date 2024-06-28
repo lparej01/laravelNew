@@ -33,10 +33,31 @@ class Combos extends Model implements Auditable
     * Obtener todos los combos 
     * 
     */
+    public static function getCombAllPeriodo(){
+
+        $periodo = Periodo::buscarPeriodoActual();
+        $ultimoId = Productos::latest('comboId')->first(); 
+       
+        $combos = DB::connection('sqlite')->table('combos')       
+        ->where('combos.comboId',">",$ultimoId->comboId)
+        ->orderByDesc('combos.comboId')  
+        ->get();   
+
+
+        return  $combos;
+    } 
+
+    /**
+    * 
+    * Obtener todos los combos 
+    * 
+    */
     public static function getCombAll(){
 
-        $combos = DB::connection('sqlite')->table('combos')        
-        ->where('combos.comboId',">", 1000000)
+          
+       
+        $combos = DB::connection('sqlite')->table('combos')       
+        ->where('combos.comboId',">",1000000)
         ->orderByDesc('combos.comboId')  
         ->get();   
 
@@ -70,9 +91,13 @@ class Combos extends Model implements Auditable
     */
     public static function getCombId($comboid){
 
-        return DB::connection('sqlite')->table('combos')    
-        ->where('combos.comboId',"=", $comboid)        
-        ->first();   
+        $combo= DB::connection('sqlite')->table('combos')
+        ->where('combos.comboId',"=",$comboid)        
+        ->first();
+
+        
+        
+        return $combo; 
 
     }
 

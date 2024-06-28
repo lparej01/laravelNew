@@ -23,7 +23,7 @@
                     ? [
                         {
                             name: 'assignment',
-                            iClass: "fa,fa-arrows",
+                            iClass: "fa,fa-print",
                             aClass: "btn,btn-primary,btn-icon-only",
                             href: `combos/assignment/${row.comboId}`,
                             tooltip: { title: "Seleccione el tipo de plan", toggle: "tooltip",
@@ -57,7 +57,7 @@
                             iClass: "fa,fa-eraser",
                             aClass: "remove,btn,btn-danger",
                             href: `combos/delete/${row.comboId}`,
-                            tooltip: {title:"Eliminar Combos", toggle: "tooltip",placement:"top"},
+                            tooltip: {title:"Eliminar Combo", toggle: "tooltip",placement:"top"},
                             name: 'delete',
                             iClass: "fa,fa-eraser",
                             aClass: "btn,btn-danger,btn-icon-only",                           
@@ -74,9 +74,9 @@
                     ]
                     : []
             );
-        })(),
-    });
-}
+            })(),
+        });
+    }
     renderTable([
         [
             {
@@ -88,7 +88,7 @@
             },
             {
                 field: "descCombo",
-                title: "Nombre del Combo",
+                title: "Combos",
                 sortable: true,
                 align: "left",
                 searchable: true,
@@ -110,5 +110,9 @@
             },
         ],
     ]);
+    
+    
+
 })();
+
 

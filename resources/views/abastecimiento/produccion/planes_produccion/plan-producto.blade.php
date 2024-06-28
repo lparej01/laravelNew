@@ -1,10 +1,13 @@
 @extends('theme.team.app')
 
 @section('template_title')
- Movimiento Productos
+    Agregar producto
 @endsection
 
-@section('content')  
+@section('content')
 
-   
+
+           
+
+
 @endsection

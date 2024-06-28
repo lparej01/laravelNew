@@ -6,7 +6,7 @@ var Biblioteca = function () {
                 newestOnTop: true,
                 positionClass: 'toast-top-right',
                 preventDuplicates: true,
-                timeOut: '45000'
+                timeOut: '65000'
             };
             if (tipo == 'error') {
                 toastr.error(mensaje, titulo);

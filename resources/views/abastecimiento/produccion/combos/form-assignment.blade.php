@@ -1,7 +1,8 @@
 <div class="box box-info padding-1">
+    <h4>Planificacion del Combo</h4>
     <div class="box-body">
-       
-        <p">Nro de Combo :{{$combos->comboId}}</p>
+      
+        <p">Número de Combo :{{$combos->comboId}}</p>
         <p >Nombre del Combo :{{$combos->descCombo}}</p>
      
         <div class="card-body">
@@ -29,14 +30,14 @@
         </div>
         
         <div class="col-lg-6">
-            {{ Form::label('Tipo de Plan (*)') }}
+            {{ Form::label('Tipo de Planes (*)') }}
             <select name="tipoPlan" id="tipoPlan" class="form-select @error('tipoPlan') is-invalid @enderror" >
                 <option value="">Seleccione tipo de plan</option>               
                 <option value="Produccion">Produccion</option>
                 <option value="Entrega">Entrega</option>               
             
             </select>
-            {!! $errors->first('marca', '<div class="invalid-feedback">:message</div>') !!}
+            {!! $errors->first('tipoPlan', '<div class="invalid-feedback">:message</div>') !!}
         </div> 
         <div class="col-lg-6">
             {{ Form::label('Fecha tipo plan (*)') }}
@@ -45,10 +46,17 @@
         </div> 
         <div class="col-lg-6">
             {{ Form::label('Unidades (*)') }}
-            {{ Form::number('unidades', null, ['class' => 'form-control' . ($errors->has('unidades') ? ' is-invalid' : ''),  "id" => "unidades","name" => "unidades"]) }}
-            {!! $errors->first('unidades', '<div class="invalid-feedback">:message</div>') !!}
+            @if (count($plan) > 0)
+
+               {{ Form::number('cantCombosPlan', $plan[0]->cantCombosPlan, ['class' => 'form-control' . ($errors->has('cantCombosPlan') ? ' is-invalid' : ''),  "id" => "cantCombosPlan","name" => "cantCombosPlan",'readonly']) }}
+                
+            @else
+            {{ Form::number('cantCombosPlan', null, ['class' => 'form-control' . ($errors->has('cantCombosPlan') ? ' is-invalid' : ''),  "id" => "cantCombosPlan","name" => "cantCombosPlan"]) }}
+            @endif
+           
+            {!! $errors->first('cantCombosPlan', '<div class="invalid-feedback">:message</div>') !!}
         </div> 
-        
+        <input  type="hidden" name="comboId" class="form-control" value="{{$combos->comboId}}">
     </div> 
 </div>         
             

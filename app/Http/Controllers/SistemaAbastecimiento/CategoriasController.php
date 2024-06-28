@@ -20,8 +20,7 @@ class CategoriasController extends Controller
         
         
         $categorias= Categorias::getAllCateg();
-        $categ = serializeJson($categorias);
- 
+        $categ = serializeJson($categorias); 
 
         $usuario_id= user()->id; 
         $user = UsersRol::getUserRolId($usuario_id);
@@ -31,22 +30,17 @@ class CategoriasController extends Controller
             ->join('permiso', 'permiso_rol.permiso_id', '=', 'permiso.id')            
             ->select('permiso.nombre', 'permiso_rol.*')
             ->where('permiso_rol.rol_id',$user->rol_id)
-            ->get();   
-
-        //dd( $permiso_status);
-      
+            ->get();    
+        /**Permisos */
         $array = array(
                     "can_query"=> 1, 
                     "can_create"=> $permiso_status[0]->status, 
                     "can_edit"=>$permiso_status[2]->status,
                     "can_show"=>$permiso_status[5]->status,
                     "can_disable"=>$permiso_status[4]->status,
-                    "can_delete"=>$permiso_status[1]->status); 
+                    "can_delete"=>$permiso_status[1]->status);                     
                     
-                    
-        $actions = serializeJson($array);
-
-      
+        $actions = serializeJson($array);     
 
        
 
@@ -63,7 +57,7 @@ class CategoriasController extends Controller
     }
     /**
      * 
-     * 
+     * Vista modal 
      */
     public function show(string $catId){
 
@@ -72,7 +66,7 @@ class CategoriasController extends Controller
     }
     /***
      * 
-     * 
+     * Desactivar
      */
     public function disable_confirm($catId){
 
@@ -90,7 +84,7 @@ class CategoriasController extends Controller
 
      /***
      * 
-     * 
+     * Vista para desactivar
      */
     public function disable($catId){
 
@@ -103,24 +97,24 @@ class CategoriasController extends Controller
     }
     /**
      * 
-     * 
+     * Formulario para crear categorias
      */
     public function create(){
 
         return view("abastecimiento.registros.categorias.create");
     }
     /**
-     * 
+     * Funcion para guardar una categoria
      */
     public function store(Request $request){
 
 
-         $messages = [
-           
-            'categoria.required'             => 'El nombre de la categoria es requerido', 'categoria.unique' => 'El nombre ya se encuentra asignado',
-            'costoUnitario.required'             => 'El costo unitario es requerido',
-            'precio.required'             => 'El precio es requerido',
-            'peso.required'             => 'El peso es requerido',
+         $messages = [           
+            'categoria.required'  => 'El nombre de la categoria es requerido', 
+            'categoria.unique' => 'El nombre ya se encuentra asignado',
+            'costoUnitario.required'  => 'El costo unitario es requerido',
+            'precio.required'  => 'El precio es requerido',
+            'peso.required' => 'El peso es requerido',
         ];
 
         $request->validate([
@@ -144,7 +138,7 @@ class CategoriasController extends Controller
        }
 
     }
-
+    /**Actualizar  */
     public function update(Request $request){
 
         $messages = [
@@ -163,9 +157,7 @@ class CategoriasController extends Controller
           
         ], $messages);
      
-        $getCategoria = Categorias::updateCategorias($request);
-
-        
+        $getCategoria = Categorias::updateCategorias($request);  
      
 
        if ($getCategoria) {

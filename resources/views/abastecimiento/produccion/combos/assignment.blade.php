@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     @includeif('partials.errors')
-                    <x-forms.template-form form-redirect-back="{{ route('combos.list') }}" form-route="{{ route('combos.assignment',$combos->comboId) }}"
+                    <x-forms.template-form form-redirect-back="{{ route('combos.list') }}" form-route="{{ route('combos.assignment-save',$combos->comboId) }}"
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>

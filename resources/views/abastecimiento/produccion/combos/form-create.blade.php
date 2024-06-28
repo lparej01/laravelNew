@@ -3,16 +3,18 @@
         <div class="container mx-5 my-4">            
             <div class="row">
                 <div class=" form-group col-3"> 
+                  {{ Form::label('Nombre del Combo (*)') }}
                   <input type="text" id="descCombo"  name ="descCombo" class="form-control"  autocomplete placeholder="Nombre del combo">                 
                    
                     {!! $errors->first('descCombo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                  <div class=" form-group col-3">
-                  
+                  {{ Form::label('peso total del combo (*)') }}
                   {{ Form::text('peso', null, ['class' => 'form-control' . ($errors->has('peso') ? ' is-invalid' : ''),  "id" => "peso","name" => "peso","placeholder" => "Peso del Combo" ,'readonly']) }}   
                     {!! $errors->first('peso', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
-                <div class=" form-group col-6">
+                <div class=" form-group col-3">
+                  {{ Form::label('') }}
                   <button id="add-record-button" style="width: 250px" class="btn btn-primary ">Agregar</button>
                 </div>  
              </div>

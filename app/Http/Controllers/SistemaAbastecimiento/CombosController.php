@@ -12,6 +12,8 @@ use App\Models\SistemaAbastecimiento\Categorias;
 use App\Models\SistemaAbastecimiento\CombosCategorias;
 use Illuminate\Support\Facades\DB;
 use Arr;
+use App\Models\SistemaAbastecimiento\Planes;
+use App\Models\SistemaAbastecimiento\Productos;
 
 class CombosController extends Controller
 {
@@ -85,20 +87,29 @@ class CombosController extends Controller
      */
     public function confirm_delete(string $id)
     {
-        CombosCategorias::deleteCombId($id);
-       
-        $deleteCombos = Combos::deleteCombo($id);
-   
-        if ($deleteCombos) {
-           
+        
+        
+        $plan = Planes::searchPlanId($id);
+
+        $prod = Productos::getProductosId($id);
+
+        if ($plan != null ||  $prod != null) {
             return redirect()->route('combos.list')
-            ->with('info', 'El combo se elimino correctamente');
+            ->with('warning', 'El combo no se pudo eliminar pertenece a un plan o producto');
 
         } else {
 
+            $sku = CombosCategorias::deleteCombId($id);
+       
+            $deleteCombos = Combos::deleteCombo($id);   
+           
+            
             return redirect()->route('combos.list')
-                    ->with('warning', 'El combo no se pudo eliminar');
+            ->with('info', 'El combo se elimino correctamente');
+ 
+           
         }
+        
     }
      /**
      * Funcion que va al formulario para crear un combo nuevo
@@ -118,7 +129,7 @@ class CombosController extends Controller
      */
     public function store(Request $request){
         
-       // dd($request->all());
+        // dd($request->all());
         /**Valido los campos del formulario */
         $messages = [
            
@@ -130,10 +141,10 @@ class CombosController extends Controller
             'descCombo'           => ['required'],
             'peso'           => ['required']                
           
-        ], $messages);
-
-         
-           $usuario_id= user()->username;  
+        ], $messages);          
+             
+        
+            $usuario_id= user()->username; 
 
              /**
              * verifico si el combo ya existe 
@@ -150,7 +161,7 @@ class CombosController extends Controller
                     'peso'  => $request->peso,           
                     'activo' => 1,
                     'usuario'  => $usuario_id,           
-                    'timestamp' => date('Ydm',time())           
+                    'timestamp' => date('YdmHis',time())           
             
                     ]);  
 
@@ -183,13 +194,14 @@ class CombosController extends Controller
         
                             if ($value > 0 ) {
         
-                                CombosCategorias::create([
+                                DB::connection('sqlite')->table('combosxcat')
+                                ->insertGetId([
                                     'catId'  => $key,
                                     'comboId'  => $combo, 
                                     'cantUM'  => $value,           
                                     'activo' => 1,
                                     'usuario'  => $usuario_id,           
-                                    'timestamp' => date('Ydm',time())             
+                                    'timestamp' => date('YdmHis',time())                
                                 
                                 ]);  
                                 
@@ -302,10 +314,13 @@ class CombosController extends Controller
         /**datos */
         $combos= Combos::getCombId($combosId);       
         // dd($combos);
-        $combos1= Combos::getComboCategorias($combosId);    
+        $combos1= Combos::getComboCategorias($combosId);   
+        
+        $plan =  Planes::getPlanid($combosId);        
+        
        
         if ($combos) {
-            return view("abastecimiento.produccion.combos.assignment", compact('combos','combos1'));
+            return view("abastecimiento.produccion.combos.assignment", compact('combos','combos1','plan'));
         } else {
 
             return redirect()->route('combos.list')
@@ -316,6 +331,76 @@ class CombosController extends Controller
 
         
     }
+    /***
+     * 
+     * Aqui se  guarda el plan 
+     * Primero debe ser plan de produccion 
+     * Luego el plan de  entrega
+     */
+    public function assignmentsave(Request $request){
+
+      
+        /**Valido los campos del formulario */
+        $messages = [
+           
+            'tipoPlan.required' => 'Debe seleccionar un plan',
+            'fechaPlan.required' => 'Debe Selecionar una fecha',  
+            'cantCombosPlan.required' => 'Debe indicar la cantidad de unidades'                 
+        ];
+
+        $request->validate([
+            'tipoPlan'           => ['required'],
+            'fechaPlan'           => ['required'],
+            'cantCombosPlan'           => ['required']                  
+          
+        ], $messages);          
+             
+        $usuario_id= user()->username; 
+
+        $array = $request->except(['_token','peso','descCombo']);
+   
+                /**
+                * Se busca si tiene un plan
+                * Que tipo de plan 
+                */
+        $plan =  Planes::getTipoPlan($request->comboId,$request->tipoPlan);       
+       
+
+
+         /***si el plan  no existe  */
+         if (count($plan) <= 0 ){          
+            
+                
+              
+                Planes::Create([
+                'comboPlanId'  => $array['comboId'],
+                'comboProdId'  => 1000000,           
+                'tipoPlan' => $array['tipoPlan'],   
+                'fechaPlan' => $array['fechaPlan'],
+                'fechaProd' => $array['fechaPlan'],
+                'cantCombosPlan' => $array['cantCombosPlan'], 
+                'cantCombosProd' => 0, 
+                'stRequisicion ' =>  0,             
+                'stProduccion' => 0,             
+                'merma' =>  0, 
+                'activo' => 1,
+                'usuario'  => $usuario_id,           
+                'timestamp' => date('YdmHis',time())           
+    
+                ]);  
+
+              return redirect()->route('combos.list')->with('success', 'Se registro el plan');
+
+            }else{
+
+                return redirect()->route('combos.list')->with('info', 'Error ya existe el plan');
+
+            }
+            
+        
+                         
+
+      }
     
 
 }

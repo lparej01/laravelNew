@@ -22,7 +22,7 @@
                                          @if ($actionsBlade->can_create > 0)
                                             <a href="{{ route('crear.combos') }}" class="btn btn-primary float-right"
                                                 data-placement="left">
-                                                {{ __('Crear Nuevo Combos') }}
+                                                {{ __('Crear  Nuevo  Combo') }}
                                             </a>
                                         @endif
 

@@ -18,13 +18,13 @@
                           data-strict-search="true" data-pagination="true"  >
                           <x-slot:headerActions>
 
-                              <div class="float-right"  >
-                                {{--    @if ($actionsBlade->can_create > 0)
+                                  <div class="float-right"  >
+                                   @if ($actionsBlade->can_create > 0)
                                       <a href="{{ route('crear.existencia') }}" class="btn btn-primary float-right"
                                           data-placement="left">
-                                          {{ __('Generar Nueva Existencia por Periodo') }}
+                                          {{ __('Generar Existencia Sku') }}
                                       </a>
-                                  @endif --}}
+                                  @endif 
 
                                   <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalExistencia">
                                       <x-slot:modalTitle>
