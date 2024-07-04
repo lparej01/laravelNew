@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar Solicitud de Despachos
+    Editar solicitud de despachos
 @endsection
 
 @section('content')

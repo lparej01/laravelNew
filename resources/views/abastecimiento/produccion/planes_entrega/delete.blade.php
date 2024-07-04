@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center gap-4 p-2 m-2">
-    <div><h4 class="text-lg">¿Está seguro de eliminmar el plan de entrega ?</h4></div>
+    <div><h4 class="text-lg">¿Estás seguro de eliminmar el plan de entrega ?</h4></div>
  </div>
  
  <div class="d-flex justify-content-center gap-4 p-2 m-2">

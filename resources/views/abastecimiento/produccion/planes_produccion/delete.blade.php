@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center gap-4 p-2 m-2">
-    <div><h4 class="text-lg">¿Está seguro de eliminmar el plan de produccion ?</h4></div>
+    <div><h4 class="text-lg">¿EstáS seguro de eliminmar el plan de producciÓn ?</h4></div>
  </div>
  
  <div class="d-flex justify-content-center gap-4 p-2 m-2">

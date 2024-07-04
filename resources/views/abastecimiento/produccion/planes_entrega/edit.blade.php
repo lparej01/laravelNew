@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de permisos</span>
+                            <span class="align-self-center">IR A LA LISTA DE PLANES DE ENTREGA</span>
                         </x-slot:formHeader>                       
                            
                        

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Pedidos
+ Listados de pedidos
 @endsection
 @php($actionsBlade = json_decode($actions))
 @section('content')  
@@ -19,7 +19,7 @@
                                 @if ($actionsBlade->can_create > 0)
                                       <a href="{{ route('crear.pedidos') }}" class="btn btn-primary float-right"
                                           data-placement="left">
-                                          {{ __('Generar Nuevo Pedido') }}
+                                          {{ __('Generar un nuevo pedido') }}
                                       </a>
                                   @endif 
                                   <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalPedidos">

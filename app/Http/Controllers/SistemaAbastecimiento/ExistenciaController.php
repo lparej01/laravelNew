@@ -145,10 +145,10 @@ class ExistenciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function existenciaCategoriaGenerar(Request $request)
     {
        
-
+         
         $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
 
        

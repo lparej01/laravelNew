@@ -1,7 +1,7 @@
 <div class="d-flex text-center gap-4 p-2 m-2">
     <div>
-       <h5>¿Está seguro de modificar el status dela Categorias?</h5>
-       <p>¡Al confirmar la solicitud se cambiara el status de la Categorias!</p>
+       <h5>¿Estás seguro de modificar el status dela categorías?</h5>
+       <p>¡Al confirmar la solicitud se cambiara el status de la categorías!</p>
     </div>
  </div>
  

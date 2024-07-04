@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Planes de Entrega
+  Planes de entrega
 @endsection
 
 @section('content')  
@@ -27,7 +27,7 @@
 
                                         <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalPlanesEntrega">
                                             <x-slot:modalTitle>
-                                                <h4 class="text-lg">Planes de Entrega</h4>
+                                                <h4 class="text-lg">Planes de entrega</h4>
                                             </x-slot:modalTitle>
 
                                         </x-notify>

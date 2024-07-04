@@ -1,7 +1,7 @@
 <div class="d-flex flex-column gap-4  p-3 m-3">
    
     <div class="d-flex justify-content-between">
-        <strong>Numero de Proveedor:</strong>
+        <strong>Número de proveedor:</strong>
         {{ $proveedor->provId }}
     </div>
     <div class="d-flex justify-content-between">
@@ -9,21 +9,21 @@
         {{ $proveedor->nombre }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Nombre del Contacto:</strong>
+        <strong>Nombre del contacto:</strong>
         {{ $proveedor->contacto }}
     </div>
 
     <div class="d-flex justify-content-between">
-        <strong>Telefonos:</strong>
+        <strong>Teléfonos:</strong>
         {{ $proveedor->telf1 }}
     </div>
     
     <div class="d-flex justify-content-between">
-        <strong>Telefonos :</strong>
+        <strong>Teléfonos :</strong>
         {{ $proveedor->telf2 }}
     </div>    
     <div class="d-flex justify-content-between">
-        <strong>Telefonos :</strong>
+        <strong>Teléfonos :</strong>
         {{ $proveedor->telfContacto }}
     </div>
     <div class="d-flex justify-content-between">
@@ -31,7 +31,7 @@
         {{ $proveedor->email }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Email del Contacto:</strong>
+        <strong>Email del contacto:</strong>
         {{ $proveedor->emailContacto }}
     </div>
     

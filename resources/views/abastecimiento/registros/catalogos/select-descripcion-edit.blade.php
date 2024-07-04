@@ -1,5 +1,5 @@
 <select name="descripcion" id="descripcion" class="form-select @error('tipo') is-invalid @enderror" >
-    <option value=" ">Seleccione la descripcion</option>
+    <option value=" ">Seleccione la descripción</option>
     <option value="{{ $catalogos->descripcion }}" selected='selected'>{{ $catalogos->descripcion }}</option>  
     
     @foreach ($exc as $sku)

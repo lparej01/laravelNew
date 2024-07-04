@@ -13,7 +13,7 @@
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div>            
             <div class="col-lg-6">
-                {{ Form::label('Inv Inicial') }}
+                {{ Form::label('Inventario  inicial') }}
                 {{ Form::number('invInicial', null, ['class' => 'form-control' . ($errors->has('invInicial') ? ' is-invalid' : ''), "id" => "invInicial","name" => "invInicial", "onKeyPress"=> "if(this.value.length==12) return false;"]) }}
                 {!! $errors->first('invInicial', '<div class="invalid-feedback">:message</div>') !!}
             </div> 

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Productos
+  Listados de productos
 @endsection
 
 @section('content')  
@@ -9,7 +9,7 @@
 
 <div class="container-fluid">
         <div class="col-sm-12" >                  
-             <x-tables.bo-table :data="$productos" title="LISTA DE PRODUCTOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+             <x-tables.bo-table :data="$productos" title="LISTA DE PRODUCTOS COMBOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -21,7 +21,7 @@
                                          @if ($actionsBlade->can_create > 0)
                                             <a href="{{ route('crear.productos') }}" class="btn btn-primary float-right"
                                                 data-placement="left">
-                                                {{ __('Crear  Nuevo  Producto ') }}
+                                                {{ __('Crear  Nuevo  Producto Combos ') }}
                                             </a>
                                         @endif
 

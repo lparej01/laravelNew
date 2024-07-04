@@ -347,6 +347,52 @@ if (function_exists('user')) {
         case "combos.assignment":
             $rutas = "Plan de Combos";
             break;
+        case "planes-produccion.list":
+            $rutas = "Lista de planes de produccion";
+            break;
+        case "edit.planes-produccion-reporte":
+            $rutas = "Ediatr Plan de Produccion ";
+            break;
+        case "planes-entrega.list":
+            $rutas = "Lista Planes de Entrega ";
+            break;
+        case "edit.planes-entrega":
+            $rutas = "Editar Planes de Entrega ";
+            break;
+        case "movter.list":
+            $rutas = "Lista de movimientos del Productos";
+            break;
+        case "existencia.categoria":
+            $rutas = "Busquedad por Periodo Existencia Categoria";
+            break;       
+        case "existencia.sku":
+            $rutas = "Busquedad de Existencia Sku";
+            break;
+        case "existencia.costo.sku":
+            $rutas = "Busquedad de Existencia Costo sku";
+            break;
+        case "existencia.costo.categoria":
+            $rutas = "Busquedad de Existencia por  Costo categoria";
+            break;
+        case "existencia.sku.reporte":
+            $rutas = "Reporte Existencia Sku";
+            break;
+        case "existencia.categoria.reporte":
+            $rutas = "Reporte Existencia Categoria";
+            break;
+        case "existencia.costo.sku.reporte":
+            $rutas = "Reporte Costo Existencia Sku";
+            break;
+        case "existencia.costo.categoria.reporte":
+            $rutas = "Reporte Costo Existencia Categoria";
+            break;
+        case "menu.dinamico":
+            $rutas = "Menu Dinamico";
+            break;
+    
+
+
+
         case "obtener_pedidos.movinv":
             $rutas = "Entradas y salidas Inventario ";
             break;       

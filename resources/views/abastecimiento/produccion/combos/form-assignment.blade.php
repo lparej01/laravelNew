@@ -33,7 +33,7 @@
             {{ Form::label('Tipo de Planes (*)') }}
             <select name="tipoPlan" id="tipoPlan" class="form-select @error('tipoPlan') is-invalid @enderror" >
                 <option value="">Seleccione tipo de plan</option>               
-                <option value="Produccion">Produccion</option>
+                <option value="Produccion">Producción</option>
                 <option value="Entrega">Entrega</option>               
             
             </select>

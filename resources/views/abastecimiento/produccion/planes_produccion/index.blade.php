@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Planes de Produccion
+  Planes de producción
 @endsection
 
 @section('content')  
@@ -9,7 +9,7 @@
 
 <div class="container-fluid">
         <div class="col-sm-12" >                  
-             <x-tables.bo-table :data="$plan" title="LISTA DE PLANES DE PRODUCCION" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+             <x-tables.bo-table :data="$plan" title="LISTA DE PLANES DE PRODUCCIÓN" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -27,7 +27,7 @@
 
                                         <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalPlanesProduccion">
                                             <x-slot:modalTitle>
-                                                <h4 class="text-lg">Planes de Produccion</h4>
+                                                <h4 class="text-lg">Planes de Producción</h4>
                                             </x-slot:modalTitle>
 
                                         </x-notify>
@@ -45,9 +45,7 @@
                                         (function() {
                                             let rolActions = {!! $actions !!};
                                            
-                                            tableControlles.conditionalRow({
-
-                                                
+                                            tableControlles.conditionalRow({                                             
 
                                                
                                               @if ($actionsBlade->can_show > 0)
@@ -62,9 +60,6 @@
                                              /*  @if ($actionsBlade->can_delete > 0)
                                                   delete: rolActions.can_delete,
                                               @endif   */
-
-
-
 
                                             })
                                         })()

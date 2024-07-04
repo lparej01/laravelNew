@@ -3,7 +3,7 @@
 <div class="d-flex flex-column gap-4  p-3 m-3">   
 
     <div class="d-flex justify-content-between">
-        <strong>Sku o Catálogo:</strong>
+        <strong>Sku ó catálogo:</strong>
         {{ $movinv->sku}}
     </div>
     <div class="d-flex justify-content-between">
@@ -11,11 +11,11 @@
         {{ $movinv->cant}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Fecha del Movimiento:</strong>
+        <strong>Fecha del movimiento:</strong>
         {{ $movinv->fechaPedido}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Cantidad Pendiente:</strong>
+        <strong>Cantidad pendiente:</strong>
         {{ $movinv->cantPendiente}}
     </div>
     <div class="d-flex justify-content-between">

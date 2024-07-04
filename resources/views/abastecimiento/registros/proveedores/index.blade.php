@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Proveedores
+  listados de proveedores
 @endsection
 
 @section('content')  

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Asignar Plan 
+    Asignar plan 
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de combos</span>
+                            <span class="align-self-center">IR A LA LISTA DE COMBOS</span>
                         </x-slot:formHeader>                       
                            
                        

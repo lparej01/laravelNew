@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Titulo
+  Reporte de Existencia por Sku
 @endsection
 
 @section('content')  

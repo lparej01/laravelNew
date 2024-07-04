@@ -5,17 +5,15 @@
         
     </div>
     <div class="d-flex " style="align-self: flex-start">
-        <strong>Combo: {{ $planid->comboPlanId }}</strong>
+        <strong>Número de combo: {{ $planid->comboPlanId }}</strong>
        
     </div>
     <div class="d-flex " style="align-self: flex-start">
-        <strong>Combo: {{ $planid->descCombo }}</strong>
+        <strong>Nombre de combo: {{ $planid->descCombo }}</strong>
        
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Cantidad de Combos: {{ $planid->cantCombosPlan }} Unidades</strong>
-       
-    </div>
-   
+        <strong>Cantidad de combos: {{ $planid->cantCombosPlan }} Unidades</strong>       
+    </div> 
     
     </div>

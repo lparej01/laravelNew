@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Combos
+  Listados de combos
 @endsection
 
 @section('content') 

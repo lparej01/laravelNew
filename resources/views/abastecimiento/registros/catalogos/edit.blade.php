@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar 
+    Editar sku
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de catalogos</span>
+                            <span class="align-self-center">IR A LISTA DE SKU </span>
                         </x-slot:formHeader>                       
                            
                        

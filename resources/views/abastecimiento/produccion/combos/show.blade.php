@@ -1,7 +1,4 @@
-
-
-   
-   
+  
    <div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
@@ -10,7 +7,7 @@
                 <thead>
                     <tr>
                     <th>Combo Nro</th>
-                    <th>Categoria</th>
+                    <th>Categoría</th>
                     <th>Nombre del Combo</th>
                     <th>Unidades</th>
                     <th>Peso del Combo</th>

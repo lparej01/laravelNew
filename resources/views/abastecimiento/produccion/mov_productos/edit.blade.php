@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar 
+    Editar movimiento de producto
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de permisos</span>
+                            <span class="align-self-center">IR A MOVIMIENTOS DE PRODUCTOS</span>
                         </x-slot:formHeader>                       
                            
                        

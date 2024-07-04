@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   Crear Proveedores
+   Crear proveedores
 @endsection
 
 @section('content')
@@ -14,8 +14,7 @@
                             @csrf
                         <x-slot:formHeader>
                             <span class="align-self-center">IR A LA LISTA DE PROVEEDORES</span>
-                        </x-slot:formHeader>
-                         
+                        </x-slot:formHeader>                        
                            
                        
                         <x-slot:formBody>

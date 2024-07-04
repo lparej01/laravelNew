@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear producto 
 @endsection
 
 @section('content')
@@ -15,12 +15,10 @@
                             @csrf
                         <x-slot:formHeader>
                             <span class="align-self-center">IR A LA LISTA DE PRODUCTOS</span>
-                        </x-slot:formHeader>
-                         
+                        </x-slot:formHeader>                       
                            
                        
-                        <x-slot:formBody>
-                        
+                        <x-slot:formBody>                        
                             @include('abastecimiento.produccion.productos.form-create')
                             
                         </x-slot:formBody>

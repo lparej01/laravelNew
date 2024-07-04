@@ -220,8 +220,29 @@ Route::post('planes-entrega', 'PlanesEntregaController@store')->name('save.plane
     Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
 
 
-    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');    
+    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');  
+    
+    
+     ///*Reportes ////
+     Route::get('reporte/existencia/categoria', 'ReporteController@existenciaCategoria')->name('existencia.categoria'); 
+     Route::post('reporte/existencia/categoria', 'ReporteController@exisCategReporte')->name('existencia.categoria.reporte'); 
 
+     Route::get('reporte/existencia/sku', 'ReporteController@existenciaSku')->name('existencia.sku'); 
+     Route::post('reporte/existencia/sku', 'ReporteController@existenciaCategoriaSkuReporte')->name('existencia.sku.reporte'); 
+
+     Route::get('reporte/existencia/costo/sku', 'ReporteController@existenciaCostoSku')->name('existencia.costo.sku'); 
+     Route::post('reporte/existencia/costo/sku', 'ReporteController@existenciaCostoSkuReporte')->name('existencia.costo.sku.reporte'); 
+
+     Route::get('reporte/existencia/costo/categoria', 'ReporteController@existenciaCostoCategoria')->name('existencia.costo.categoria');
+     Route::post('reporte/existencia/costo/categoria', 'ReporteController@exisCostoCategReporte')->name('existencia.costo.categoria.reporte'); 
+
+     Route::get('reporte/resumen/proveedor', 'ReporteController@resumenProveedor')->name('resumen.proveedor.rpte'); 
+
+     Route::post('existencia-categoria-pdf', 'PDFController@existCatPdf')->name('exist.cat.pdf'); 
+     Route::post('existencia-sku-pdf', 'PDFController@existSkuPdf')->name('exist.sku.pdf'); 
+     Route::post('existencia-costo-sku-pdf', 'PDFController@existCostoSkuPdf')->name('exist.costo.sku.pdf');  
+     Route::post('existencia-costo-categoria-pdf', 'PDFController@existCostoCatPdf')->name('exist.costo.cat.pdf'); 
+  
   
 });
 

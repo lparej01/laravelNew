@@ -2,18 +2,18 @@
     <div class="box-body">
 
         <div class="col-lg-6">
-            {{ Form::label('Seleccione el Combo (*)') }}
+            {{ Form::label('Seleccione el combo (*)') }}
             @include('abastecimiento.produccion.productos.select-combos')
             {!! $errors->first('descCombo', '<div class="invalid-feedback">:message</div>') !!}
         </div>      
           
             <div class="col-lg-6">
-                {{ Form::label('Numero de Combo') }}
+                {{ Form::label('Número de Combo') }}
                 {{ Form::text('comboId', null, ['class' => 'form-control' . ($errors->has('comboId') ? ' is-invalid' : ''),  "id" => "comboId","name" => "comboId",'readonly']) }}
                 {!! $errors->first('comboId', '<div class="invalid-feedback">:message</div>') !!}
             </div>           
             <div class="col-lg-6">
-                {{ Form::label('Inv Inicial') }}
+                {{ Form::label('Inventario inicial') }}
                 {{ Form::number('invInicial', 0, ['class' => 'form-control' . ($errors->has('invInicial') ? ' is-invalid' : ''), "id" => "invInicial","name" => "invInicial","onKeyPress"=> "if(this.value.length==3) return false;"]) }}
                 {!! $errors->first('invInicial', '<div class="invalid-feedback">:message</div>') !!}
             </div> 

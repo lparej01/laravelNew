@@ -1,6 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-       <h4>Producto Combo existencia</h4>
+       <h4>Producto combo existencia</h4>
         <div class="col-lg-6">
             {{ Form::label('Combo') }}
             {{ Form::text('comboId', $producto->comboId, ['class' => 'form-control' . ($errors->has('comboId') ? ' is-invalid' : ''),  "id" => "comboId","name" => "comboId",'readonly']) }}
@@ -25,7 +25,7 @@
             {!! $errors->first('invInicial', '<div class="invalid-feedback">:message</div>') !!}
         </div> 
         <div class="col-lg-6">
-            {{ Form::label('Costo Unitario') }}
+            {{ Form::label('Costo unitario') }}
             {{ Form::text('costoUnitario', $producto->costoUnitario, ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'readonly']) }}
             {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
         </div> 

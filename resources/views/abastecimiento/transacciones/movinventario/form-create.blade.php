@@ -1,6 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">  
-      <h4>Entrada o Salida Movimiento de Inventario</h4>
+      <h4>Entrada ó salida movimiento de Inventario</h4>
       <br>     
         <div class="row">
           <div class=" form-group col-6">
@@ -16,7 +16,7 @@
             {!! $errors->first('tipoMovinv', '<div class="invalid-feedback">:message</div>') !!} 
           </div>
           <div class=" form-group col-6">
-            <label >Sku o Catalogo (*)</label>
+            <label >Sku o catálogo (*)</label>
             <select name="selectsku" id="selectsku" class="form-select @error('selectsku') is-invalid @enderror" onchange="obtenerPedidos(this)">
                 <option value="">Seleccione el sku </option>
                 @foreach ($movsku as $sku)
@@ -31,7 +31,7 @@
             
             <div class="col-lg-6">
              
-              <label >Pedidos Relacionados (*)</label>
+              <label >Pedidos relacionados (*)</label>
               <select name="ped" id="ped" class="form-select @error('ped') is-invalid @enderror" onchange="buscarPedido();" >
                 <option value="" selected>Seleccione un pedido</option>
                 {{--   @if (!empty($pedido))

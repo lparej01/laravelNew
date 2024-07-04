@@ -1,21 +1,20 @@
 
-<div class="d-flex flex-column gap-4  p-3 m-3">
-   
+<div class="d-flex flex-column gap-4  p-3 m-3">   
     <div class="d-flex justify-content-between">
         <strong>Marca:</strong>
         {{ $catalogos->marca }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Categoria:</strong>
+        <strong>Categoría:</strong>
         {{ $catalogos->categoria }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Descripcion:</strong>
+        <strong>Descripción:</strong>
         {{ $catalogos->descripcion }}
     </div>
    
      <div class="d-flex justify-content-between">
-        <strong>Presentacion:</strong>
+        <strong>Presentación:</strong>
         {{ $catalogos->presentacion }}
     </div>
     <div class="d-flex justify-content-between">
@@ -27,7 +26,7 @@
         {{ $catalogos->empaque }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Costo Unitario:</strong>
+        <strong>Costo unitario:</strong>
         {{ $catalogos->costoUnitario }}
     </div>
     

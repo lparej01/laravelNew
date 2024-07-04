@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Movimiento de Inventario
+  Movimiento de inventario
 @endsection
 
 

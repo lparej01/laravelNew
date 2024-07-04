@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar 
+    Editar planes de producción
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">IR A LISTA DE PLANES DE PRODUCCION </span>
+                            <span class="align-self-center">IR A LISTA DE PLANES DE PRODUCCIÓN </span>
                         </x-slot:formHeader>                       
                            
                        

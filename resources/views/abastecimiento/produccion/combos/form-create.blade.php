@@ -9,7 +9,7 @@
                     {!! $errors->first('descCombo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                  <div class=" form-group col-3">
-                  {{ Form::label('peso total del combo (*)') }}
+                  {{ Form::label('Peso total del combo (*)') }}
                   {{ Form::text('peso', null, ['class' => 'form-control' . ($errors->has('peso') ? ' is-invalid' : ''),  "id" => "peso","name" => "peso","placeholder" => "Peso del Combo" ,'readonly']) }}   
                     {!! $errors->first('peso', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -23,7 +23,7 @@
             <table id="combo" class="table" style="width: 80%">              
                   <thead>
                     <tr>            
-                    <th>Categoria</th>
+                    <th>Categoría</th>
                     <th>Peso</th> 
                     <th>Unidades</th>
                     </tr>

@@ -5,7 +5,7 @@
         
     </div>
     <div class="d-flex " style="align-self: flex-start">
-        <strong>Nro de Combo: {{ $movter->comboId }}</strong>
+        <strong>Número de combo: {{ $movter->comboId }}</strong>
        
     </div>
     <div class="d-flex justify-content-between">
@@ -14,7 +14,7 @@
     </div>
    
      <div class="d-flex justify-content-between">
-        <strong>Fecha del Movimiento:  {{ $movter->fechaMovter}}</strong>
+        <strong>Fecha del movimiento:  {{ $movter->fechaMovter}}</strong>
        
     </div>
     <div class="d-flex justify-content-between">
@@ -23,7 +23,7 @@
     </div>
     
     <div class="d-flex justify-content-between">
-        <strong>Nro Plan:  {{ $movter->planId}}</strong>
+        <strong>Número de plan:  {{ $movter->planId}}</strong>
        
     </div>
     

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Catalogos
+  Listado de cátalogos ó sku
 @endsection
 
 @section('content')  
@@ -9,7 +9,7 @@
 @php($actionsBlade = json_decode($actions))
 <div class="container-fluid">
         <div class="col-sm-12" >                  
-             <x-tables.bo-table :data="$skuaction" title="LISTA DE CATALOGOS Ó SKU" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+             <x-tables.bo-table :data="$skuaction" title="LISTA DE CÁTALOGOS Ó SKU" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                                 data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                                 data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                                 data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -27,9 +27,8 @@
 
                                         <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalCatalogos">
                                             <x-slot:modalTitle>
-                                                <h4 class="text-lg">Catalogos o Skú</h4>
+                                                <h4 class="text-lg">Cátalogos ó skú</h4>
                                             </x-slot:modalTitle>
-
                                         </x-notify>
 
                                             <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalCatalogos">

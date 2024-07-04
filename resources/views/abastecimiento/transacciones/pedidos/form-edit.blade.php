@@ -3,12 +3,12 @@
         <h4>Editar pedido</h4>
          
             <div class="col-lg-6">
-                {{ Form::label('Pedido Nro.') }}
+                {{ Form::label('Pedido Número') }}
                 {{ Form::text('Nombre del Pedido', $pedidos->pedidoId, ['class' => 'form-control' . ($errors->has('pedidoId') ? ' is-invalid' : ''),  "id" => "pedidoId","name" => "pedidoId",'readonly']) }}
                 {!! $errors->first('pedidoId', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Fecha del Pedido') }}
+                {{ Form::label('Fecha del pedido') }}
                 {{ Form::text('fechaPedido', $pedidos->fechaPedido, ['class' => 'form-control' . ($errors->has('fechaPedido') ? ' is-invalid' : ''),  "id" => "fechaPedido","name" => "fechaPedido",'readonly']) }}
                 {!! $errors->first('fechaPedido', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -45,12 +45,12 @@
                 {!! $errors->first('cant', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario') }}
+                {{ Form::label('Costo unitario') }}
                 {{ Form::number('costoUnitario', $pedidos->costoUnitario, ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Costo Total') }}
+                {{ Form::label('Costo total') }}
                 {{ Form::number('costoTotal', $pedidos->costoTotal, ['class' => 'form-control' . ($errors->has('costoTotal') ? ' is-invalid' : ''), "id" => "costoTotal","name" => "costoTotal",'readonly']) }}
                 {!! $errors->first('costoTotal', '<div class="invalid-feedback">:message</div>') !!}
             </div>
@@ -60,7 +60,7 @@
                 {!! $errors->first('flete', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Total con Flete') }}
+                {{ Form::label('Total con flete') }}
                 {{ Form::text('costoTotalFlete', $pedidos->costoTotalFlete, ['class' => 'form-control' . ($errors->has('costoTotalFlete') ? ' is-invalid' : ''), "id" => "costoTotalFlete","name" => "costoTotalFlete",'readonly']) }}
                 {!! $errors->first('costoTotalFlete', '<div class="invalid-feedback">:message</div>') !!}
             </div>  

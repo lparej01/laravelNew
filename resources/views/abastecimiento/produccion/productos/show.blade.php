@@ -1,7 +1,7 @@
 <div class="d-flex flex-column gap-4  p-3 m-3">
    
     <div class="d-flex justify-content-between">
-        <strong>Combo: {{ $producto->comboId}} </strong>
+        <strong>Número de combo: {{ $producto->comboId}} </strong>
         
     </div>
     <div class="d-flex " style="align-self: flex-start">
@@ -9,7 +9,7 @@
        
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Inventario Inicial:{{ $producto->invInicial}}</strong>
+        <strong>Inventario inicial:{{ $producto->invInicial}}</strong>
        
     </div>
    
@@ -26,7 +26,7 @@
        
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Inventario Final:  {{ $producto->invFinal}}</strong>
+        <strong>Inventario final:  {{ $producto->invFinal}}</strong>
        
     </div>
     

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Categorias
+ Listados de categorías
 @endsection
 
 @section('content')  
@@ -11,7 +11,7 @@
 <div></div>
 <div class="container-fluid">           
     <div class="col-sm-12" >                  
-        <x-tables.bo-table :data="$categ" title="LISTA DE CATEGORIAS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+        <x-tables.bo-table :data="$categ" title="LISTA DE CATEGORÍAS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
         data-toggle="table" data-show-refresh="false" data-show-toggle="true"
         data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
         data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"

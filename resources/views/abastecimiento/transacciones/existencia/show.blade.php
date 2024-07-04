@@ -1,9 +1,8 @@
 
-<div class="d-flex flex-column gap-4  p-3 m-3">
-   
+<div class="d-flex flex-column gap-4  p-3 m-3">   
 
     <div class="d-flex justify-content-between">
-        <strong>Sku o Catálogo:</strong>
+        <strong>Sku ó catálogo:</strong>
         {{ $existencia->sku}}
     </div>
     <div class="d-flex justify-content-between">
@@ -11,7 +10,7 @@
         {{ $existencia->periodo}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Inventario Inicial:</strong>
+        <strong>Inventario inicial:</strong>
         {{ $existencia->invInicial}}
     </div>
     <div class="d-flex justify-content-between">
@@ -29,7 +28,7 @@
    
     
     <div class="d-flex justify-content-between">
-        <strong>Inventario Final:</strong>
+        <strong>Inventario final:</strong>
         {{ $existencia->invFinal}}
     </div>
     

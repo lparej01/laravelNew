@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   Categorias
+  Crear categorías
 @endsection
 
 @section('content')

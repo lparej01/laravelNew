@@ -1,9 +1,8 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar 
+    Editar  productos
 @endsection
-
 @section('content')
 
 <section class="content container-fluid">

@@ -1,7 +1,7 @@
 <select name="descCombo" id="descCombo" onchange="combo()" class="form-select @error('descCombo') is-invalid @enderror" >
       <option value="">Seleccione el combo</option>           
       @if ( !isset($combos))
-        <option value="">No Hay combo que iniciar</option>  
+        <option value="">No hay combo que iniciar</option> 
       @else
             @foreach ($combos as $item)           
             <option value="{{ $item->comboId }}">{{ $item->descCombo }}</option>   

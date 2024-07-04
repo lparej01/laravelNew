@@ -5,11 +5,11 @@
         {{ $pedidos->pedidoId}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Fecha Pedido:</strong>
+        <strong>Fecha pedido:</strong>
         {{ $pedidos->fechaPedido}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Codigo del Proveedor:</strong>
+        <strong>Código del proveedor:</strong>
         {{ $pedidos->provId }}
        
     </div>
@@ -19,23 +19,23 @@
        
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Codigo Catálogo:</strong>
+        <strong>Código catálogo:</strong>
         {{ $pedidos->sku}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Catálogo:</strong>
+        <strong>catálogo:</strong>
         {{ $pedidos->marca}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Cantidad Ingresada:</strong>
+        <strong>Cantidad ingresada:</strong>
         {{ $pedidos->cant}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Costo Unitario:</strong>
+        <strong>Costo unitario:</strong>
         {{ $pedidos->costoUnitario}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Costo Total:</strong>
+        <strong>Costo total:</strong>
         {{ $pedidos->costoTotal}}
     </div>  
     
@@ -44,15 +44,15 @@
         {{ $pedidos->flete}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Total Flete:</strong>
+        <strong>Total flete:</strong>
         {{ $pedidos->costoTotalFlete}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Cantidad Pendiente:</strong>
+        <strong>Cantidad pendiente:</strong>
         {{ $pedidos->cantPendiente}}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Saldo Pendiente:</strong>
+        <strong>Saldo pendiente:</strong>
         {{ $pedidos->saldoPendiente}}
     </div>
     

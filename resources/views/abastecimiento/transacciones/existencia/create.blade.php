@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear una existencia de productos
 @endsection
 
 @section('content')

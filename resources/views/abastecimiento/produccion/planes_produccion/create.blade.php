@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear planj de producción
 @endsection
 
 @section('content')
@@ -14,9 +14,8 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de permisos</span>
-                        </x-slot:formHeader>
-                         
+                            <span class="align-self-center">IR A LA LISTA DE PLANES DE PRODUCCIÓN</span>
+                        </x-slot:formHeader>                        
                            
                        
                         <x-slot:formBody>

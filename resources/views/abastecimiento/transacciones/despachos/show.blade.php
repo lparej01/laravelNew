@@ -15,17 +15,17 @@
         {{ $despachos->sku}}
     </div>   
     <div class="d-flex justify-content-between">
-        <strong>Cantidad Ingresada:</strong>
+        <strong>Cantidad ingresada:</strong>
         {{ $despachos->cant}}
     </div>
     
     <div class="d-flex justify-content-between">
-        <strong>Costo Total:</strong>
+        <strong>Costo total:</strong>
         {{ $despachos->costoTotal}}
     </div> 
    
     <div class="d-flex justify-content-between">
-        <strong>Cantidad Pendiente:</strong>
+        <strong>Cantidad pendiente:</strong>
         {{ $despachos->cantPendiente}}
     </div>
     

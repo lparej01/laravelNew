@@ -1,11 +1,11 @@
 <div class="d-flex flex-column gap-4  p-3 m-3">
    
     <div class="d-flex justify-content-between">
-        <strong>Categoria Id:</strong>
+        <strong>Número de categoría:</strong>
         {{ $categorias->catId }}
     </div>
     <div class="d-flex justify-content-between">
-        <strong>Categoria:</strong>
+        <strong>Categoría:</strong>
         {{ $categorias->categoria }}
     </div>
     <div class="d-flex justify-content-between">

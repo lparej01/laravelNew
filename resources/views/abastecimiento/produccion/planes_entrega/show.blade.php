@@ -8,26 +8,22 @@
       
   </div>
   <div class="d-flex " style="align-self: flex-start">
-      <strong>Combo: {{ $combo->descCombo }}</strong>
+      <strong>Nombre del combo: {{ $combo->descCombo }}</strong>
      
   </div>
   <div class="d-flex justify-content-between">
-      <strong>Cantidad de Combos: {{ $planes[0]->cantCombosPlan }} Unidades</strong>
-     
-  </div>
- 
+      <strong>Cantidad de combos: {{ $planes[0]->cantCombosPlan }} Unidades</strong>     
+  </div> 
    <div class="d-flex justify-content-between">
-      <strong>Peso:  {{ $combo->peso }} Kg</strong>
-     
+      <strong>Peso:  {{ $combo->peso }} Kg</strong>     
   </div>
   
   <div class="form-check  " style="align-self: flex-start">
-     <strong>Entrega solicitado</strong>
+     <strong>Entrega de lo solicitado</strong>
      @foreach ($planes as $it)
       @if ($it->stRequisicion > 0)
       <input class="form-check-input"  type="checkbox" id="despachosolic" onclick="strequisicion()" checked>
-      <input   type="hidden" id="plan" value="{{ $planes[0]->planId }}">
-      
+      <input   type="hidden" id="plan" value="{{ $planes[0]->planId }}">      
       @else
       <input class="form-check-input"   type="checkbox" id="despachosolic" onclick="strequisicion()">
       <input  type="hidden" id="plan" value="{{ $planes[0]->planId }}">

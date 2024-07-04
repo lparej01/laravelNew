@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear un movimiento
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
           
                                      
                                                
-         <x-tables.bo-table :data="$movInv" title="LISTA DE PEDIDOS DEL PERIODO ACTIVO" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+         <x-tables.bo-table :data="$movInv" title="LISTA DE MOVIMIENTO DE INVENTARIO" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                             data-toggle="table" data-show-refresh="false" data-show-toggle="true"
                             data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                             data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -29,7 +29,7 @@
   
                                     <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalMovimientoInventarioPed">
                                         <x-slot:modalTitle>
-                                            <h4 class="text-lg">Movimiento de Pedidos por  Sku activos</h4>
+                                            <h4 class="text-lg">Movimiento de inventario/h4>
                                         </x-slot:modalTitle>
   
                                     </x-notify>
@@ -56,16 +56,14 @@
   
                                           
                                         })
-                                    })()
-  
+                                    })()  
                                    
-                                </script>
-                               
+                                </script>                               
                                 <script src="{{asset("assets/team/js/plugins/bootstrap-table.min.js")}}"></script>
                                 <script src="{{asset("assets/team/scripts/tables/abastecimiento/transacciones/movInvped.js")}}"></script>
                                
                             
-                                @endpush                             
+                            @endpush                             
                        
   
          </x-tables.bo-table>

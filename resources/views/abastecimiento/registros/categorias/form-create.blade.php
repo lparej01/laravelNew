@@ -3,7 +3,7 @@
 
        
             <div class="col-lg-6">
-                {{ Form::label('Categoria') }}
+                {{ Form::label('Categoría') }}
                 {{ Form::text('categoria', null, ['class' => 'form-control' . ($errors->has('categoria') ? ' is-invalid' : ''),  "id" => "categoria","name" => "categoria" ,"onKeyPress"=> "if(this.value.length==50) return false;"]) }}
                 {!! $errors->first('categoria', '<div class="invalid-feedback">:message</div>') !!}
             </div> 

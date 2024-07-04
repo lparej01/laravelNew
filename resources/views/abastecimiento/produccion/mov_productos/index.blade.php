@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
- Movimiento Productos
+ Movimiento de productos
 @endsection
 
 @section('content')  
@@ -28,7 +28,7 @@
 
                                         <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalMovimientosProductos">
                                             <x-slot:modalTitle>
-                                                <h4 class="text-lg">Movimientos de Productos</h4>
+                                                <h4 class="text-lg">Movimientos de productos</h4>
                                             </x-slot:modalTitle>
 
                                         </x-notify>

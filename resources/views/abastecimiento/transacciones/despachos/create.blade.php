@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear una solicitud de despacho
 @endsection
 
 @section('content')

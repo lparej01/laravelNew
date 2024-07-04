@@ -194,11 +194,6 @@ class Existencia extends Model implements Auditable
        
        }
        
-
-      
-      
-       
-       
       
        
    }
