@@ -80,14 +80,14 @@
             },
             {
                 field: "categoria",
-                title: "Nombre de las Categorias",
+                title: "Nombre de las Categorías",
                 sortable: true,
                 align: "left",
                 searchable: true,
             },
             {
                 field: "costoUnitario",
-                title: "Costo Unitario",
+                title: "Costo unitario",
                 sortable: true,
                 align: "center",
                 searchable: true                
@@ -109,7 +109,7 @@
                 searchable: true,
                 
             },           
-            {
+            /* {
                 field: "activo",
                 title: "Estado",
                 sortable: true,
@@ -119,7 +119,7 @@
                     return value ? "Activo" : "Inactivo";
                 },
                 
-            },       
+            },        */
             
             
             {

@@ -5,7 +5,7 @@
   <div class="row large-columns-1 mb-0">
   <div id="custom_html-3" class="widget_text col pb-0 widget widget_custom_html">
     <div class="textwidget custom-html-widget">
-      <p style="text-align: center;"><img class="aligncenter  wp-image-13" src="{{asset("assets/team/img/lagiralda1.png")}}"" alt="" width="160" height="90"></p>
+      <p style="text-align: center;"><img class="aligncenter  wp-image-13" src="{{asset("assets/team/img/lagiralda1.png")}}"" alt="" width="200" height="90"></p>
   <p style="text-align: center;"><a href="http://url" target="_blank" data-label="Facebook" rel="noopener noreferrer nofollow" class="icon plain facebook tooltip tooltipstered"><i class="icon-facebook"></i></a><a href="https://instagram.com/lagiraldave" target="_blank" rel="noopener noreferrer nofollow" data-label="Instagram" class="icon plain instagram tooltip tooltipstered"><i class="icon-instagram"></i></a></p>
   <p style="text-align: center;">Copyright 2024 © <strong>Alimentos La Giralda -- Gestion de Empaques</strong></p></div></div>
   </div>

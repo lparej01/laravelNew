@@ -28,7 +28,7 @@ class ReporteController extends Controller
          
          /**Valido los campos del formulario */
          $messages = [           
-            'fechaPeriodo.required' => 'La busquedad por periodo no puede estar en blanco'                      
+            'fechaPeriodo.required' => 'La búsqueda por periodo no puede estar en blanco'                      
         ];
 
         $request->validate([
@@ -77,7 +77,7 @@ class ReporteController extends Controller
          
         /**Valido los campos del formulario */
         $messages = [           
-           'fechaPeriodo.required' => 'La busquedad por periodo no puede estar en blanco'                      
+           'fechaPeriodo.required' => 'La búsqueda por periodo no puede estar en blanco'                      
        ];
 
        $request->validate([
@@ -122,7 +122,7 @@ class ReporteController extends Controller
          
         /**Valido los campos del formulario */
         $messages = [           
-           'fechaPeriodo.required' => 'La busquedad por periodo no puede estar en blanco'                      
+           'fechaPeriodo.required' => 'La búsqueda por periodo no puede estar en blanco'                      
        ];
 
        $request->validate([
@@ -156,7 +156,7 @@ class ReporteController extends Controller
          
         /**Valido los campos del formulario */
         $messages = [           
-           'fechaPeriodo.required' => 'La busquedad por periodo no puede estar en blanco'                      
+           'fechaPeriodo.required' => 'La búsqueda por periodo no puede estar en blanco'                      
        ];
 
        $request->validate([

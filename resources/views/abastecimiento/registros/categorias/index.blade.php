@@ -23,15 +23,15 @@
                 @if ($actionsBlade->can_create > 0)
                     <a href="{{ route('crear.categorias') }}" class="btn btn-primary float-right"
                         data-placement="left">
-                        {{ __('Crear Nueva Categorias') }}
+                        {{ __('Crear una nueva categoría') }}
                     </a>
                 @endif
-
+                
                 <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalCategorias">
                     <x-slot:modalTitle>
-                        <h4 class="text-lg">Categorias</h4>
+                        <h4 class="text-lg">Categorías</h4>
                     </x-slot:modalTitle>
-
+                    
                 </x-notify>
 
                     <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalCategorias">

@@ -87,7 +87,7 @@
             },
             {
                 field: "tipoMovter",
-                title: "Tipo de Mov",
+                title: "Tipo de Mov.",
                 sortable: true,
                 align: "center",
                 searchable: true,
