@@ -266,7 +266,7 @@ class PedidosController extends Controller
      */
     public function edit(string $pedidoId)
     {
-        /**datos */
+        /**datos busca el pedido a editar */
         $pedidos= Pedidos::getPedidoId($pedidoId);       
       
         /**para el select */
