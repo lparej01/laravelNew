@@ -1,5 +1,5 @@
 <!-- Navbar MENU HORIZONTAL -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl card" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -16,7 +16,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">            
             <li class="nav-item d-flex align-items-center">
-              <a href="{{ url('/logout')}}" class="nav-link text-body font-weight-bold px-0">
+              
                <span class="d-sm-inline d-none">{{ user()->username}}</span>
 
                    @if ( user()->images == null)
@@ -24,7 +24,14 @@
                     @else
                     <img id="imagen" src ="{{ asset('storage').'/'.user()->images}}"  class="rounded avatar avatar-sm  me-3" width="150" height="150" >
                      @endif                
-                 <span class="d-sm-inline d-none">Cerrar session</span>                
+                 
+               
+             
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="{{ url('/logout')}}" class="nav-link text-body font-weight-bold px-0">
+                          
+                 <span class="d-sm-inline d-none"><img id="imagen" src ="{{  asset('recursos/iconos/img_new/icons8-reiniciar-94.png')}}"  class="rounded avatar avatar-sm  me-3" width="150" height="150" >Cerrar session</span>                
                
               </a>
             </li>
@@ -52,10 +59,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Proveedores</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $53,000
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
+                     {{ contarProveedores()}}
+                     
                     </h5>
                   </div>
                 </div>
@@ -74,10 +81,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pedidos</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
+                      {{ obtenerSumaPedido() }}
+                     
                     </h5>
                   </div>
                 </div>
@@ -96,10 +103,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Despachos</p>
                     <h5 class="font-weight-bolder mb-0">
-                      +3,462
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                      {{obtenerSumaDespachos()}}
+                     
                     </h5>
                   </div>
                 </div>
@@ -118,10 +125,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Periodo Activo</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $103,430
-                      <span class="text-success text-sm font-weight-bolder">+5%</span>
+                      {{periodoActual()   }}
+                      
                     </h5>
                   </div>
                 </div>

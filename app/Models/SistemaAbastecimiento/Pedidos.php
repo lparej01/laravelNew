@@ -2,7 +2,6 @@
 
 namespace App\Models\SistemaAbastecimiento;
 
-
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +57,197 @@ class Pedidos extends Model implements Auditable
         return  $pedidos;
 
     }
+    /**
+     * Sumas los pedidos de un periodo activos
+     * 
+     */
+    public static function getPedidosPeriodoActivo(){
+         
+        //Periodo actual
+        $periodoActual= Periodo::buscarPeriodoActual();
+       
+       
+
+        $pedidos = DB::connection('sqlite')->table('existencia')                       
+        ->where('existencia.periodo',"=", $periodoActual->periodo)        
+        ->sum('entradas');   
+       
+        
+        return number_format($pedidos,0, ",", ".");
+    }
+     /**
+     * Sumas los despachos de un periodo activos
+     * 
+     */
+    public static function getDespachosPeriodoActivo(){
+         
+        //Periodo actual
+        $periodoActual= Periodo::buscarPeriodoActual();  
+       
+
+        $despachos = DB::connection('sqlite')->table('existencia')                       
+        ->where('existencia.periodo',"=", $periodoActual->periodo)        
+        ->sum('salidas');   
+        
+        
+        return number_format($despachos,0, ",", ".");
+    }
+    /**
+     * Por periodo activo 
+     * Pedidos
+     * 
+     */
+    public  static function obtenerPerPed(){
+
+        $periodoActual= Periodo::buscarPeriodoActual();
+
+        if ( $periodoActual->mes <= 9) {
+            $mes='0'.$periodoActual->mes;
+
+        } else {
+             $mes = $periodoActual->mes;
+        }
+        
+        
+        $fecha = $periodoActual->anio.'-'.$mes.'-01';
+
+        /***SELECT DISTINCT pedidoId, fechaPedido, cant
+        FROM pedidos
+        INNER JOIN existencia ON existencia.sku  = pedidos.sku
+        where fechaPedido >= '2024-03-01' and provId !=300000 ORDER by fechaPedido ASC ; 
+        
+       */
+        $ped = DB::connection('sqlite')->table('pedidos')               
+         ->join('existencia', 'existencia.sku', '=', 'pedidos.sku')   
+         ->select('pedidos.pedidoId','pedidos.fechaPedido','pedidos.cant')
+         ->where('pedidos.fechaPedido',">=",  $fecha)
+         ->where('pedidos.provId',"!=", 300000) 
+         ->groupBy('pedidos.fechaPedido')          
+         ->orderBy('pedidos.fechaPedido', 'asc')     
+         ->distinct();  
+        
+        $plucked = $ped ->pluck('pedidos.fechaPedido');
+        
+        return $plucked;
+
+
+    }
+    /**
+     * Por periodo activo 
+     * Despachos
+     * 
+     */
+    public  static function obtenerPerDesp(){
+
+        $periodoActual= Periodo::buscarPeriodoActual();
+
+        if ( $periodoActual->mes <= 9) {
+            $mes='0'.$periodoActual->mes;
+
+        } else {
+             $mes = $periodoActual->mes;
+        }
+        
+        
+        $fecha = $periodoActual->anio.'-'.$mes.'-01';
+
+        /***SELECT DISTINCT pedidoId, fechaPedido, cant
+        FROM pedidos
+        INNER JOIN existencia ON existencia.sku  = pedidos.sku
+        where fechaPedido >= '2024-03-01' and provId !=300000 ORDER by fechaPedido ASC ; 
+        
+       */
+        $ped = DB::connection('sqlite')->table('pedidos')               
+         ->join('existencia', 'existencia.sku', '=', 'pedidos.sku')   
+         ->select('pedidos.pedidoId','pedidos.fechaPedido','pedidos.cant')
+         ->where('pedidos.fechaPedido',">=",  $fecha)
+         ->where('pedidos.provId',"=", 300000) 
+         ->groupBy('pedidos.fechaPedido')    
+         ->orderBy('pedidos.fechaPedido', 'asc')     
+         ->distinct();  
+        
+        $plucked = $ped ->pluck('fechaPedido');
+        
+        return $plucked;
+
+    }
+    /**
+     * Por periodo activo 
+     * Pedidos
+     * 
+     */
+    public  static function obtenerPerPedCant(){
+
+        $periodoActual= Periodo::buscarPeriodoActual();
+
+        if ( $periodoActual->mes <= 9) {
+            $mes='0'.$periodoActual->mes;
+
+        } else {
+             $mes = $periodoActual->mes;
+        }
+        
+        $fecha = $periodoActual->anio.'-'.$mes.'-01';
+
+        /***SELECT DISTINCT pedidoId, fechaPedido, cant
+        FROM pedidos
+        INNER JOIN existencia ON existencia.sku  = pedidos.sku
+        where fechaPedido >= '2024-03-01' and provId !=300000 ORDER by fechaPedido ASC ; 
+        
+       */
+        $ped = DB::connection('sqlite')->table('pedidos')               
+         ->join('existencia', 'existencia.sku', '=', 'pedidos.sku')   
+         ->select('pedidos.pedidoId','pedidos.fechaPedido','pedidos.cant')
+         ->where('pedidos.fechaPedido',">=",  $fecha)
+         ->where('pedidos.provId',"!=", 300000)
+         ->groupBy('pedidos.fechaPedido')
+         ->orderBy('pedidos.fechaPedido', 'asc')        
+         ->distinct();  
+         
+        $plucked = $ped ->pluck('cant');
+ 
+        return $plucked;
+
+    }
+    /**
+     * Por periodo activo 
+     * Pedidos
+     * 
+     */
+    public  static function obtenerPerDespCant(){
+
+        $periodoActual= Periodo::buscarPeriodoActual();
+
+        if ( $periodoActual->mes <= 9) {
+            $mes='0'.$periodoActual->mes;
+
+        } else {
+             $mes = $periodoActual->mes;
+        }
+        
+        $fecha = $periodoActual->anio.'-'.$mes.'-01';
+
+        /***SELECT DISTINCT pedidoId, fechaPedido, cant
+        FROM pedidos
+        INNER JOIN existencia ON existencia.sku  = pedidos.sku
+        where fechaPedido >= '2024-03-01' and provId !=300000 ORDER by fechaPedido ASC ; 
+        
+       */
+        $ped = DB::connection('sqlite')->table('pedidos')               
+         ->join('existencia', 'existencia.sku', '=', 'pedidos.sku')   
+         ->select('pedidos.pedidoId','pedidos.fechaPedido','pedidos.cant')
+         ->where('pedidos.fechaPedido',">=",  $fecha)
+         ->where('pedidos.provId',"=", 300000)
+         ->groupBy('pedidos.fechaPedido')
+         ->orderBy('pedidos.fechaPedido', 'asc')        
+         ->distinct();  
+         
+        $plucked = $ped ->pluck('cant');
+ 
+        return $plucked;
+
+    }
+
 
     /**
      * Buscar todos los pedidos que esten en almacen
@@ -78,7 +268,7 @@ class Pedidos extends Model implements Auditable
  
          return  $pedidos;
  
-     }
+     }   
 
      /**
       * buscar proveedores sin el de Almacen

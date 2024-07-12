@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Nombre del Proveedor (*)') }}
+                    {{ Form::label('Nombre del proveedor (*)') }}
                     {{ Form::text('nombre', null, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del proveedor']) }}
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -23,7 +23,7 @@
              <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Telefono Principal') }}
+                    {{ Form::label('Telefono principal') }}
                     {{ Form::number('telf1', null, ['class' => 'form-control' . ($errors->has('telf1') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el telefono principal']) }}
                     {!! $errors->first('telf1', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -32,7 +32,7 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Otro Telefono') }}
+                    {{ Form::label('Otro teléfono') }}
                     {{ Form::number('telf2', null, ['class' => 'form-control' . ($errors->has('telf2') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese otro telefono']) }}
                     {!! $errors->first('telf2', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -41,7 +41,7 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Telefono de Contacto (*)') }}
+                    {{ Form::label('Teléfono de contacto (*)') }}
                     {{ Form::number('telefContact', null, ['class' => 'form-control' . ($errors->has('telefContact') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese  Telefono de contacto']) }}
                     {!! $errors->first('telefContact', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -60,7 +60,7 @@
              <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Email de Contacto (*)') }}
+                    {{ Form::label('Email de contacto (*)') }}
                     {{ Form::email('emailContacto', null, ['class' => 'form-control' . ($errors->has('emailContacto') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese email de contacto']) }}
                     {!! $errors->first('emailContacto', '<div class="invalid-feedback">:message</div>') !!}
                 </div>

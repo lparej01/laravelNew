@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   Periodo Seleccionado
+   Periodo seleccionado
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
             </p>
     
         </div>
-        <h5 class="card-title">Periodo Selecionado..</h5> 
+        <h5 class="card-title">Periodo selecionado..</h5> 
         <br> 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">  
                  

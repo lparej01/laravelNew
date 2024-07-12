@@ -36,6 +36,27 @@ class Categorias extends Model implements Auditable
      * Obtener todos las categorias
      * 
      */
+    public static function  getAllCount(){
+
+        $cate= DB::connection('sqlite')->table('categorias')
+        ->select('categorias.catId',
+                    'categorias.categoria',
+                    'categorias.costoUnitario',
+                    'categorias.precio',
+                    'categorias.peso')                   
+                    ->where('activo',1)           
+                    ->count(); 
+       
+
+        
+         return $cate;
+    }
+    
+    /**
+     * 
+     * Obtener todos las categorias
+     * 
+     */
     public static function  getAllCategorias(){
 
         $cat= DB::connection('sqlite')->table('categorias')
@@ -46,8 +67,8 @@ class Categorias extends Model implements Auditable
                     'categorias.peso',                    
                     DB::raw("(CASE WHEN categorias.activo = 1  THEN 'Activa' WHEN categorias.activo=0 THEN 'Inactiva' END) as estatus"))
                     ->where('activo',1)                    
-                    ->orderBy('categoria') 
-                    ->get()->unique('categoria'); 
+                    ->orderBy('catId','Asc') 
+                    ->get(); 
        
 
         

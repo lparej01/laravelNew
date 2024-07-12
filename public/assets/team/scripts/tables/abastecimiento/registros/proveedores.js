@@ -89,7 +89,7 @@
                 field: "contacto",
                 title: "Contacto",
                 sortable: true,
-                align: "right",
+                align: "lrft",
                 searchable: true                
             },
 

@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/apple-icon.png")}}">
   <link rel="icon" type="image/png" href="{{asset("assets/team/img/favicon.png")}}">
   <title>
-    Proyecto Web
+    SEASC
   </title>
   
   <!--     Fonts and icons     -->
@@ -33,8 +33,7 @@
 
    <!--MAIN-->
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
-    <!-- Navbar MENU HORIZONTAL -->
-   
+    <!-- Navbar MENU HORIZONTAL -->   
     
         <main class="py-4">
         <!--@yield("content")-->

@@ -15,7 +15,7 @@ use Str;
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista de usuarios 
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class UsersController extends Controller
             ->get();   
 
       
-       // $array = array("can_query"=> 1, "can_insert"=>  $permiso_status[0]->status, "can_update"=>$permiso_status[2]->status,"can_delete"=>$permiso_status[1]->status,"can_assignment"=>$permiso_status[3]->status);    
+      
         $array = array("can_create" => $permiso_status[0]->status, 
                         "can_edit" => $permiso_status[2]->status, 
                         "can_show" => $permiso_status[5]->status,
@@ -49,14 +49,14 @@ class UsersController extends Controller
         $us = User::getAllUsers();
 
         $users = serializeJson($us);
-       // dd($users);        
+              
      
         return view('admin.user.index', compact('users', 'actions'));  
         
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Crear un usuario
      */
     public function create()
     {
@@ -64,7 +64,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar el usuario creado en la base de datos 
      */
     public function store(Request $request)
     {

@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Solicitud de Despachos
+  Solicitud de despachos
 @endsection
 @php($actionsBlade = json_decode($actions))
 @section('content')  
@@ -24,7 +24,7 @@
                                   @endif 
                                   <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalDespachos">
                                       <x-slot:modalTitle>
-                                          <h4 class="text-lg">Solicitud de Despachos</h4>
+                                          <h4 class="text-lg">Solicitud de despachos</h4>
                                       </x-slot:modalTitle>
 
                                   </x-notify>

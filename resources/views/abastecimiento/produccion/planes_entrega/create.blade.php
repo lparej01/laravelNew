@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear plan de entrega
 @endsection
 
 @section('content')
@@ -14,13 +14,11 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">Ir a lista de permisos</span>
-                        </x-slot:formHeader>
-                         
+                            <span class="align-self-center">IR A LISTA DE PLAN DE ENTREGA</span>
+                        </x-slot:formHeader>                   
                            
                        
-                        <x-slot:formBody>
-                        
+                        <x-slot:formBody>       
                           
                             
                         </x-slot:formBody>

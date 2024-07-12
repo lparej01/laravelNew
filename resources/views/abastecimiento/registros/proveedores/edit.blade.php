@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar Proveedores
+    Editar proveedores
 @endsection
 
 @section('content')

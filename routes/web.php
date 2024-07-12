@@ -101,24 +101,37 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
  Route::get('productos', 'ProductosController@index')->name('productos.list');    
  Route::get('productos/edit/{id}', 'ProductosController@edit')->name('edit.productos');
  Route::post('productos/{id}', 'ProductosController@update')->name('update.productos');
- Route::delete('productos/{id}/destroy', 'ProductosController@destroy')->name('destroy.productos');
+ Route::get('productos/delete/{id}', 'ProductosController@delete')->name('productos.delete');
+ Route::get('productos/delete_confirm/{id}', 'ProductosController@delete_confirm')->name('productos.delete_confirm');
  Route::get('productos/show/{id}', 'ProductosController@show')->name('productos.show'); 
  Route::get('productos/disable/{id}', 'ProductosController@disable')->name('productos.disable'); 
  Route::get('productos/disable_confirm/{id}', 'ProductosController@disable_confirm')->name('productos.disable_confirm');
  Route::get('productos/create', 'ProductosController@create')->name('crear.productos');
  Route::post('productos', 'ProductosController@store')->name('save.productos');
 
- ///*Planes////
- Route::get('planes', 'PlanesController@index')->name('planes.list');    
- Route::get('planes/edit/{id}', 'PlanesController@edit')->name('edit.planes');
- Route::post('planes/{id}', 'PlanesController@update')->name('update.planes');
- Route::delete('planes/{id}/destroy', 'PlanesController@destroy')->name('destroy.planes');
- Route::get('planes/show/{id}', 'PlanesController@show')->name('planes.show'); 
- Route::get('planes/disable/{id}', 'PlanesController@disable')->name('planes.disable'); 
- Route::get('planes/disable_confirm/{id}', 'PlanesController@disable_confirm')->name('planes.disable_confirm');
- Route::get('planes/create', 'PlanesController@create')->name('crear.planes');
- Route::post('planes', 'PlanesController@store')->name('save.planes');
+ ///*Planes Produccion////
+ Route::get('planes-produccion', 'PlanesProduccionController@index')->name('planes-produccion.list');  
+ //::get('planes-reporta-produccion/show-reporte/{planid}', 'PlanesProduccionController@reporteproduccion')->name('planes-reporta-produccion.show');      
+ Route::get('planes-produccion/edit/{id}', 'PlanesProduccionController@edit')->name('edit.planes-produccion-reporte');
+ Route::post('planes-produccion/{id}', 'PlanesProduccionController@update')->name('update.planes-produccion');
+ Route::get('planes-produccion/delete/{id}', 'PlanesProduccionController@delete')->name('delete.planes-produccion');
+ Route::get('planes-produccion/show/{id}', 'PlanesProduccionController@show')->name('planes-produccion.show'); 
+ Route::get('planes-produccion/disable/{id}', 'PlanesProduccionController@disable')->name('planes-produccion.disable'); 
+ Route::get('planes-produccion/delete_confirm/{id}', 'PlanesProduccionController@delete_confirm')->name('planes-produccion.delete_confirm');
+ Route::get('planes-produccion/create', 'PlanesProduccionController@create')->name('crear.planes-produccion');
+ Route::post('planes-produccion', 'PlanesProduccionController@store')->name('save.planes-produccion');
+ Route::get('planes-strequisicion', 'PlanesProduccionController@strequisicion')->name('save.planes-strequisicion');
 
+///*Planes Entrega////
+Route::get('planes-entrega', 'PlanesEntregaController@index')->name('planes-entrega.list');    
+Route::get('planes-entrega/edit/{id}', 'PlanesEntregaController@edit')->name('edit.planes-entrega');
+Route::post('planes-entrega/{id}', 'PlanesEntregaController@update')->name('update.planes-entrega');
+Route::delete('planes-entrega/{id}/destroy', 'PlanesEntregaController@destroy')->name('destroy.planes-entrega');
+Route::get('planes-entrega/show/{id}', 'PlanesEntregaController@show')->name('planes-entrega.show'); 
+Route::get('planes-entrega/delete/{id}', 'PlanesEntregaController@delete')->name('delete.planes-entrega'); 
+Route::get('planes-entrega/disable_confirm/{id}', 'PlanesEntregaController@delete_confirm')->name('planes-entrega.delete_confirm');
+Route::get('planes-entrega/create', 'PlanesEntregaController@create')->name('crear.planes-entrega');
+Route::post('planes-entrega', 'PlanesEntregaController@store')->name('save.planes-entrega');
 
 
  ///*Periodo////
@@ -163,9 +176,11 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
     Route::get('combos', 'CombosController@index')->name('combos.list');    
     Route::get('combos/edit/{id}', 'CombosController@edit')->name('edit.combos');
     Route::post('combos/{id}', 'CombosController@update')->name('update.combos');
-    Route::delete('combos/{id}/destroy', 'CombosController@destroy')->name('destroy.combos');
+    Route::get('combos/delete/{id}', 'CombosController@delete')->name('delete.combos');
+    Route::get('combos/confirm_delete/{id}', 'CombosController@confirm_delete')->name('confirm_delete.combos');
     Route::get('combos/show/{id}', 'CombosController@show')->name('combos.show'); 
-    Route::get('combos/disable/{id}', 'CombosController@disable')->name('combos.disable'); 
+    Route::get('combos/assignment/{id}', 'CombosController@assignment')->name('combos.assignment'); 
+    Route::post('combos/assignment/save', 'CombosController@assignmentsave')->name('combos.assignment-save'); 
     Route::get('combos/disable_confirm/{id}', 'CombosController@disable_confirm')->name('combos.disable_confirm');
     Route::get('combos/create', 'CombosController@create')->name('crear.combos');
     Route::post('combos', 'CombosController@store')->name('save.combos');
@@ -205,8 +220,29 @@ Route::group(['prefix' => 'abastecimiento', 'namespace' => 'App\Http\Controllers
     Route::post('existencia', 'ExistenciaController@store')->name('save.existencia');
 
 
-    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');    
+    Route::get('solicitud_despacho', 'SolicitudDespachoController@index')->name('solicitudDespacho.list');  
+    
+    
+     ///*Reportes ////
+     Route::get('reporte/existencia/categoria', 'ReporteController@existenciaCategoria')->name('existencia.categoria'); 
+     Route::post('reporte/existencia/categoria', 'ReporteController@exisCategReporte')->name('existencia.categoria.reporte'); 
 
+     Route::get('reporte/existencia/sku', 'ReporteController@existenciaSku')->name('existencia.sku'); 
+     Route::post('reporte/existencia/sku', 'ReporteController@existenciaCategoriaSkuReporte')->name('existencia.sku.reporte'); 
+
+     Route::get('reporte/existencia/costo/sku', 'ReporteController@existenciaCostoSku')->name('existencia.costo.sku'); 
+     Route::post('reporte/existencia/costo/sku', 'ReporteController@existenciaCostoSkuReporte')->name('existencia.costo.sku.reporte'); 
+
+     Route::get('reporte/existencia/costo/categoria', 'ReporteController@existenciaCostoCategoria')->name('existencia.costo.categoria');
+     Route::post('reporte/existencia/costo/categoria', 'ReporteController@exisCostoCategReporte')->name('existencia.costo.categoria.reporte'); 
+
+     Route::get('reporte/resumen/proveedor', 'ReporteController@resumenProveedor')->name('resumen.proveedor.rpte'); 
+
+     Route::post('existencia-categoria-pdf', 'PDFController@existCatPdf')->name('exist.cat.pdf'); 
+     Route::post('existencia-sku-pdf', 'PDFController@existSkuPdf')->name('exist.sku.pdf'); 
+     Route::post('existencia-costo-sku-pdf', 'PDFController@existCostoSkuPdf')->name('exist.costo.sku.pdf');  
+     Route::post('existencia-costo-categoria-pdf', 'PDFController@existCostoCatPdf')->name('exist.costo.cat.pdf'); 
+  
   
 });
 

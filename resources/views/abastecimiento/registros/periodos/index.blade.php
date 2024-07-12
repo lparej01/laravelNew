@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Periodos
+  Listados de periodos
 @endsection
 
 @section('content') 
@@ -20,19 +20,15 @@
                       {{ Form::label('Periodo o Zafra') }}
                       @include('abastecimiento.registros.periodos.select-year')
                       {!! $errors->first('anio', '<div class="invalid-feedback">:message</div>') !!}
-                   </div> 
-                        
+                   </div>                        
                    
                       <div class="col-md-11">  
                         <button type="submit" class="btn btn-primary btn-md mt-4 mb-4">Generar periodo</button>
-                    </div>    
+                    </div>   
                       
-                  </form>
+                  </form>               
 
-               
-
-              </div>
-           
+              </div>           
          
          
      </div>
@@ -46,32 +42,7 @@
     <br>
     <br>
     <br>
-  </div>
-  {{-- <script>
-     $(document).ready(function(){
-        $("button").click(function(){
-          var select =  $("#anio").val();          
-          if (select > 0) {
-                $.ajax({                            
-                    url: 'periodo/generar',                   
-                    type: 'POST',
-                    data: { 
-                      select: select,                
-                      _token: '{!! csrf_token() !!}'
-                    },
-                    success: function (data) {
-                      console.log(data);
-                                
-                    
-                    }
-              
-                });
-           }
-        })
-    })
-  
-
-  </script> --}}
+  </div> 
  <script src="{{asset("assets/team/funciones.js")}}"></script>
 
 </div>

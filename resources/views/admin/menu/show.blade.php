@@ -17,11 +17,6 @@
 
            <img id="imagen" src ="{{ asset('storage').'/'.$menu->icono}}"  class="rounded" width="150" height="120" >
 
-            
-           
-              
-          
-        
         </div>
         
         

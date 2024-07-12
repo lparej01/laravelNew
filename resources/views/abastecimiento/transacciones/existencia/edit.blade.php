@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar 
+    Editar una existencia
 @endsection
 
 @section('content')

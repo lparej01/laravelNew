@@ -1,11 +1,11 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar Movi
+    Editar movimiento de inventario
 @endsection
 
 @section('content')
-<script src="{{asset("assets/team/js/toastr.min.js")}}" type="text/javascript"></script>
+  <script src="{{asset("assets/team/js/toastr.min.js")}}" type="text/javascript"></script>
   <link href="{{ asset("assets/team/css/toastr.min.css")}}" rel="stylesheet" type="text/css" />
   <script src="{{asset("assets/team/funciones.js")}}" type="text/javascript"></script>
 <section class="content container-fluid">

@@ -5,10 +5,17 @@ namespace App\Models\SistemaAbastecimiento;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admin\Rol;
+use App\Models\Admin\UsersRol;
+use App\Models\Admin\PermisoRol;
+use App\Models\SistemaAbastecimiento\Combos;
+use App\Models\SistemaAbastecimiento\Planes;
+use App\Models\SistemaAbastecimiento\Productos;
+use App\Models\SistemaAbastecimiento\Periodo;
 
 /***
  * 
- * 
+ * Tabla que se utiliza para llevar control de los combos 
  * 
  */
 class Productos extends Model implements Auditable
@@ -21,7 +28,17 @@ class Productos extends Model implements Auditable
 
     protected $guarded = ['comboId'];
 
+    /***definicion de la clave primaria cuando no es id */
+    protected $primaryKey = 'comboId';
+
+    public $timestamp = false;
+
+    const UPDATED_AT = null;
+
+    const CREATED_AT = null;
+
     protected $fillable = [
+                        'comboId',
                         'periodo',
                         'invInicial',
                         'entradas',
@@ -38,9 +55,17 @@ class Productos extends Model implements Auditable
      * 
      **/    
    public static function getProductosAll(){
+   
+   
+    $periodo = Periodo::buscarPeriodoActual();    
+  
+    $productos = DB::connection('sqlite')->table('productos')
+    ->orderByDesc('comboId')
+    ->where('periodo','=',$periodo->periodo)->get(); 
 
-    return DB::table('productos')->get(); 
-
+    //dd($productos);
+    
+    return $productos;
    }
 
     /**
@@ -50,7 +75,10 @@ class Productos extends Model implements Auditable
      **/    
     public static function getProductosPeriodo($periodo){
 
-        return DB::table('productos')->where('periodo',$periodo)->get(); 
+        return DB::connection('sqlite')
+                ->table('productos')
+                ->where('periodo',$periodo)
+                ->get(); 
     
        }
 
@@ -61,8 +89,14 @@ class Productos extends Model implements Auditable
      **/    
    public static function getProductosId($comboId){
 
-
-     return $producto = DB::table('productos')->where('comboId',$comboId)->first();        
+     $periodo = Periodo::buscarPeriodoActual();
+     return DB::connection('sqlite')
+            ->table('productos')
+            ->join('combos','combos.comboId', '=', 'productos.comboId')
+            ->select('productos.*','combos.descCombo')
+            ->where('productos.comboId',$comboId)
+            ->where('productos.periodo',$periodo->periodo)
+            ->first();       
 
        
    }
@@ -74,27 +108,34 @@ class Productos extends Model implements Auditable
    public static function getProductosPeriodoId($comboId,$periodo){
 
 
-    return $producto = DB::table('productos')->where('comboId',$comboId)->where('periodo',$periodo)->first();        
+     return DB::table('productos')
+                ->where('comboId',$comboId)
+                ->where('periodo',$periodo)
+                ->first();        
 
    }
+
    /**
      * Crear un producto nuevo
      * 
      * 
      **/    
-   public static function createProducto(Request $request)
+   public static function createProducto($request)
    {
        $usuario_id= user()->username; 
-      
+       $periodo = Periodo::buscarPeriodoActual();
+      //dd($request);
+  
        $productoCreado= Productos::create([
-           'periodo'  => $request->marca,
+           'comboId'  => $request->comboId,
+           'periodo'  => $periodo->periodo,
            'invInicial'  => $request->invInicial,
-           'entradas'  => $request->entradas,
-           'salidas'  => $request->salidas,           
-           'merma'  => $request->merma,          
-           'costoUnitario'  => $request->costoUnitario,
+           'entradas'  => 0,
+           'salidas'  => 0,           
+           'merma'  => 0,          
+           'costoUnitario'  => 0,
            'precio'  => $request->precio,
-           'invFinal'  => $request->invFinal,
+           'invFinal'  =>  $request->invInicial,
            'usuario'  => $usuario_id,           
            'timestamp' => time()   
                   
@@ -110,20 +151,21 @@ class Productos extends Model implements Auditable
      * 
      * 
      **/    
-   public static function updateProducto(Request $request,$comboId)
+   public static function updateProducto($request,$comboId)
    {
        $usuario_id= user()->username; 
 
-       $productoActualizado = Sku::where('comboId',$comboId)->update([
+      $prod= Productos::getProductosId($comboId);
 
-            'periodo'  => $request->marca,
-            'invInicial'  => $request->invInicial,
-            'entradas'  => $request->entradas,
-            'salidas'  => $request->salidas,           
+      $entradas =$request->invInicial + $prod->entradas;
+      $salidas= $prod->salidas + $request->merma;
+      $invfinal =$entradas-$salidas;
+
+       $productoActualizado = Productos::where('comboId',$comboId)->update([            
+            'invInicial'  => $request->invInicial,                   
             'merma'  => $request->merma,          
-            'costoUnitario'  => $request->costoUnitario,
-            'precio'  => $request->precio,
-            'invFinal'  => $request->invFinal,
+            'precio'  => $request->precio ,          
+            'invFinal'  => $invfinal ,
             'usuario'  => $usuario_id,           
             'timestamp' => time()   
                     
@@ -147,6 +189,50 @@ class Productos extends Model implements Auditable
         return Productos::find($comboId)->delete();
         
     }
+    /**
+     * 
+     * 
+     */
+    public static function getProductoId($comboId){
+      $periodo = Periodo::buscarPeriodoActual();
+     
+      return DB::connection('sqlite')
+            ->table('productos')          
+            ->where('productos.comboId',$comboId)
+            ->where('productos.periodo',$periodo->periodo)
+            ->first();       
+
+
+    }
+    /**
+     * 
+     * Obtener todos los productos
+     */
+    public static function getProductoAll(){    
+       
+     
+      return DB::table('productos')->get(); 
+
+
+    }
+     /**
+     * tabla combo
+     * tabla combosxcat
+     * no debe existir ni tabla planes y productos
+     * sino no se puede eliminar
+     */
+    public static function deleteProductoPeriodo(string $comboId){
+
+      /* buscarel periodo */       
+       $periodo = Periodo::buscarPeriodoActual();
+       return   DB::connection('sqlite')
+                   ->table('productos')    
+                   ->where('comboId',"=", $comboId)
+                   ->where('productos.periodo',$periodo->periodo)
+                   ->delete();
+
+   }
+  
 
 
 }

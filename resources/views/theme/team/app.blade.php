@@ -5,10 +5,10 @@
   <meta charset="utf-8" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/apple-icon.png")}}">
-  <link rel="icon"  href="{{asset("assets/team/img/images2.jfif")}}" class="rounded">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset("assets/team/img/icon-sun-cloud.png")}}">
+  <link rel="icon"  href="{{asset("assets/team/img/la-giralda.png")}}" class="rounded">
   <title>
-    Proyecto Web
+    Agrícola Santa Cruz
   </title>
   
   <!--     Fonts and icons     -->
@@ -33,7 +33,7 @@
 
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body  class="g-sidenav-show  bg-gray-100">
 
 
 <x-loadingscreen></x-loadingscreen>
@@ -42,11 +42,12 @@
 
 
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">  
-    
+    <br>
         @include("theme/$theme/navbar")    
         <main class="py-4">
        
          @yield('content', View::make('theme.team.container'))  
+      
          @include("theme/$theme/footer") 
        
          </main>

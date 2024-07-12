@@ -48,7 +48,23 @@ class ExistenciaController extends Controller
      */
     public function create()
     {
-        //
+              
+        $periodo= Periodo::buscarPeriodoActual();       
+        
+        $existencia = DB::connection('sqlite')->table('existencia')
+                    ->join('sku', 'sku.sku', '=', 'existencia.sku') 
+                     ->select('existencia.sku','sku.descripcion','existencia.invInicial')
+                     ->where('periodo','=',$periodo->periodo) 
+                     ->where('invInicial','=',0) 
+                     ->where('invFinal','=',0) 
+                     ->orderBy('sku.descripcion', 'asc')
+                     ->get();    
+                     
+        // dd($existencia);            
+        
+        return view('abastecimiento.transacciones.existencia.create',compact('existencia'));
+
+
     }
 
     /**
@@ -56,7 +72,34 @@ class ExistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // dd($request->all());
+        /**Valido los campos del formulario */
+        $messages = [
+           
+            'sku.required' => 'El nombre del Combo es necesario',
+            'invInicial.required' => 'El peso del combo es requerido'            
+        ];
+
+        $request->validate([
+            'sku'           => ['required'],
+            'invInicial'
+        ], $messages);
+
+         /**Actualizo los datos */
+         $existencia= Existencia::updateExistencia($request->sku, $request->invInicial);
+        
+         //valida la actualiazacion
+         if ($existencia) {
+             return redirect()->route('existencia.list')
+                     ->with('success', 'La existencia se creo correctamente');
+            } else {
+             return redirect()->route('create.existencia')
+                 ->with('danger', 'Error en la creacion de la existencia del sku');
+            }
+ 
+
+
+
     }
 
     /**
@@ -65,8 +108,7 @@ class ExistenciaController extends Controller
     public function show(string $id,string $per) {
         
        $sku = $id;
-       $periodo = $per;
-       
+       $periodo = $per;       
        $existencia = Existencia::getExistenciaSkuPeriodo($sku,$periodo);  
 
        
@@ -103,10 +145,10 @@ class ExistenciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function existenciaCategoriaGenerar(Request $request)
     {
        
-
+         
         $existencia = Existencia::actualizarExistenciaSkuPeriodo($request); 
 
        

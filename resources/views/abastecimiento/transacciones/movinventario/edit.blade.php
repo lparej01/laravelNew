@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-    Editar Movi
+    Editar Movimiento de inventario
 @endsection
 
 @section('content')

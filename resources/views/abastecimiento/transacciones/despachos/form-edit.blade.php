@@ -2,7 +2,7 @@
     <div class="box-body">          
         
             <div class="col-lg-6">
-                {{ Form::label('Fecha de la Solicitud (*)') }}
+                {{ Form::label('Fecha de la solicitud (*)') }}
                 {{ Form::text('fechaPedido', date(" Y-m-d "), ['class' => 'form-control' . ($errors->has('fechaPedido') ? ' is-invalid' : ''),  "id" => "fechaPedido","name" => "fechaPedido",'readonly']) }}
                 {!! $errors->first('fechaPedido', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -31,12 +31,12 @@
             </div> 
 
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario') }}
+                {{ Form::label('Costo unitario') }}
                 {{ Form::number('costoUnitario', old('costoUnitario',$despachos->costoUnitario), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'placeholder' => 'Ingrese el costo unitario','readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Costo Total') }}
+                {{ Form::label('Costo total') }}
                 {{ Form::number('costoTotal', old('costoTotal',$despachos->costoTotal), ['class' => 'form-control' . ($errors->has('costoTotal') ? ' is-invalid' : ''), "id" => "costoTotal","name" => "costoTotal", 'placeholder' => 'Costo Total','readonly']) }}
                 {!! $errors->first('costoTotal', '<div class="invalid-feedback">:message</div>') !!}
             </div>   

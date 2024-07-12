@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-  Existencia
+  Listado de  existencia de productos
 @endsection
 
 @section('content') 
@@ -10,7 +10,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-12" >                     
-       <x-tables.bo-table :data="$existencia" title="LISTADO DE EXISTENCIA DE ALIMENTOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
+       <x-tables.bo-table :data="$existencia" title="LISTADO DE EXISTENCIA PRODUCTOS" data-id="dtHorizontalExample" data-toolbar="#toolbar"
                           data-toggle="table" data-show-refresh="false" data-show-toggle="false"
                           data-show-fullscreen="false" data-show-columns="true" data-show-pagination-switch="false"
                           data-show-columns-toggle-all="true" data-search='true' data-search-accent-neutralise="true"
@@ -18,13 +18,13 @@
                           data-strict-search="true" data-pagination="true"  >
                           <x-slot:headerActions>
 
-                              <div class="float-right"  >
-                                {{--    @if ($actionsBlade->can_create > 0)
+                                  <div class="float-right"  >
+                                   @if ($actionsBlade->can_create > 0)
                                       <a href="{{ route('crear.existencia') }}" class="btn btn-primary float-right"
                                           data-placement="left">
-                                          {{ __('Generar Nueva Existencia por Periodo') }}
+                                          {{ __('Generar Existencia Sku') }}
                                       </a>
-                                  @endif --}}
+                                  @endif 
 
                                   <x-notify.modal x-data="{ id: tableControlles.idRow }" id-modal="modalExistencia">
                                       <x-slot:modalTitle>

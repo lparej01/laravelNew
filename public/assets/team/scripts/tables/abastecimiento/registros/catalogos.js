@@ -96,7 +96,7 @@
             },
             {
                 field: "catId",
-                title: "Categorias",
+                title: "Categorías",
                 sortable: true,
                 align: "center",
                 searchable: true,
@@ -111,7 +111,7 @@
 
             {
                 field: "descripcion",
-                title: "Descripcion",
+                title: "Descripción",
                 sortable: true,
                 align: "left",
                 searchable: true,
@@ -128,7 +128,7 @@
             
             {
                 field: "unidadMedida",
-                title: "Unidad de Medida",
+                title: "Unidad",
                 sortable: true,
                 align: "center",
                 searchable: true,
@@ -144,13 +144,13 @@
             },  
             {
                 field: "costoUnitario",
-                title: "Costo Unitario",
+                title: "Costo unitario",
                 sortable: true,
                 align: "center",
                 searchable: true,
                 
             },          
-            {
+            /* {
                 field: "activo",
                 title: "Estado",
                 sortable: true,
@@ -160,7 +160,7 @@
                     return value ? "Activo" : "Inactivo";
                 },
                 
-            },           
+            },         */   
             
             {
                 field: "actions",

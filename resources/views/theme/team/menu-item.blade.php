@@ -7,7 +7,7 @@
              aria-controls="ui-basic">
 
              <div class="icon icon-shape icon-sm shadow bg-gradient-white border-radius-md bg-outline-danger text-white text-center me-2 d-flex align-items-center justify-content-center">
-                   <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="25" height="25" >
+                   <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="40" height="40" >
              </div>
              <b class="menu-title" style="font-size: 16px;">{{ $item['nombre'] }}</b>
              <i class="menu-arrow"></i>
@@ -20,7 +20,7 @@
              aria-controls="ui-basic">
              <div
                  class="icon icon-shape icon-sm shadow bg-gradient-white border-radius-md bg-outline-danger text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="25" height="25" >
+                  <img id="imagen" src ="{{ asset('storage').'/'.$item['icono']}}"  class="rounded" width="40" height="40" >
                   
                  
              </div>
@@ -35,9 +35,9 @@
                          
                              <div class="icon icon-shape icon-sm shadow bg-gradient-primary border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                              
-                              <img id="imagen" src ="{{ asset('storage').'/'.$submenu['icono']}}"  class="rounded" width="25" height="25" >
+                              <img id="imagen" src ="{{ asset('storage').'/'.$submenu['icono']}}"  class="rounded" width="40" height="40" >
                              </div>
-                             <span class="nav-link-text ms-1" style="color: black">{{ $submenu['nombre'] }}</span>
+                             <span class="nav-link-text ms-1" >{{ $submenu['nombre'] }}</span>
                          </a>
                      </li>
                  @endforeach

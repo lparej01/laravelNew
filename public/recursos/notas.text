@@ -318,4 +318,52 @@ Schema::connection('comments')->create('users', function($table)
  git add .
  git commit -m "Iniciando el repositorio"
  git push
+
+ ##################################################################
+ pdf instalacion
+ composer require barryvdh/laravel-dompdf
  
+ Ahora nos queda asociar este service provider en nuestro archivo 
+ config/app.php Nos dirigimos a la lista de todos los proveedores 
+ de servicio y en el array 'providers' agregamos:
+
+Barryvdh\DomPDF\ServiceProvider::class,
+ 
+ config/app 
+
+ 'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        OwenIt\Auditing\AuditingServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        
+    ])->toArray(),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | This array of class aliases will be registered when this application
+    | is started. However, feel free to register as many as you wish as
+    | the aliases are "lazy" loaded so they don't hinder performance.
+    |
+    */
+
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+    ])->toArray(),
+
+    Para usuarlo en los controladores o modelos 
+    use PDF;

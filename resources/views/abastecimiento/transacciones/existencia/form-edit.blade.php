@@ -2,7 +2,7 @@
     <div class="box-body">
           
             <div class="col-lg-6">
-                {{ Form::label('Catálogo o Sku') }}
+                {{ Form::label('Catálogo o sku') }}
                 {{ Form::text('sku', $existencia->sku, ['class' => 'form-control' . ($errors->has('sku') ? ' is-invalid' : ''),  "id" => "sku","name" => "sku",'readonly']) }}
                 {!! $errors->first('sku', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -12,7 +12,7 @@
                 {!! $errors->first('periodo', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Inv Inicial') }}
+                {{ Form::label('Inventario inicial') }}
                 {{ Form::number('invInicial', $existencia->invInicial, ['class' => 'form-control' . ($errors->has('invInicial') ? ' is-invalid' : ''), "id" => "invInicial","name" => "invInicial", "onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
                 {!! $errors->first('invInicial', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -32,12 +32,12 @@
                 {!! $errors->first('merma', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario') }}
+                {{ Form::label('Costo unitario') }}
                 {{ Form::number('costoUnitario', $existencia->costoUnitario, ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario",'readonly']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Inventario Final') }}
+                {{ Form::label('Inventario final') }}
                 {{ Form::number('invFinal', $existencia->invFinal, ['class' => 'form-control' . ($errors->has('invFinal') ? ' is-invalid' : ''), "id" => "invFinal","name" => "invFinal","onKeyPress"=> "if(this.value.length==12) return false;",'readonly']) }}
                 {!! $errors->first('invFinal', '<div class="invalid-feedback">:message</div>') !!}
             </div>  

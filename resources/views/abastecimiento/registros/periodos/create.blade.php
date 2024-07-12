@@ -1,7 +1,7 @@
 @extends('theme.team.app')
 
 @section('template_title')
-   
+   Crear un periodo
 @endsection
 
 @section('content')

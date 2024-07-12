@@ -1,6 +1,8 @@
 @extends('theme.team.app')
 
 @section('template_title')
+
+ Crear cátalogo ó sku
    
 @endsection
 
@@ -14,14 +16,14 @@
                         form-method="POST">
                             @csrf
                         <x-slot:formHeader>
-                            <span class="align-self-center">IS A LA LISTA DE CATALOGOS</span>
+                            <span class="align-self-center">IR A LA LISTA DE SKU</span>
                         </x-slot:formHeader>
                          
                            
                        
                         <x-slot:formBody>
                         
-                        @include('abastecimiento.registros.catalogos.form-create')
+                         @include('abastecimiento.registros.catalogos.form-create')
                             
                         </x-slot:formBody>
                         <x-slot:formFooter>

@@ -167,6 +167,7 @@ class MovInvController extends Controller
             /**Buscando el pedido verificando */
             $pedido= MovInv::buscarPedidoId($request->ped);
            
+           /**si es menor a la columna cantidad del pedido */
             if ($cant < $pedido->cant) {
                 
                     $dif = $pedido->cantPendiente -$cant;
@@ -179,6 +180,7 @@ class MovInvController extends Controller
 
                 
             }  
+            /**si es igual a la columna cantidad del pedido */
             if ($cant == $pedido->cant) {
                     $object = new Pedidos;            
                     $object = Pedidos::find($request->ped);                        

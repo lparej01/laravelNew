@@ -3,7 +3,7 @@
           
         
             <div class="col-lg-6">
-                {{ Form::label('Fecha del Pedido (*)') }}
+                {{ Form::label('Fecha del pedido (*)') }}
                 {{ Form::text('fechaPedido', date(" Y-m-d "), ['class' => 'form-control' . ($errors->has('fechaPedido') ? ' is-invalid' : ''),  "id" => "fechaPedido","name" => "fechaPedido",'readonly']) }}
                 {!! $errors->first('fechaPedido', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
@@ -21,7 +21,7 @@
                 {!! $errors->first('provId', '<div class="invalid-feedback">:message</div>') !!}
             </div> 
             <div class="col-lg-6">
-                {{ Form::label('Catalogo  o SKU (*)') }}
+                {{ Form::label('Catalogo  ó SKU (*)') }}
                 <select name="sku" id="sku" class="form-select @error('sku') is-invalid @enderror" >
                     <option value="">Seleccione  el Catálogo</option>                 
                     
@@ -40,12 +40,12 @@
             </div> 
 
             <div class="col-lg-6">
-                {{ Form::label('Costo Unitario (*)') }}
+                {{ Form::label('Costo unitario (*)') }}
                 {{ Form::number('costoUnitario', old('costoUnitario'), ['class' => 'form-control' . ($errors->has('costoUnitario') ? ' is-invalid' : ''), "id" => "costoUnitario","name" => "costoUnitario","onKeyPress"=> "if(this.value.length==6) return false;","onblur"=> "obtenerPedidosCosto()",  'placeholder' => 'Ingrese el costo unitario']) }}
                 {!! $errors->first('costoUnitario', '<div class="invalid-feedback">:message</div>') !!}
             </div>
             <div class="col-lg-6">
-                {{ Form::label('Costo Total') }}
+                {{ Form::label('Costo total') }}
                 {{ Form::number('costoTotal', old('costoTotal'), ['class' => 'form-control' . ($errors->has('costoTotal') ? ' is-invalid' : ''), "id" => "costoTotal","name" => "costoTotal","onKeyPress"=> "if(this.value.length==12) return false;",'readonly', 'placeholder' => 'Costo Total']) }}
                 {!! $errors->first('costoTotal', '<div class="invalid-feedback">:message</div>') !!}
             </div>
@@ -55,7 +55,7 @@
                 {!! $errors->first('flete', '<div class="invalid-feedback">:message</div>') !!}
             </div>  
             <div class="col-lg-6">
-                {{ Form::label('Total con Flete') }}
+                {{ Form::label('Total con flete') }}
                 {{ Form::number('costoTotalFlete', old('costoTotalFlete'), ['class' => 'form-control' . ($errors->has('costoTotalFlete') ? ' is-invalid' : ''), "id" => "costoTotalFlete","name" => "costoTotalFlete","onKeyPress"=> "if(this.value.length==12) return false;",'readonly', 'placeholder' => 'Costo total flete']) }}
                 {!! $errors->first('costoTotalFlete', '<div class="invalid-feedback">:message</div>') !!}
             </div>  

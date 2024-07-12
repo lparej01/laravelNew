@@ -4,8 +4,8 @@
             <div class="row">
 
                 <div class="col-lg-6">
-                    {{ Form::label('Permiso') }}
-                    {{ Form::text('nombre', null, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del permiso']) }}
+                    {{ Form::label('Permiso (*)') }}
+                    {{ Form::text('nombre', null, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del permiso',"onKeyPress"=> "if(this.value.length==40) return false;"]) }}
                     {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
