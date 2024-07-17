@@ -41,7 +41,18 @@
                                     <td>{{$item->merma}}</td>
                                     <td>{{$item->invFinal}}</td>
                                 </tr>
-                            @endforeach                           
+                                
+
+                            @endforeach 
+                            <tr><td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Totales </td>
+                                <td>{{number_format($exist->entradas,0, ",", ".")}}</td>
+                                <td>{{number_format($exist->salidas,0, ",", ".")}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>                          
                         </tbody>
 
                     </table>    

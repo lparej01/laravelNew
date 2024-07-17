@@ -66,14 +66,21 @@ class Pedidos extends Model implements Auditable
         //Periodo actual
         $periodoActual= Periodo::buscarPeriodoActual();
        
-       
 
-        $pedidos = DB::connection('sqlite')->table('existencia')                       
-        ->where('existencia.periodo',"=", $periodoActual->periodo)        
-        ->sum('entradas');   
+        $ano= substr($periodoActual['timestamp'], 0, 4);
+        $mes= substr($periodoActual['timestamp'], 4,-8);
+        $dia = substr($periodoActual['timestamp'], 6,-6); 
+
+        $fecha= $ano.'-'.$mes.'-'.$dia;         
+      
+        $pedidos = DB::connection('sqlite')->table('pedidos')                       
+        ->where('pedidos.fechaPedido',">=",  $fecha) 
+        ->where('pedidos.provId',">",  300000)   
+        ->count('pedidoId');      
        
         
-        return number_format($pedidos,0, ",", ".");
+    
+        return $pedidos.' solicitudes' ;
     }
      /**
      * Sumas los despachos de un periodo activos
@@ -85,12 +92,26 @@ class Pedidos extends Model implements Auditable
         $periodoActual= Periodo::buscarPeriodoActual();  
        
 
-        $despachos = DB::connection('sqlite')->table('existencia')                       
+        /* $despachos = DB::connection('sqlite')->table('existencia')                       
         ->where('existencia.periodo',"=", $periodoActual->periodo)        
-        ->sum('salidas');   
+        ->sum('salidas'); */
+
+        $ano= substr($periodoActual['timestamp'], 0, 4);
+        $mes= substr($periodoActual['timestamp'], 4,-8);
+        $dia = substr($periodoActual['timestamp'], 6,-6); 
+
+        $fecha= $ano.'-'.$mes.'-'.$dia; 
+
+        $despachos = DB::connection('sqlite')->table('pedidos')                       
+        ->where('pedidos.fechaPedido',">=",  $fecha) 
+        ->where('pedidos.provId',"=",  300000)   
+        ->count('pedidoId')  ;  
+     
         
         
-        return number_format($despachos,0, ",", ".");
+        //return number_format($despachos,0, ",", ".");
+
+        return $despachos.' despachos';
     }
     /**
      * Por periodo activo 
@@ -179,6 +200,8 @@ class Pedidos extends Model implements Auditable
     public  static function obtenerPerPedCant(){
 
         $periodoActual= Periodo::buscarPeriodoActual();
+
+        
 
         if ( $periodoActual->mes <= 9) {
             $mes='0'.$periodoActual->mes;

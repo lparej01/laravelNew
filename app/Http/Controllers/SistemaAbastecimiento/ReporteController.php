@@ -63,9 +63,16 @@ class ReporteController extends Controller
         ->orderBy('categorias.catId', 'asc')        
         ->get();
 
-        
+        $exist  = DB::connection('sqlite') 
+        ->table('existencia')
+        ->join('sku', 'sku.sku', '=', 'existencia.sku') 
+        ->join('categorias', 'categorias.catId', '=', 'sku.catId') 
+        ->select(DB::raw('SUM(existencia.entradas) AS entradas'),DB::raw('SUM(existencia.salidas) AS salidas'))           
+        ->where('periodo',$periodo)->first();
 
-       return view("abastecimiento.reportes.existencia-categoria-reporte",compact('existencia'));
+       // dd( $exist);
+
+       return view("abastecimiento.reportes.existencia-categoria-reporte",compact('existencia','exist'));
     
        
     }
@@ -143,9 +150,18 @@ class ReporteController extends Controller
        ->orderBy('sku.descripcion', 'asc')        
        ->get();
 
+
+       $sku  = DB::connection('sqlite') 
+       ->table('existencia')
+       ->join('sku', 'sku.sku', '=', 'existencia.sku')      
+       ->select(DB::raw('SUM(existencia.entradas) AS entradas'),DB::raw('SUM(existencia.salidas) AS salidas'))             
+       ->where('periodo',$periodo)->first();
+       
+       //number_format($exist,0, ",", ".");
+
        
 
-      return view("abastecimiento.reportes.existencia-sku-reporte",compact('existencia'));
+      return view("abastecimiento.reportes.existencia-sku-reporte",compact('existencia','exist'));
    
       
    }
