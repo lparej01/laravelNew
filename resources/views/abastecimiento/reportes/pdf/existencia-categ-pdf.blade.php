@@ -71,7 +71,9 @@
   <div class="container-fluid py-4">
     <header>
       <h2>Existencia de productos según su categoría</h2>
+      
     </header>
+    <h4>Periodo: {{$existencia[0]->periodo}}</h4>
   </div>
   <main>
     <table class="table table-striped table-hover" border="1px">
@@ -79,19 +81,19 @@
           <tr>
           <td>Id</td>
           <td>Categorías</td>
-          <td>Periodo</td>
-          <td>Inventario inicial</td>
+          {{-- <td>Periodo</td> --}}
+          <td>Inv.Inicial</td>
           <td>Entradas</td>
           <td>Salidas</td>
           <td>Merma</td>
-          <td>Inventario final</td>
+          <td>Inv. Final</td>
       </tr>
       </thead>
       <tbody>
           @foreach ($existencia as $item)
               <tr><td>{{$item->catId}}</td>
                   <td>{{$item->categoria}}</td>
-                  <td>{{$item->periodo}}</td>
+                  {{-- <td>{{$item->periodo}}</td> --}}
                   <td style="width: 70px">{{$item->invInicial}}</td>
                   <td style="width: 60px" >{{$item->entradas}}</td>
                   <td style="width: 60px" >{{$item->salidas}}</td>

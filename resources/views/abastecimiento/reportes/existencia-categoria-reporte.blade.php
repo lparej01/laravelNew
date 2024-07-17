@@ -23,11 +23,11 @@
                             <td>Id</td>
                             <td>Categorías</td>
                             <td>Periodo</td>
-                            <td>Inv Inicial</td>
+                            <td>Inv.Inicial</td>
                             <td>Entradas</td>
                             <td>Salidas</td>
                             <td>Merma</td>
-                            <td>Inv Final</td>
+                            <td>Inv.Final</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,8 +48,8 @@
                                 <td></td>
                                 <td></td>
                                 <td>Totales </td>
-                                <td>{{number_format($exist->entradas,0, ",", ".")}}</td>
-                                <td>{{number_format($exist->salidas,0, ",", ".")}}</td>
+                                <td style=""><b>{{number_format($exist->entradas,0, ",", ".")}}</b></td>
+                                <td><b>{{number_format($exist->salidas,0, ",", ".")}}</b></td>
                                 <td></td>
                                 <td></td>
                             </tr>                          

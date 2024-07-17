@@ -19,14 +19,14 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                            <td>Id</td>
-                            <td>Sku</td>
-                            <td>Periodo</td>
-                            <td>Inventario inicial</td>
-                            <td>Entradas</td>
-                            <td>Salidas</td>
-                            <td>Merma</td>
-                            <td>Inventario Final</td>
+                            <td><B>Id</B></td>
+                            <td><B>Sku</B></td>
+                            <td><B>Periodo</B></td>
+                            <td><B>Inv.Inicial</B></td>
+                            <td><B>Entradas</B></td>
+                            <td><B>Salidas</B></td>
+                            <td><B>Merma</B></td>
+                            <td><B>Inv. Final</B></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,16 @@
                                     <td>{{$item->merma}}</td>
                                     <td>{{$item->invFinal}}</td>
                                 </tr>
-                            @endforeach                           
+                            @endforeach  
+                            <tr><td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Totales </td>
+                                <td style=""><b>{{number_format($exist->entradas,0, ",", ".")}}</b></td>
+                                <td><b>{{number_format($exist->salidas,0, ",", ".")}}</b></td>
+                                <td></td>
+                                <td></td>
+                            </tr>                                     
                         </tbody>
 
                     </table>

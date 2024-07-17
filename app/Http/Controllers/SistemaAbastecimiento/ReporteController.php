@@ -151,7 +151,7 @@ class ReporteController extends Controller
        ->get();
 
 
-       $sku  = DB::connection('sqlite') 
+       $exist  = DB::connection('sqlite') 
        ->table('existencia')
        ->join('sku', 'sku.sku', '=', 'existencia.sku')      
        ->select(DB::raw('SUM(existencia.entradas) AS entradas'),DB::raw('SUM(existencia.salidas) AS salidas'))             
