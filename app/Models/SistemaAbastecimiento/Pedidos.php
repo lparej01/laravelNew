@@ -49,10 +49,12 @@ class Pedidos extends Model implements Auditable
                 ->join('proveedores', 'pedidos.provId', '=', 'proveedores.provId') 
                 ->join('sku', 'pedidos.sku', '=', 'sku.sku')   
                 ->select('proveedores.nombre','sku.marca','sku.descripcion','pedidos.*')
-                ->where('proveedores.provId',"<>", 300000)
+                ->where('pedidos.provId',">", 300000)
+                ->where('pedidos.fechaPedido',">", '2023-12-31')
                 ->orderByDesc('pedidos.pedidoId')      
-                ->get();   
-
+                ->get(); 
+                
+        //dd($pedidos);
 
         return  $pedidos;
 

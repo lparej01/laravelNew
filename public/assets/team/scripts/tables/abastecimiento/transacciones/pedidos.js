@@ -84,13 +84,13 @@
                 align: "left",
                 searchable: true                
             }, 
-             {
+             /* {
                 field: "provId",
                 title: "Proveedor",
                 sortable: true,
                 align: "center",
                 searchable: true                
-            }, 
+            },  */
 
             {
                 field: "cant",
@@ -108,14 +108,14 @@
                 searchable: true,
                 
             },  */
-           {
+           /* {
                 field: "costoTotal",
                 title: "Costo Total",
                 sortable: true,
                 align: "center",
                 searchable: true,
                 
-            },  
+            },   */
              
           /*  {
                 field: "flete",
@@ -141,14 +141,14 @@
                 searchable: true,
                 
             }, 
-            {
+           /*  {
                 field: "saldoPendiente",
                 title: "Saldo Pendiente",
                 sortable: true,
                 align: "center",
                 searchable: true,
                 
-            }, 
+            },  */
          
             
             {

@@ -17,7 +17,7 @@ class PedidosController extends Controller
 
         
         $ped= Pedidos::getAllPedidos();
-        //convierto en jonn
+        //convierto en json
         $pedidos = serializeJson($ped);
         
         
@@ -267,7 +267,9 @@ class PedidosController extends Controller
     public function edit(string $pedidoId)
     {
         /**datos */
-        $pedidos= Pedidos::getPedidoId($pedidoId);       
+        $pedidos= Pedidos::getPedidoId($pedidoId);   
+        
+        //dd(  $pedidos);
       
         /**para el select */
         $provee= Pedidos::getProveedoresDif($pedidos->provId);
