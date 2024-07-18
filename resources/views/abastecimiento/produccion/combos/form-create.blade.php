@@ -3,18 +3,29 @@
         <div class="container mx-5 my-4">            
             <div class="row">
                 <div class=" form-group col-3"> 
+<<<<<<< HEAD
                   {{ Form::label('Nombre del Combo (*)') }}
+=======
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                   <input type="text" id="descCombo"  name ="descCombo" class="form-control"  autocomplete placeholder="Nombre del combo">                 
                    
                     {!! $errors->first('descCombo', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                  <div class=" form-group col-3">
+<<<<<<< HEAD
                   {{ Form::label('Peso total del combo (*)') }}
                   {{ Form::text('peso', null, ['class' => 'form-control' . ($errors->has('peso') ? ' is-invalid' : ''),  "id" => "peso","name" => "peso","placeholder" => "Peso del Combo" ,'readonly']) }}   
                     {!! $errors->first('peso', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
                 <div class=" form-group col-3">
                   {{ Form::label('') }}
+=======
+                  
+                  {{ Form::text('peso', null, ['class' => 'form-control' . ($errors->has('peso') ? ' is-invalid' : ''),  "id" => "peso","name" => "peso","placeholder" => "Peso del Combo" ,'readonly']) }}   
+                    {!! $errors->first('peso', '<div class="invalid-feedback">:message</div>') !!}
+                </div>
+                <div class=" form-group col-6">
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                   <button id="add-record-button" style="width: 250px" class="btn btn-primary ">Agregar</button>
                 </div>  
              </div>
@@ -23,7 +34,11 @@
             <table id="combo" class="table" style="width: 80%">              
                   <thead>
                     <tr>            
+<<<<<<< HEAD
                     <th>Categoría</th>
+=======
+                    <th>Categoria</th>
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                     <th>Peso</th> 
                     <th>Unidades</th>
                     </tr>

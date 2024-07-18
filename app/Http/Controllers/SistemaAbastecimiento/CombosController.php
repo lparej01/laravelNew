@@ -12,8 +12,11 @@ use App\Models\SistemaAbastecimiento\Categorias;
 use App\Models\SistemaAbastecimiento\CombosCategorias;
 use Illuminate\Support\Facades\DB;
 use Arr;
+<<<<<<< HEAD
 use App\Models\SistemaAbastecimiento\Planes;
 use App\Models\SistemaAbastecimiento\Productos;
+=======
+>>>>>>> bf1b0e5 (Actualizando 20240506)
 
 class CombosController extends Controller
 {
@@ -87,6 +90,7 @@ class CombosController extends Controller
      */
     public function confirm_delete(string $id)
     {
+<<<<<<< HEAD
         
         
         $plan = Planes::searchPlanId($id);
@@ -94,6 +98,14 @@ class CombosController extends Controller
         $prod = Productos::getProductosId($id);
 
         if ($plan != null ||  $prod != null) {
+=======
+        CombosCategorias::deleteCombId($id);
+       
+        $deleteCombos = Combos::deleteCombo($id);
+   
+        if ($deleteCombos) {
+           
+>>>>>>> bf1b0e5 (Actualizando 20240506)
             return redirect()->route('combos.list')
             ->with('warning', 'El combo no se pudo eliminar pertenece a un plan o producto');
 
@@ -129,7 +141,11 @@ class CombosController extends Controller
      */
     public function store(Request $request){
         
+<<<<<<< HEAD
         // dd($request->all());
+=======
+       // dd($request->all());
+>>>>>>> bf1b0e5 (Actualizando 20240506)
         /**Valido los campos del formulario */
         $messages = [
            
@@ -146,6 +162,7 @@ class CombosController extends Controller
         
             $usuario_id= user()->username; 
 
+<<<<<<< HEAD
              /**
              * verifico si el combo ya existe 
              */
@@ -165,6 +182,30 @@ class CombosController extends Controller
             
                     ]);  
 
+=======
+         
+           $usuario_id= user()->username;  
+
+             /**
+             * verifico si el combo ya existe 
+             */
+             $descombo= DB::connection('sqlite')->table('combos')    
+            ->where('descCombo',"=", $request->descCombo)        
+            ->first();  
+
+            /**si no existe ejecuto la accion */
+            if ($descombo ==null) {
+                    $combo = DB::connection('sqlite')->table('combos')
+                    ->insertGetId([
+                    'descCombo'  => $request->descCombo,
+                    'peso'  => $request->peso,           
+                    'activo' => 1,
+                    'usuario'  => $usuario_id,           
+                    'timestamp' => date('Ydm',time())           
+            
+                    ]);  
+
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                     /**quito lo valores que no necesito del arreglo */
                     $array = $request->except(['_token','peso','descCombo']);
             
@@ -194,14 +235,22 @@ class CombosController extends Controller
         
                             if ($value > 0 ) {
         
+<<<<<<< HEAD
                                 DB::connection('sqlite')->table('combosxcat')
                                 ->insertGetId([
+=======
+                                CombosCategorias::create([
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                                     'catId'  => $key,
                                     'comboId'  => $combo, 
                                     'cantUM'  => $value,           
                                     'activo' => 1,
                                     'usuario'  => $usuario_id,           
+<<<<<<< HEAD
                                     'timestamp' => date('YdmHis',time())                
+=======
+                                    'timestamp' => date('Ydm',time())             
+>>>>>>> bf1b0e5 (Actualizando 20240506)
                                 
                                 ]);  
                                 

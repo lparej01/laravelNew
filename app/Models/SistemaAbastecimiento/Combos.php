@@ -54,10 +54,15 @@ class Combos extends Model implements Auditable
     */
     public static function getCombAll(){
 
+<<<<<<< HEAD
           
        
         $combos = DB::connection('sqlite')->table('combos')       
         ->where('combos.comboId',">",1000000)
+=======
+        $combos = DB::connection('sqlite')->table('combos')        
+        ->where('combos.comboId',">", 1000000)
+>>>>>>> bf1b0e5 (Actualizando 20240506)
         ->orderByDesc('combos.comboId')  
         ->get();   
 
@@ -98,6 +103,21 @@ class Combos extends Model implements Auditable
         
         
         return $combo; 
+
+    }
+
+    /**
+    * 
+    * Buscar un combo por su descCombo
+    * 
+    */
+    public static function getCombDesCombo($descCombo){
+
+       // dd($descCombo);
+
+        return DB::connection('sqlite')->table('combos')    
+        ->where('combos.descCombo',"=", $descCombo)        
+        ->get();   
 
     }
 
